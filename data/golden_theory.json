@@ -1,0 +1,156 @@
+{
+  "version": "2.0",
+  "last_updated": "2026-02-16",
+  "last_cycle": 6,
+  "principles": [
+    {
+      "id": "P1",
+      "statement": "G1+G6>=8（ゴシップ露出度+楽曲知名度の合計）がHIT/MISS分類の最有力条件（精度79.2%）。公開時話題性(G7)を補助条件として追加することで偽陽性削減が可能（暫定精度87.5%）。ただしG7の操作的定義は未確立",
+      "mechanism": "G1(ゴシップ露出度=ストック)がクリック動機を、G6(楽曲知名度)が視聴維持(ノスタルジア)を駆動。G7(公開時話題性=フロー)がストック指標と現在の需要のギャップを調整。三者が揃うとアルゴリズム推薦が増幅される",
+      "status": "hypothesis",
+      "established_cycle": 3,
+      "supporting_evidence": [],
+      "contradicting_evidence": []
+    }
+  ],
+  "checklist": [
+    {
+      "id": "C5",
+      "condition": "メディア挿入2件以上（MV+非MV合計）",
+      "hit_fulfillment": {
+        "count": 11,
+        "total": 12,
+        "rate": 0.917
+      },
+      "miss_fulfillment": {
+        "count": 7,
+        "total": 12,
+        "rate": 0.583
+      },
+      "discriminative_power": "medium",
+      "status": "under_investigation",
+      "established_cycle": 3,
+      "linked_principle": "P_script_structure",
+      "data_category": "scripts",
+      "notes": "メディア数と経過日数の交絡が強い(VPD正規化後r=-0.018)。判別力medium→lowに引き下げ"
+    },
+    {
+      "id": "C6",
+      "condition": "統一テーマ+感情エスカレーション",
+      "hit_fulfillment": {
+        "count": 12,
+        "total": 12,
+        "rate": 1.0
+      },
+      "miss_fulfillment": {
+        "count": 12,
+        "total": 12,
+        "rate": 1.0
+      },
+      "discriminative_power": "none",
+      "status": "baseline_only",
+      "established_cycle": 3,
+      "linked_principle": "P_script_structure",
+      "data_category": "scripts",
+      "notes": "弁別力ゼロ。全動画が満たす最低品質基準"
+    },
+    {
+      "id": "C8",
+      "condition": "CA=2帯: 好奇心TOP1の秘密性スコア>=3（未公開/タブー）",
+      "hit_fulfillment": {
+        "count": 2,
+        "total": 2,
+        "rate": 1.0
+      },
+      "miss_fulfillment": {
+        "count": 0,
+        "total": 7,
+        "rate": 0.0
+      },
+      "discriminative_power": "medium",
+      "status": "under_investigation",
+      "established_cycle": 4,
+      "linked_principle": "P1",
+      "data_category": "human_scores",
+      "notes": "H17由来。CA=2帯限定の補助条件。n=2の事後的フィッティングリスクあり"
+    },
+    {
+      "id": "C9",
+      "condition": "G1+G6>=8（ゴシップ露出度+楽曲知名度の合計）",
+      "hit_fulfillment": {
+        "count": 9,
+        "total": 12,
+        "rate": 0.75
+      },
+      "miss_fulfillment": {
+        "count": 2,
+        "total": 12,
+        "rate": 0.167
+      },
+      "discriminative_power": "high",
+      "status": "conditionally_adopted",
+      "established_cycle": 5,
+      "linked_principle": "P1",
+      "data_category": "human_scores",
+      "notes": "現データ最高精度79.2%。偽陰性3本(エド,ブリトニー,ポール)。主条件として維持"
+    },
+    {
+      "id": "C11",
+      "condition": "G1+G6>=8 AND G7(公開時話題性)>=3",
+      "hit_fulfillment": {
+        "count": 9,
+        "total": 12,
+        "rate": 0.75
+      },
+      "miss_fulfillment": {
+        "count": 2,
+        "total": 12,
+        "rate": 0.167
+      },
+      "discriminative_power": "high",
+      "status": "under_investigation",
+      "established_cycle": 6,
+      "linked_principle": "P1",
+      "data_category": "human_scores",
+      "notes": "G1+G6>=8群内の補助条件。G7の操作的定義未確立。暫定精度87.5%"
+    }
+  ],
+  "rejected_conditions": [
+    {
+      "id": "C1",
+      "condition": "CA >= 2.5（人間評価）",
+      "reason": "MISS群充足率75%。弁別力low",
+      "rejected_cycle": 6
+    },
+    {
+      "id": "C2",
+      "condition": "GI×CA >= 36",
+      "reason": "MISS群充足率75%。弁別力消失",
+      "rejected_cycle": 6
+    },
+    {
+      "id": "C3",
+      "condition": "GI×CA >= 16",
+      "reason": "MISS群充足率100%。弁別力none",
+      "rejected_cycle": 6
+    },
+    {
+      "id": "C4",
+      "condition": "CA >= 2（人間評価）",
+      "reason": "MISS群充足率100%。弁別力none",
+      "rejected_cycle": 6
+    },
+    {
+      "id": "C7",
+      "condition": "CA>=2.5 第一スクリーニング基準",
+      "reason": "C1と同一条件。棄却",
+      "rejected_cycle": 6
+    },
+    {
+      "id": "C10",
+      "condition": "CA>=2.5（v4.1定量基準）",
+      "reason": "弁別力消失。MISS群83.3%",
+      "rejected_cycle": 5
+    }
+  ]
+}

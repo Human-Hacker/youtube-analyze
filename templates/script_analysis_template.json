@@ -1,0 +1,76 @@
+{
+  "_comment": "Claude Codeが台本を分析して生成するJSON。video_idはstep3で取得したものを使用。",
+  "video_id": "VIDEO_ID_HERE",
+  "artist_name": "アーティスト名",
+  "script_file": "projects/ARTIST_NAME/script.md",
+  "analysis_date": "2026-02-14",
+  "word_count": 0,
+  "structure": {
+    "has_unified_theme": false,
+    "theme_word": "",
+    "has_antagonist": false,
+    "antagonist": "",
+    "emotional_bottoms_count": 0,
+    "bottoms_escalate": false,
+    "has_savior": false,
+    "savior": ""
+  },
+  "hook_analysis": {
+    "opening_question": "",
+    "hook_answered_in_script": false,
+    "hook_answer_position_percent": 0
+  },
+  "mv_insertions": {
+    "count": 0,
+    "songs": [],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "",
+    "top1_addressed": false,
+    "top2_topic": "",
+    "top2_addressed": false,
+    "ca_score": 0
+  },
+  "gi_scores": {
+    "G1_gossip": 0,
+    "G2_curiosity": 0,
+    "G3_emotional": 0,
+    "G4_movie": 0,
+    "G6_songs": 0,
+    "total": 0
+  },
+  "emotional_curve": {
+    "_comment": "感情曲線のアップダウン分析。台本の物語としての感情曲線の作り方を記録する",
+    "total_ups": 0,
+    "total_downs": 0,
+    "total_transitions": 0,
+    "pattern_by_act": {
+      "intro": "",
+      "first_act": "",
+      "second_act": "",
+      "third_act": ""
+    },
+    "_pattern_format": "U=上昇, D=下降 を連結。例: 'UDU'=上昇→下降→上昇",
+    "balance_description": ""
+  },
+  "opening_30sec": {
+    "_comment": "最初の30秒（導入〜第一幕の始まり）の分析",
+    "opening_type": "",
+    "_opening_type_options": "衝撃事実型 / 問いかけ型 / エピソード導入型 / データ提示型 / 感情訴求型 / その他",
+    "hook_strength": 0,
+    "_hook_strength_scale": "1-5。1=弱い引き、5=非常に強い引き",
+    "description": ""
+  },
+  "non_mv_media": {
+    "_comment": "MV以外の本人映像（インタビュー、ライブ、ドキュメンタリー等）のYouTubeリンク",
+    "total_links": 0,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 0
+    },
+    "_note": "種類分類が困難な場合はtotal_linksのみ記入し、links_by_typeは空でよい"
+  }
+}

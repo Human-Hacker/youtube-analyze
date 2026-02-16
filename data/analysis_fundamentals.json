@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.0",
+  "last_reviewed": "2026-02-16",
+
+  "purpose": {
+    "statement": "伸びた動画の共通点と伸びていない動画の共通点を明らかにし、「伸びる動画の黄金理論」を構築すること",
+    "golden_theory_definition": "上位原則（なぜ伸びるのか）＋実用チェックリスト（制作前に確認できる条件）の二層構造",
+    "central_questions": [
+      "伸びた動画全てに共通することは何か？",
+      "伸びていない動画全てに共通することは何か？"
+    ],
+    "constraint": "問題の定義は常にcentral_questionsから派生して設定すること"
+  },
+
+  "hit_miss_definition": {
+    "hit_threshold": 150000,
+    "hit_label": "15万回再生以上",
+    "miss_label": "15万回再生未満",
+    "unit": "views"
+  },
+
+  "commonality_analysis": {
+    "requirement": "HIT群の全動画に共通する特徴とMISS群の全動画に共通する特徴を必ず抽出すること",
+    "scope": "全動画を対象。サンプリングや代表例のみの分析は不可",
+    "categories": ["analytics", "scripts", "meta"],
+    "output_requirement": "hit_miss_commonalities JSON構造として必ず出力すること"
+  },
+
+  "metrics": {
+    "analytics": {
+      "description": "YouTube Analyticsから取得できるデータ",
+      "groups": {
+        "traffic_sources": ["ブラウジング機能", "YouTube検索", "関連動画", "外部", "チャンネルページ", "通知", "その他"],
+        "engagement": ["総再生時間", "平均視聴時間", "平均視聴率(%)", "視聴維持率曲線"],
+        "ctr": ["インプレッション数", "インプレッションCTR(%)"],
+        "audience": ["登録者/非登録者比率", "新規視聴者率"],
+        "temporal": ["公開後24時間再生数", "公開後7日間再生数", "日次推移"],
+        "interaction": ["高評価率", "コメント数", "共有数"],
+        "reach": ["ユニーク視聴者数", "リピート率"],
+        "advanced": ["End Screen CTR", "カード CTR"]
+      }
+    },
+    "scripts": {
+      "description": "台本から抽出できるデータ",
+      "groups": {
+        "structure": ["三幕構造比率", "セクション数", "総文字数"],
+        "hook": ["フック種別", "フック回答位置(%)", "冒頭30秒の構成"],
+        "emotion": ["感情曲線パターン", "感情の底の回数", "エスカレーション有無"],
+        "media": ["MV挿入数", "非MV映像数", "総メディア数"],
+        "topic": ["メインテーマ", "サブテーマ数", "統一テーマの有無"],
+        "storytelling": ["ナラティブ技法", "伏線回収の有無", "視聴者への問いかけ回数"],
+        "pacing": ["セクション平均長", "最長セクション比率"],
+        "cta": ["CTA位置", "CTA種別"]
+      }
+    },
+    "meta": {
+      "description": "動画のメタデータ・人間評価",
+      "groups": {
+        "basic": ["タイトル文字数", "サムネイルタイプ", "公開曜日・時間"],
+        "human_scores": ["GI(ゴシップ露出度)", "CA(好奇心アピール度)", "G1-G6サブスコア"],
+        "artist": ["アーティスト知名度", "直近ゴシップ有無", "楽曲知名度"]
+      }
+    }
+  },
+
+  "data_ranges": {
+    "primary": {
+      "window": "24hours",
+      "label": "公開後24時間",
+      "priority": "最重要",
+      "reason": "ブラウジング推薦の初動を決定する"
+    },
+    "secondary": {
+      "window": "7days",
+      "label": "公開後7日間",
+      "priority": "重要",
+      "reason": "ほとんどの動画はここまでで伸びるかどうかが決まる"
+    },
+    "late_bloomer": {
+      "label": "7日後に伸び始めた動画",
+      "priority": "特別対応",
+      "reason": "突然視聴回数が増えたポイントまで分析範囲を拡張する必要がある",
+      "rule": "7日間を過ぎてから伸び始めた動画に関しては、突然視聴回数が増えたところまで見る"
+    }
+  },
+
+  "methodology": {
+    "pillars": [
+      {
+        "name": "水平思考（Lateral Thinking）",
+        "description": "あらゆる前提を疑い、見えていない変数を探す",
+        "steps": [
+          "前提列挙: 「なぜそれが共通点なのか」「なぜそれが伸びる原因なのか」の前提を明示的に書き出す",
+          "前提反転: 各前提を「もし逆だったら？」で検証する",
+          "代替説生成: 前提反転の結果から、従来の説明では捕捉できない新しい仮説を生成する"
+        ],
+        "integration": "Agent Cの分析フローのステップ②③に組み込む"
+      },
+      {
+        "name": "第一原理主義（First Principles Thinking）",
+        "description": "YouTubeアルゴリズムの仕組み・視聴者心理・チャンネル固有特性から演繹的に考える",
+        "reference": "agents/youtube_fundamentals.md",
+        "integration": "Agent C/E両方が分析・検証時に必ず参照する前提知識"
+      },
+      {
+        "name": "仮説駆動アプローチ（Hypothesis-Driven）",
+        "description": "McKinsey方式の「答えから始める」手法。まず結論の仮説を立て、それを検証するためにデータを集め、仮説を修正・確定する",
+        "process": {
+          "step1_issue_definition": {
+            "name": "問題の定義（Issue Statement）",
+            "description": "解くべき問いを一文で明確にする。具体的で検証可能な問いにする",
+            "constraint": "問いは常にcentral_questionsから派生させること。無関係な問いは立てない",
+            "agent": "Agent C"
+          },
+          "step2_issue_decomposition": {
+            "name": "イシューの分解",
+            "description": "問いをサブイシューへMECEに分解する",
+            "agent": "Agent C"
+          },
+          "step3_initial_hypothesis": {
+            "name": "初期仮説の設定（Day 1 Answer）",
+            "description": "分解した各枝に対して「おそらくこうだろう」という仮説を立てる",
+            "rules": [
+              "仮説は必ず複数（2〜3パターン）立てること（アンカリング防止）",
+              "各仮説が棄却された場合の代替シナリオをあらかじめ用意しておく"
+            ],
+            "agent": "Agent C"
+          },
+          "step4_work_plan": {
+            "name": "検証計画の設計（Work Plan）",
+            "description": "各仮説に対して「何が証明されれば仮説が正しいと言えるか」「どのデータでそれを確認するか」を設計する",
+            "constraint": "仮説の検証に関係ないデータは集めない",
+            "agent": "Agent C が計画、Agent E が検証実行"
+          },
+          "step5_verification_and_evolution": {
+            "name": "検証と仮説の進化",
+            "description": "データ検証により仮説は3状態のいずれかに移行する",
+            "states": {
+              "supported": "データが仮説と整合する",
+              "modified": "方向性は合っているが詳細が異なる → 修正案を提示",
+              "rejected": "データが仮説と矛盾する → 新たな仮説を立て直す。棄却は失敗ではなく学習"
+            },
+            "agent": "Agent E（レッドチーム）"
+          }
+        },
+        "hypothesis_pyramid": {
+          "description": "最終的な仮説は階層構造を取る。この構造がそのまま黄金理論の骨格になる",
+          "structure": "最上位仮説（黄金理論の上位原則）→ 支持仮説（根拠となるサブ仮説）→ 根拠（データ分析結果）"
+        },
+        "bias_prevention": {
+          "confirmation_bias": {
+            "description": "仮説を支持するデータばかりを集め、矛盾するデータを無視してしまう傾向",
+            "countermeasure": "Agent Eをレッドチームとして配置。意図的に反証データを探す"
+          },
+          "anchoring_effect": {
+            "description": "最初の仮説に引きずられて柔軟な修正ができなくなる現象",
+            "countermeasure": "初期仮説を必ず2〜3パターン立て、各仮説を独立に評価する"
+          }
+        }
+      }
+    ],
+    "agent_c_flow": {
+      "description": "Agent Cの分析フロー。水平思考と仮説駆動を統合した6ステップ。この順序で必ず実行すること",
+      "steps": [
+        {"id": 0, "name": "読み込み計画", "required_output": "reading_plan"},
+        {"id": 1, "name": "HIT/MISS共通点抽出（必須・最優先）", "required_output": "hit_miss_commonalities"},
+        {"id": 2, "name": "前提列挙（水平思考ステップ1）", "required_output": "premises_listed"},
+        {"id": 3, "name": "前提反転・水平思考（水平思考ステップ2-3）", "required_output": "premises_inverted"},
+        {"id": 4, "name": "因果仮説生成（Day 1 Answer）", "required_output": "hypotheses"},
+        {"id": 5, "name": "新仮説提示（仮説ピラミッド形式）", "required_output": "hypothesis_pyramid"}
+      ]
+    },
+    "agent_e_role": {
+      "description": "レッドチーム。仮説駆動Step5（検証と仮説の進化）を担当",
+      "responsibilities": [
+        "Agent Cの仮説を支持するデータだけでなく、矛盾するデータを意図的に探す（確証バイアス防止）",
+        "Agent Cが複数仮説を提示した場合、各仮説を独立に評価する（アンカリング防止）",
+        "検証結果を supported / modified / rejected の3状態で報告する",
+        "Agent Cが方法論ステップを飛ばしていないかをレビューする（方法論レビュー）"
+      ]
+    },
+    "hypothesis_quality": {
+      "description": "良い仮説の3条件。すべての仮説はこの基準を満たすこと",
+      "conditions": [
+        {"name": "具体的", "check": "検証可能な粒度まで落とし込まれているか"},
+        {"name": "反証可能", "check": "データで覆せる可能性があるか。「何が起きたら棄却か」が定義されているか"},
+        {"name": "行動接続", "check": "正しければ黄金理論のどこに入るかが明確か"}
+      ]
+    },
+    "enforcement": {
+      "description": "方法論の実施を強制する仕組み",
+      "agent_c_output_validation": {
+        "description": "step2_analyze.pyがAgent C出力のJSONを検証し、方法論ステップの実施証跡を確認する",
+        "required_fields": {
+          "hit_miss_commonalities": "ステップ1の出力（HIT/MISS共通点）",
+          "lateral_thinking_log": "ステップ2-3の出力（列挙した前提と反転結果）",
+          "hypotheses": "ステップ4の出力（2〜3パターンの仮説 + 各検証条件）"
+        },
+        "validation_rules": [
+          "hit_miss_commonalities が未出力の場合 WARNING",
+          "hypotheses が2件未満の場合 WARNING（アンカリングリスク）",
+          "各 hypothesis に verification_condition が未定義の場合 WARNING"
+        ]
+      },
+      "agent_e_methodology_review": {
+        "description": "方法論レビューで、Agent Eが「Agent Cは方法論ステップを踏んだか」を評価",
+        "check_items": [
+          "共通点抽出を全動画で実施したか",
+          "前提を明示的に列挙したか",
+          "前提反転を実施したか",
+          "仮説を複数立てたか",
+          "検証条件を各仮説に付記したか"
+        ]
+      }
+    }
+  }
+}

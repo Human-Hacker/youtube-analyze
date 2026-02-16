@@ -1,0 +1,742 @@
+{
+  "description": "GI_v3スコアとCAスコア（定量基準準拠）",
+  "scoring_version": "v4.1",
+  "notes": {
+    "GI_v3": "G1(ゴシップ)+G2(好奇心)+G3(感情)+G4(映画化)+G6(楽曲知名度)。各1-5。定量基準: scoring_criteria.md参照",
+    "CA": "動画タイトルと好奇心TOP1-2核心キーワードの照合。0-3。定量基準: scoring_criteria.md参照",
+    "GI_x_CA": "GI_v3 × CA。16以上で成功を予測",
+    "source": "quantitative=定量基準+Web検索で採点(v4.1), knowledge_based=知識ベース推定(v4,Web検索未実行), human=参照文書Phase7から転記(v3)",
+    "evidence_fields": "G{N}_evidence=採点根拠, CA_evidence=照合結果, curiosity_top1/top2=Web検索由来のTOP1-2, curiosity_search_date=検索日",
+    "scoring_criteria": "data/scoring_criteria.md",
+    "reference": "utayomi_analysis_reference.md section 2.25",
+    "rescoring_date": "2026-02-16",
+    "rescoring_note": "全24本をscoring_criteria.md v1.0の定量基準+Web検索(計225回)で再採点。source=quantitative",
+    "id_fix_date": "2026-02-16",
+    "id_fix_note": "5つの間違いvideo_idを修正（エージェントがWeb検索で別のYouTube URLを取得した問題）"
+  },
+  "scores": {
+    "s4roSkGLDZg": {
+      "artist": "ジャスティンビーバー",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "Diddy性的搾取疑惑(2024年)、ラムゼイハント症候群公表、薬物依存告白、メンタル不安報道など独立記事10件以上",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(嫌われる理由)、現在(ラムゼイハント回復・子供誕生)、衝撃(薬物依存告白)、闇(Diddy事件) = 4個",
+      "G3": 4,
+      "G3_evidence": "該当: B.重病(ラムゼイハント症候群), D.依存症(薬物), C.虐待(Diddy搾取疑惑), H.搾取(未成年からの業界搾取), F.家族崩壊(片親) = 5個",
+      "G4": 3,
+      "G4_evidence": "Never Say Never(2011) 日本劇場公開あり、興行1億未満推定",
+      "G6": 3,
+      "G6_evidence": "ソフトバンクCM(What Do You Mean? 2017年)1曲確認。カラオケDAM/JOYSOUND多数収録",
+      "GI_v3": 19,
+      "curiosity_top1": "嫌われる理由・アンチが多い理由",
+      "curiosity_top1_kw": [
+        "嫌われる",
+        "理由"
+      ],
+      "curiosity_top2": "Diddy事件との関連・性的搾取被害",
+      "curiosity_top2_kw": [
+        "Diddy",
+        "被害"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2.5,
+      "CA_evidence": "TOP2核心KW「被害/苦しめる者」がタイトル「彼を苦しめ続ける者の正体」と対応。TOP1「嫌われる理由」はタイトルに不一致",
+      "GI_x_CA": 47.5,
+      "subscribers_at_publish": 20749
+    },
+    "tIRYnBBZCYU": {
+      "artist": "フレディーマーキュリー",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "ボヘミアンラプソディ映画(2018)大量特集、MUSIC LIFE特集号、金曜ロードショー放映、ドキュメンタリー(2024)特集。10件以上",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: 死因(エイズ/肺炎), なぜ(助からなかった), 真実(足切断ガセ), 秘密(セクシャリティ), 衝撃(晩年写真) = 5個以上",
+      "G3": 2,
+      "G3_evidence": "該当: A.若年死亡(45歳), B.重病(AIDS) = 2個",
+      "G4": 5,
+      "G4_evidence": "ボヘミアン・ラプソディ(2018) 日本興行131億円。実写洋画2010年代歴代1位",
+      "G6": 5,
+      "G6_evidence": "Born To Love You(ドラマ『プライド』主題歌, ノエビアCM, キリンCM), Don't Stop Me Now(ノエビアCM, キリンNUDA), We Will Rock You(キリンMETS) 3曲以上",
+      "GI_v3": 22,
+      "curiosity_top1": "エイズ感染と死因の詳細",
+      "curiosity_top1_kw": [
+        "エイズ",
+        "死因"
+      ],
+      "curiosity_top2": "セクシャリティと恋人の存在",
+      "curiosity_top2_kw": [
+        "ゲイ",
+        "恋人"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「死因/最期」がタイトル「たった一人で最期を迎えた本当の理由」に直接含まれる",
+      "GI_x_CA": 66,
+      "subscribers_at_publish": 20749
+    },
+    "Ukjm9sDC3U4": {
+      "artist": "マイケルジャクソン前編",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "文春オンライン性被害告発、Leaving Neverland報道、死因他殺報道、Newsweek虐待疑惑(2025)など10件以上",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(人気/外観変化), 死因(プロポフォール他殺), 真実(密着240日), 衝撃(死の真相), 闇(Leaving Neverland) = 5個以上",
+      "G3": 5,
+      "G3_evidence": "該当: A.若年死亡(50歳), B.重病(白斑), C.虐待(父からの虐待), D.依存症(鎮痛剤), F.家族崩壊(父との確執), I.事件(主治医による他殺) = 6個",
+      "G4": 5,
+      "G4_evidence": "THIS IS IT(2009) 日本興行50億円超。伝記映画Michael(2026年6月公開予定)",
+      "G6": 5,
+      "G6_evidence": "スズキLOVE CM(1982), ペプシCM日本放映, カラオケ専用アルバム発売。Thriller/Beat It/Billie Jean等3曲以上",
+      "GI_v3": 25,
+      "curiosity_top1": "死因の真相・プロポフォール他殺",
+      "curiosity_top1_kw": [
+        "死因",
+        "他殺"
+      ],
+      "curiosity_top2": "児童性的虐待疑惑の真偽",
+      "curiosity_top2_kw": [
+        "虐待",
+        "疑惑"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「死」がタイトル「死後も〜死の物語」に直接含まれる(2回登場)",
+      "GI_x_CA": 75,
+      "subscribers_at_publish": 9026
+    },
+    "Kxq0y_6hxl0": {
+      "artist": "テイラースウィフト",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "ハリス支持表明(CNN/東洋経済/Bloomberg)、いじめ加担報道(Yahoo)、メッセージ流出(FRONTROW)、来日公演レポート等。10件以上",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(人気の理由), 理由(大統領選支持), 現在(凄さ), 真実(いじめ加担), 衝撃(ドキュメンタリー), 闇(バッシング) = 6個",
+      "G3": 3,
+      "G3_evidence": "該当: F.家族崩壊(原盤権争い), H.搾取(レコード会社による原盤権搾取), J.復活(再録音による権利奪還) = 3個",
+      "G4": 5,
+      "G4_evidence": "THE ERAS TOUR映画: 全世界興行約367億円(2.6億ドル超)。日本でも劇場公開・大ヒット",
+      "G6": 5,
+      "G6_evidence": "Shake It Off(家庭教師のトライCM), We Are Never...(テラスハウスOP), You Belong with Me(仰天ニュースED), Mine(ズームイン!!サタデー)。3曲以上",
+      "GI_v3": 23,
+      "curiosity_top1": "なぜ人気/エンタメ業界の頂点に立つ理由",
+      "curiosity_top1_kw": [
+        "天才",
+        "理由"
+      ],
+      "curiosity_top2": "大統領選支持・政治的影響力",
+      "curiosity_top2_kw": [
+        "大統領選",
+        "理由"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「天才」「理由」がタイトルに含まれ、TOP2「大統領選」も直接含まれる",
+      "GI_x_CA": 69,
+      "subscribers_at_publish": 53771
+    },
+    "qBA5rBC7XuI": {
+      "artist": "マイケルジャクソン後編",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "MJ前編と同一アーティスト。死去時(2009)の大量報道、文春オンライン、Leaving Neverland、THIS IS IT特集等。10件以上",
+      "G2": 5,
+      "G2_evidence": "MJ前編と同一。好奇心系ワード: なぜ, 死因, 真実, 衝撃, 闇, 理由 = 6個以上",
+      "G3": 5,
+      "G3_evidence": "MJ前編と同一。A.若年死亡, C.虐待(父), D.依存症, H.搾取(主治医), I.事件(他殺), B.重病(白斑) = 6個",
+      "G4": 5,
+      "G4_evidence": "THIS IS IT(2009) 日本興行52億円。伝記映画Michael(2026年6月公開予定)",
+      "G6": 5,
+      "G6_evidence": "MJ前編と同一。Thriller/Beat It/Billie Jean等。ペプシCM、カラオケ専用アルバム。3曲以上",
+      "GI_v3": 25,
+      "curiosity_top1": "死因の真相・プロポフォール他殺",
+      "curiosity_top1_kw": [
+        "死",
+        "真相"
+      ],
+      "curiosity_top2": "児童性的虐待疑惑の真実",
+      "curiosity_top2_kw": [
+        "少年愛",
+        "真実"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「死」がタイトル「死後も〜死の物語」に直接含まれる(「死」が2回)",
+      "GI_x_CA": 75,
+      "subscribers_at_publish": 16445
+    },
+    "3WmCRFSbpa8": {
+      "artist": "エルヴィスプレスリー",
+      "source": "quantitative",
+      "G1": 2,
+      "G1_evidence": "映画『プリシラ』関連1件のみ。故人(1977年没)。独立記事1-2件程度",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(キングと呼ばれる理由), 死因(薬物/便秘説), 真実(死亡の真実), 衝撃(本当の死因) = 4個",
+      "G3": 4,
+      "G3_evidence": "該当: A.若年死亡(42歳), D.依存症(処方薬), H.搾取(トム・パーカー大佐が売上50%搾取), E.貧困(幼少期の極貧) = 4個",
+      "G4": 4,
+      "G4_evidence": "映画『エルヴィス』(2022)バズ・ラーマン監督。日本劇場公開。初動3日間1.5億円、推定最終5-8億円",
+      "G6": 4,
+      "G6_evidence": "ジョージア缶コーヒーCM(A Little Less Conversation)、ドラマ『高嶺の花』主題歌(Love Me Tender)。2曲",
+      "GI_v3": 18,
+      "curiosity_top1": "死因の謎(薬物依存/遺伝子変異/便秘説)",
+      "curiosity_top1_kw": [
+        "死因",
+        "薬物依存"
+      ],
+      "curiosity_top2": "なぜキング・オブ・ロックンロールと呼ばれるのか",
+      "curiosity_top2_kw": [
+        "キング",
+        "なぜ偉大"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2,
+      "CA_evidence": "TOP1核心KW「死因」「薬物依存」はタイトルに不一致。「ある習慣」は薬物依存の関連語。関連語レベル",
+      "GI_x_CA": 36,
+      "subscribers_at_publish": 40866
+    },
+    "7zDmMAtQIrU": {
+      "artist": "マドンナ",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "アサ芸バスト公開、キャリア特集(rockinon)、グラミー顔変化記事(MovieWalker)、文春キャリア振り返り等。5-9件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: 現在(顔の変化/整形疑惑), 衝撃(変わり果てた姿), 真実(映画/半生), なぜ(マドンナの意味) = 4個",
+      "G3": 3,
+      "G3_evidence": "該当: C.虐待/暴力(19歳レイプ被害告白), F.家族崩壊(5歳で母を喪失/継母確執), B.重病(2023年細菌感染入院) = 3個",
+      "G4": 3,
+      "G4_evidence": "映画『マドンナの真実』日本劇場公開あり。大規模興行なし、1億未満",
+      "G6": 5,
+      "G6_evidence": "宝酒造『純』CM(1995), Material Girl/Like A Virginカラオケ定番、ドラマ『CHANGE』関連使用。3曲以上",
+      "GI_v3": 19,
+      "curiosity_top1": "現在の姿/顔の劇的変化(整形疑惑)",
+      "curiosity_top1_kw": [
+        "現在",
+        "顔の変化"
+      ],
+      "curiosity_top2": "レイプ被害告白/過去の壮絶な体験",
+      "curiosity_top2_kw": [
+        "過去",
+        "レイプ告白"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2.5,
+      "CA_evidence": "TOP2核心KW「過去」がタイトル「35年経って明かした想像を絶する過去とは？」に直接含まれる",
+      "GI_x_CA": 47.5,
+      "subscribers_at_publish": 40866
+    },
+    "zI9jXscH9BI": {
+      "artist": "ボブマーリー",
+      "source": "quantitative",
+      "G1": 3,
+      "G1_evidence": "J-WAVE9時間大特集(PRtimes)、Billboard生誕75周年特集、映画ONE LOVE特集(映画.com)。3-4件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(暗殺の中で音楽を続けた), 死因(黒色腫/CIA暗殺説), 真実(CIA暗殺暴露), 衝撃(孫の殺害主張) = 4個",
+      "G3": 4,
+      "G3_evidence": "該当: A.若年死亡(36歳), I.事件/暗殺(1976年銃撃), B.重病(悪性黒色腫), E.貧困(ジャマイカ貧困地区出身) = 4個",
+      "G4": 4,
+      "G4_evidence": "ボブ・マーリー:ONE LOVE(2024) 日本公開5日間で10万人動員。推定数億円(1-9億帯)",
+      "G6": 2,
+      "G6_evidence": "カラオケDAM/JOYSOUND収録あり。CM/ドラマ主題歌使用は検索で確認できず。カラオケのみ",
+      "GI_v3": 17,
+      "curiosity_top1": "死因の謎(悪性黒色腫 vs CIA暗殺説)",
+      "curiosity_top1_kw": [
+        "死因",
+        "暗殺"
+      ],
+      "curiosity_top2": "銃撃事件と政治的平和活動",
+      "curiosity_top2_kw": [
+        "銃撃",
+        "平和コンサート"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「死因」がタイトル「36歳で突然ﾀﾋした謎に隠された真実」に直接対応。36歳の死とTOP1完全一致",
+      "GI_x_CA": 51,
+      "subscribers_at_publish": 73485
+    },
+    "W7WxjgWb8vQ": {
+      "artist": "アデル",
+      "source": "quantitative",
+      "G1": 2,
+      "G1_evidence": "Billboard Japan特集1件のみ。ワイドショー/スキャンダル記事ほぼなし。1-2件",
+      "G2": 3,
+      "G2_evidence": "好奇心系ワード: 現在(活動休止復帰), なぜ(シンガーになったきっかけ) = 2個",
+      "G3": 2,
+      "G3_evidence": "該当: F.家族崩壊(2歳で父が家出/父のアルコール依存/絶縁), E.貧困(シングルマザーの母に育てられる) = 2個",
+      "G4": 1,
+      "G4_evidence": "アデル本人の伝記映画は日本劇場公開なし。配信ドキュメンタリーのみ",
+      "G6": 2,
+      "G6_evidence": "Rolling in the Deep/HelloがカラオケJOYSOUND/DAM収録。CM/ドラマ主題歌使用は検索で確認できず。カラオケのみ",
+      "GI_v3": 10,
+      "curiosity_top1": "父親との確執(2歳で家出した父への絶縁と和解)",
+      "curiosity_top1_kw": [
+        "父親",
+        "確執"
+      ],
+      "curiosity_top2": "離婚と活動休止",
+      "curiosity_top2_kw": [
+        "離婚",
+        "活動休止"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2.5,
+      "CA_evidence": "TOP2核心KW「活動休止」がタイトル「活動休止を決意した理由」に直接含まれる。「トラウマ」はTOP1(父親確執)の関連語",
+      "GI_x_CA": 25,
+      "subscribers_at_publish": 56422
+    },
+    "brzmIN16oz8": {
+      "artist": "ブルーノマーズ",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "ドンキCMギャラ記事(東スポ)、タオル投げ炎上(複数)、ギャンブル借金78億円報道(Billboard/Frontrow)、東京ドーム公演特集。5-9件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(日本で人気), 理由(ドンキCMの深い理由), 衝撃(タオル事件), 真実(タオル事件の真相) = 4個",
+      "G3": 1,
+      "G3_evidence": "該当: E.貧困(ハワイの貧しい幼少期) = 1個のみ。虐待/依存症/重病/事件等は検索結果で確認できず",
+      "G4": 1,
+      "G4_evidence": "伝記映画なし。ディズニー映画主演が発表されたが未公開",
+      "G6": 5,
+      "G6_evidence": "NTTドコモdTV CM(Talking To The Moon)、ホンダFIT CM(Uptown Funk)、ドン・キホーテCM書き下ろし。3曲以上",
+      "GI_v3": 15,
+      "curiosity_top1": "日本での人気の理由/なぜ日本で売れているのか",
+      "curiosity_top1_kw": [
+        "日本",
+        "人気の理由"
+      ],
+      "curiosity_top2": "ギャンブル借金78億円報道/来日タオル事件",
+      "curiosity_top2_kw": [
+        "借金",
+        "炎上事件"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 1,
+      "CA_evidence": "TOP1(日本人気)もTOP2(借金/炎上)もタイトル「廃墟で育った少年が資産250億円稼いだ方法」に含まれない。タイトルのテーマはTOP3以下",
+      "GI_x_CA": 15,
+      "subscribers_at_publish": 73485
+    },
+    "X9KIY2WjyPk": {
+      "artist": "セレーナゴメス",
+      "source": "quantitative",
+      "G1": 1,
+      "G1_evidence": "日本のワイドショー/スキャンダル関連の独立記事は検索で確認できず。0件",
+      "G2": 3,
+      "G2_evidence": "好奇心系ワード: なぜ(人気があるのか), 現在(婚約/ベニー・ブランコ交際) = 2個",
+      "G3": 2,
+      "G3_evidence": "該当: B.重病(ループス/腎臓移植/子供を産めない体), F.家族崩壊(ビーバーとの破局/体型批判) = 2個",
+      "G4": 3,
+      "G4_evidence": "映画『エミリア・ペレス』(2025) 日本劇場公開あり。『My Mind & Me』はApple TV+配信のみ",
+      "G6": 2,
+      "G6_evidence": "カラオケDAM/JOYSOUND収録あり。CM/ドラマ主題歌使用は検索で確認できず。カラオケのみ",
+      "GI_v3": 11,
+      "curiosity_top1": "難病ループスと腎臓移植(友人がドナー)",
+      "curiosity_top1_kw": [
+        "病気",
+        "腎臓移植"
+      ],
+      "curiosity_top2": "ジャスティン・ビーバーとの恋愛と破局",
+      "curiosity_top2_kw": [
+        "ビーバー",
+        "恋愛"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「病気」がタイトル「23歳で不治の病にかかっていた」に直接含まれる",
+      "GI_x_CA": 33,
+      "subscribers_at_publish": 73485
+    },
+    "8kDsm0jp524": {
+      "artist": "アヴィーチー",
+      "source": "quantitative",
+      "G1": 2,
+      "G1_evidence": "CNN死去報道やblock.fm報道の2件程度。故人(2018年没)。ワイドショー特集は確認できず",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(天才DJがなぜ), 死因(自殺/失血死), 理由(自殺/引退の理由), 真実(死の真相), 衝撃(世界中に衝撃), 闇(不可解な死) = 6個以上",
+      "G3": 5,
+      "G3_evidence": "該当: A.若年死亡(28歳), B.重病(急性膵炎/胆のう手術), D.依存症(アルコール中毒), F.家族崩壊(家族が駆けつけられず), G.自殺(自傷/失血死), H.搾取(過酷なツアー) = 6個",
+      "G4": 2,
+      "G4_evidence": "TRUE STORIES(2017)は2日間限定上映のみ。I'm Tim(2024)はNetflix配信。劇場公開は限定イベントで配信中心",
+      "G6": 2,
+      "G6_evidence": "CM/ドラマ主題歌使用は確認できず。JOYSOUND/DAMでカラオケ配信あり(Wake Me Up等)。カラオケのみ",
+      "GI_v3": 16,
+      "curiosity_top1": "なぜ自殺したのか/死因・自殺の真相",
+      "curiosity_top1_kw": [
+        "死因",
+        "自殺"
+      ],
+      "curiosity_top2": "若き天才DJの精神的苦悩と健康問題",
+      "curiosity_top2_kw": [
+        "天才",
+        "苦悩"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「自殺」がタイトル「死を選んだ男」に直接対応(婉曲表現として直接含有)",
+      "GI_x_CA": 48,
+      "subscribers_at_publish": 73485
+    },
+    "R2ebL510Itg": {
+      "artist": "エルトンジョン",
+      "source": "quantitative",
+      "G1": 3,
+      "G1_evidence": "テレ朝『大下容子ワイド！スクランブル』特集(2025/4/25)、Billboard Japan/NME Japan報道、音楽ナタリー特集。3-4件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(なぜすごいのか), 現在(目の感染症/視力喪失/引退), 衝撃(視力喪失告白), 真実(波乱の半生) = 4個",
+      "G3": 4,
+      "G3_evidence": "該当: D.依存症(薬物/アルコール), B.重病(視力喪失/前立腺がん/転倒入院), G.自殺(自殺未遂の過去), J.復活(依存症克服/EGOT達成) = 4個",
+      "G4": 4,
+      "G4_evidence": "映画『ロケットマン』(2019) 2019年8月日本公開。推定3-4億円(1-9億帯)",
+      "G6": 4,
+      "G6_evidence": "Your Song(ピーシーエー生命CM/カラオケ定番), ライオンキング主題歌『愛を感じて』(国民的認知)。2曲以上",
+      "GI_v3": 19,
+      "curiosity_top1": "波乱の半生と依存症からの復活",
+      "curiosity_top1_kw": [
+        "依存症",
+        "復活"
+      ],
+      "curiosity_top2": "現在の健康問題(視力喪失・引退)",
+      "curiosity_top2_kw": [
+        "視力喪失",
+        "引退"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2,
+      "CA_evidence": "TOP1核心KW「依存症」「復活」はタイトルに不一致。「悲劇」が依存症の関連語。「ﾀﾋを選んだ」は自殺未遂に関連するが核心KWと異なる。関連語レベル",
+      "GI_x_CA": 38,
+      "subscribers_at_publish": 46069
+    },
+    "wedwAk9LDcQ": {
+      "artist": "カレンカーペンター",
+      "source": "quantitative",
+      "G1": 2,
+      "G1_evidence": "NHKカーペンターズ特集、リズム&ドラムマガジン連続特集。ワイドショー報道は確認できず。1-2件",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(なぜ亡くなった/拒食症の理由), 死因(心不全/摂食障害), 真実(母親との関係), 闇(舞台裏の心の闇), 衝撃(32歳での急死) = 5個以上",
+      "G3": 5,
+      "G3_evidence": "該当: A.若年死亡(32歳), B.重病(摂食障害/拒食症), C.虐待(母からの精神的虐待/才能否定), D.依存症(下剤濫用), F.家族崩壊(母の偏愛/兄優先), H.搾取(業界プレッシャー) = 6個",
+      "G4": 2,
+      "G4_evidence": "劇場公開映画なし。テレビ映画やドキュメンタリーは配信のみ。Amazon Prime Video配信",
+      "G6": 5,
+      "G6_evidence": "Top of the World(TBS『未成年』OP)、青春の輝き(TBS『未成年』ED)、サントリー-196℃CMソング。日本限定ベスト盤300万枚超。3曲以上",
+      "GI_v3": 19,
+      "curiosity_top1": "拒食症(摂食障害)による32歳での死",
+      "curiosity_top1_kw": [
+        "拒食症",
+        "死因"
+      ],
+      "curiosity_top2": "毒親(母親)との確執と精神的支配",
+      "curiosity_top2_kw": [
+        "母親",
+        "毒親"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2.5,
+      "CA_evidence": "TOP1核心KW「拒食症」「死因」はタイトルに不一致。TOP2核心KW「母親」がタイトル「母に奴隷にされた」に直接含まれる",
+      "GI_x_CA": 47.5,
+      "subscribers_at_publish": 73485
+    },
+    "q6Kga609RMI": {
+      "artist": "オアシス",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "2024-2025年再結成が社会現象。Rolling Stone/Billboard/NME Japan/Yahoo!ニュース等で多数報道。リアム人種差別謝罪、HMV/Tower特集。10件以上",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(再結成/解散), 理由(解散/再結成の理由), 現在(再結成後/ツアー), 衝撃(再結成/リアム発言) = 4個",
+      "G3": 2,
+      "G3_evidence": "該当: D.依存症(ドラッグ/アルコール), F.家族崩壊(兄弟15年確執) = 2個",
+      "G4": 3,
+      "G4_evidence": "『ネブワース1996』(2021)全国112館で日本公開、興収5,000万円(1億未満)。『スーパーソニック』(2016)も日本公開",
+      "G6": 5,
+      "G6_evidence": "Don't Look Back In Anger(au CM/テレ朝ドラマ『しあわせな結婚』主題歌2025), FALLING DOWN(アニメ『東のエデン』OP), All Around The World(三井住友銀行CM)。3曲以上",
+      "GI_v3": 19,
+      "curiosity_top1": "ギャラガー兄弟の確執と再結成の理由",
+      "curiosity_top1_kw": [
+        "兄弟",
+        "再結成"
+      ],
+      "curiosity_top2": "なぜ15年も解散していたのか",
+      "curiosity_top2_kw": [
+        "解散",
+        "兄弟喧嘩"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「兄弟」「再結成」がタイトル「伝説の兄弟〜再結成した知られざる理由」に直接含まれる",
+      "GI_x_CA": 57,
+      "subscribers_at_publish": 73485
+    },
+    "gTf9sCckzXg": {
+      "artist": "デヴィッドボウイ",
+      "source": "quantitative",
+      "G1": 3,
+      "G1_evidence": "生誕75周年特集(HMV)、大回顧展特集(音楽ナタリー)、WOWOW命日特番、映画公開時特集。故人(2016年没)。3-4件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(特別/愛される理由), 死因(肝臓がん/闘病), 真実(素顔の真実), 衝撃(死をめぐる謎) = 4個",
+      "G3": 4,
+      "G3_evidence": "該当: B.重病(肝臓がん18ヶ月闘病), D.依存症(1970年代コカイン), F.家族崩壊(異母兄テリー精神疾患/自殺), J.復活(10年沈黙後復活アルバム) = 4個",
+      "G4": 3,
+      "G4_evidence": "ムーンエイジ・デイドリーム(2023)日本劇場公開。スターダスト、ジギー・スターダストも日本公開。興行1億未満",
+      "G6": 2,
+      "G6_evidence": "カラオケJOYSOUND/DAM収録あり。HeroesのTV CM使用記載あり。ドラマ主題歌は未確認。カラオケ+CM1曲程度",
+      "GI_v3": 16,
+      "curiosity_top1": "なぜ特別なのか/唯一無二の存在",
+      "curiosity_top1_kw": [
+        "特別",
+        "唯一無二"
+      ],
+      "curiosity_top2": "がんによる死と最期の作品の謎",
+      "curiosity_top2_kw": [
+        "死因",
+        "最期"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2,
+      "CA_evidence": "TOP1「特別」「唯一無二」→タイトル「史上最高のアーティスト」は関連語。TOP2「死因」→タイトルに不一致。「別人格」はTOP3以下のトピック。関連語レベル",
+      "GI_x_CA": 32,
+      "subscribers_at_publish": 73485
+    },
+    "gz9eCJZQ6vw": {
+      "artist": "レディーガガ",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "性的暴行告白(CNN/Billboard)、バイデン息子流出画像、恋愛破局報道、男性説対応。5-9件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(人気), 現在(来日/婚約), 衝撃(レイプ告白), 真実(男性説への回答) = 4個",
+      "G3": 3,
+      "G3_evidence": "該当: B.重病(線維筋痛症), C.虐待/暴力(19歳レイプ被害), J.復活(性被害乗り越え) = 3個",
+      "G4": 5,
+      "G4_evidence": "アリー/スター誕生(2018) 日本興行55億円超。ジョーカー2(2024), ハウス・オブ・グッチ(2022)も日本公開",
+      "G6": 5,
+      "G6_evidence": "資生堂CM(2015), CMソング一覧サイトに複数掲載。Poker Face/Born This Way/Bad Romance等カラオケ多数。3曲以上",
+      "GI_v3": 21,
+      "curiosity_top1": "性被害・レイプ告白と後遺症",
+      "curiosity_top1_kw": [
+        "性被害",
+        "レイプ"
+      ],
+      "curiosity_top2": "来日公演・日本との関係",
+      "curiosity_top2_kw": [
+        "来日",
+        "公演"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2,
+      "CA_evidence": "TOP1核心KW「性被害/レイプ」はタイトルに不一致。「悲劇」が関連語として対応。TOP2も不一致",
+      "GI_x_CA": 42,
+      "subscribers_at_publish": 56422
+    },
+    "kWYWmEHTfPQ": {
+      "artist": "アリアナグランデ",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "ダブル不倫疑惑(SPUR)、離婚報道(複数)、痩せすぎ批判(Yahoo/Harper's BAZAAR)、整形告白(nero-dr)、シンガポール襲撃(CNN)。10件以上",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(愛される理由), 理由(ツアーしない理由), 現在(痩せすぎ), 真実(整形), 衝撃(襲撃), 闇(PTSD/抗うつ薬) = 6個",
+      "G3": 5,
+      "G3_evidence": "該当: B.重病(PTSD), C.虐待/暴力(シンガポール襲撃), D.依存症(抗うつ薬), F.家族崩壊(離婚), I.事件(マンチェスターテロ22名死亡/マック・ミラー死), J.復活(ウィキッド成功) = 6個",
+      "G4": 5,
+      "G4_evidence": "ウィキッド ふたりの魔女(2025) 日本興行35億円突破。続編も2026年3月公開予定",
+      "G6": 2,
+      "G6_evidence": "CM/ドラマ主題歌の具体的タイアップは検索で確認できず。カラオケDAM/JOYSOUND収録あり。カラオケのみ",
+      "GI_v3": 22,
+      "curiosity_top1": "マンチェスターテロ事件とPTSD",
+      "curiosity_top1_kw": [
+        "テロ",
+        "悲劇"
+      ],
+      "curiosity_top2": "元恋人マック・ミラーの死",
+      "curiosity_top2_kw": [
+        "恋人",
+        "死"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「悲劇」がタイトルに含まれ、TOP2核心KW「恋人」「死(銃殺)」もタイトル「恋人が銃殺された」に直接含まれる",
+      "GI_x_CA": 66,
+      "subscribers_at_publish": 53771
+    },
+    "t7B5ARRSRyg": {
+      "artist": "エドシーラン",
+      "source": "quantitative",
+      "G1": 2,
+      "G1_evidence": "妻の病気と親友の死(FRONTROW)、来日公演レポート(Rolling Stone Japan)。1-2件。ワイドショー/スキャンダル報道ほぼなし",
+      "G2": 3,
+      "G2_evidence": "好奇心系ワード: なぜ(人気の理由), 現在(妻との絆), 衝撃(恋人を盗られた暴露)。2個相当",
+      "G3": 4,
+      "G3_evidence": "該当: B.重病/障害(吃音で幼少期いじめ), D.依存症(薬物依存/うつ病告白), E.貧困(16歳からホームレス), F.家族崩壊(親友急逝で自殺願望) = 4個",
+      "G4": 1,
+      "G4_evidence": "伝記映画/ドキュメンタリーの日本劇場公開なし",
+      "G6": 3,
+      "G6_evidence": "Shape of You(フジ系ドラマ『僕たちがやりました』挿入歌2017)。カラオケDAM/JOYSOUND収録。1曲タイアップ",
+      "GI_v3": 13,
+      "curiosity_top1": "ホームレスからの成功物語",
+      "curiosity_top1_kw": [
+        "ホームレス",
+        "成功"
+      ],
+      "curiosity_top2": "親友の死・うつ病・依存症との闘い",
+      "curiosity_top2_kw": [
+        "闇",
+        "告白"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「ホームレス」がタイトル「5年間ホームレスだった天才」に直接含まれる",
+      "GI_x_CA": 39,
+      "subscribers_at_publish": 46069
+    },
+    "sjJYXnPGGJI": {
+      "artist": "ブリトニースピアーズ",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "後見人制度報道(cinemacafe/CINRA)、#FreeBritney運動、自伝暴露(フィガロ)、父からの虐待(mi-mollet)、現在の姿(NEWSポストセブン)。10件以上",
+      "G2": 5,
+      "G2_evidence": "好奇心系ワード: なぜ(人気/後見人), 現在(引退宣言/SNS), 衝撃(丸刈り/後見人), 真実(自伝暴露), 闇(13年間の自由剥奪) = 5個以上",
+      "G3": 5,
+      "G3_evidence": "該当: B.重病(精神疾患), C.虐待(父からの虐待), D.依存症(薬物/アルコール), F.家族崩壊(父との確執/離婚), H.搾取(13年間の後見人制度), J.復活(#FreeBritney) = 6個",
+      "G4": 2,
+      "G4_evidence": "Framing Britney Spears/ブリトニー対スピアーズはNetflix等配信のみ。日本劇場公開なし",
+      "G6": 2,
+      "G6_evidence": "Baby One More Time/ToxicがカラオケDAM/JOYSOUND収録。CM/ドラマ主題歌使用は検索で確認できず。カラオケのみ",
+      "GI_v3": 19,
+      "curiosity_top1": "成年後見人制度・父による13年間の支配",
+      "curiosity_top1_kw": [
+        "後見人",
+        "父"
+      ],
+      "curiosity_top2": "現在の精神状態・音楽引退",
+      "curiosity_top2_kw": [
+        "現在",
+        "精神"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「後見人/父/支配」がタイトル「13年間奴隷にされた衝撃の事件」と直接対応。13年間=後見人制度期間",
+      "GI_x_CA": 57,
+      "subscribers_at_publish": 24982
+    },
+    "ARsWjxlohIY": {
+      "artist": "ビリーアイリッシュ",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "トゥレット症候群告白(NME/Billboard/madameFIGARO)、グラミーICE批判(Billboard/東スポ)、ファン転倒(FRONTROW)、引きこもり報道(SPUR)。5-9件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(日本でヒットの理由), 理由(成功の8つの理由), 現在(2024年総括), 衝撃(グラミー批判) = 4個",
+      "G3": 3,
+      "G3_evidence": "該当: B.重病/障害(トゥレット症候群/うつ病/夜驚症), D.依存症(自傷行為告白), J.復活(最年少グラミー5冠) = 3個",
+      "G4": 3,
+      "G4_evidence": "『世界は少しぼやけている』(2021) 新宿ピカデリー等で日本劇場公開(IMAX限定上映あり)。興行1億未満",
+      "G6": 4,
+      "G6_evidence": "bad guy(日テレ系ドラマ『シロでもクロでもない世界で、パンダは笑う。』主題歌), Happier Than Ever(映画『真夜中乙女戦争』主題歌)。2曲",
+      "GI_v3": 18,
+      "curiosity_top1": "なぜ世界最大のアーティストになれたか/成功の理由",
+      "curiosity_top1_kw": [
+        "天才",
+        "理由"
+      ],
+      "curiosity_top2": "トゥレット症候群・精神疾患との闘い",
+      "curiosity_top2_kw": [
+        "病気",
+        "告白"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「天才」「理由」がタイトル「まだ22歳の天才〜世界に愛される理由」に直接含まれる",
+      "GI_x_CA": 54,
+      "subscribers_at_publish": 73485
+    },
+    "zRrC0QMomEc": {
+      "artist": "ジョンレノン",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "没後45年文春特集(2025), Tower Records特集, Newsweek特集号(2020), フロントロウ特集。5-9件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(殺された理由), 死因(銃撃), 衝撃(暗殺の夜の真相), 真実(チャップマンの動機) = 4個",
+      "G3": 3,
+      "G3_evidence": "該当: A.若年死亡(40歳), I.事件/暗殺(チャップマンによる射殺), F.家族崩壊(幼少期の母との離別) = 3個",
+      "G4": 3,
+      "G4_evidence": "『失われた週末』(2024), 『最後の詩』(2025)等 日本劇場公開あり。興行1億未満",
+      "G6": 2,
+      "G6_evidence": "Imagine/Happy XmasがカラオケDAM/JOYSOUND定番曲。CM/ドラマ主題歌使用は検索で確認できず。カラオケのみ",
+      "GI_v3": 16,
+      "curiosity_top1": "暗殺された理由・チャップマンの動機",
+      "curiosity_top1_kw": [
+        "暗殺",
+        "理由"
+      ],
+      "curiosity_top2": "オノヨーコとの関係・日本愛",
+      "curiosity_top2_kw": [
+        "ヨーコ",
+        "日本"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "TOP1核心KW「暗殺」「理由」がタイトル「暗殺。彼が殺された衝撃の理由」に直接含まれる。完全一致",
+      "GI_x_CA": 48,
+      "subscribers_at_publish": 36098
+    },
+    "IEQ6XE1LLZI": {
+      "artist": "ポールマッカートニー",
+      "source": "quantitative",
+      "G1": 3,
+      "G1_evidence": "ドキュメンタリー報道(cinemacafe)、82歳誕生日報道(Billboard)、来日公演特集(Tower Records)、留置所エピソード(NME)。3-4件",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード: なぜ(魅力/凄さ), 現在(82歳の現在), 真実(ポール死亡説), 衝撃(死亡説/替え玉説) = 4個",
+      "G3": 2,
+      "G3_evidence": "該当: F.家族崩壊(ビートルズ解散/リンダ死去), I.事件(1980年大麻所持で日本逮捕) = 2個",
+      "G4": 3,
+      "G4_evidence": "『ワン・ハンド・クラッピング』(2024) TOHOシネマズ等で日本劇場公開。興行1億未満",
+      "G6": 4,
+      "G6_evidence": "Yesterday/Hey Jude/Let It BeがカラオケDAM/JOYSOUND定番。ビートルズ名義含め2曲以上のTV使用確認",
+      "GI_v3": 16,
+      "curiosity_top1": "ポール死亡説・替え玉説(都市伝説)",
+      "curiosity_top1_kw": [
+        "死亡説",
+        "真実"
+      ],
+      "curiosity_top2": "ビートルズ解散の理由",
+      "curiosity_top2_kw": [
+        "解散",
+        "呪い"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 2.5,
+      "CA_evidence": "TOP1核心KWはタイトルに不一致。TOP2核心KW「解散」がタイトル「解散から50年〜ビートルズの呪い」に直接含まれる",
+      "GI_x_CA": 40,
+      "subscribers_at_publish": 46069
+    },
+    "MWG67okAspo": {
+      "artist": "ジョンボンジョヴィ",
+      "source": "quantitative",
+      "scoring_version": "v4.1",
+      "G1": 4,
+      "G1_evidence": "TBS情報7daysニュースキャスター独占インタビュー、テレ朝ワイド!スクランブル、BSフジ40周年記念特番、東スポ橋自殺救出事件報道、Billboard Japan声帯手術特集。TV特集5-6件確認。",
+      "G2": 4,
+      "G2_evidence": "好奇心系ワード4個: なぜ(声が出ない)、現在(声帯状態)、衝撃(手術)、真実(苦悩)。",
+      "G3": 4,
+      "G3_evidence": "B.重病/障害(声帯萎縮症・手術)、E.貧困(初期苦労)、G.自殺関連(橋から飛び降り女性救出)、J.復活/逆転(声帯手術から復活)。4カテゴリ。",
+      "G4": 2,
+      "G4_evidence": "Disney+『Thank You, Goodnight』配信のみ。劇場公開なし。",
+      "G6": 5,
+      "G6_evidence": "Livin' On A Prayer(AXIAカセットCM+アサヒ颯CM)、Thank You For Loving Me(テレ朝ドラマ主題歌)、Bounce(フジドラマ挿入歌)、The Distance(スーパードライCM)。4曲以上。",
+      "GI_v3": 19,
+      "curiosity_top1": "声が出ない理由・声帯手術",
+      "curiosity_top1_kw": [
+        "声",
+        "手術",
+        "声帯"
+      ],
+      "curiosity_top2": "現在の状況・声帯手術からの復帰",
+      "curiosity_top2_kw": [
+        "現在",
+        "復帰",
+        "回復"
+      ],
+      "curiosity_search_date": "2026-02-16",
+      "CA": 3,
+      "CA_evidence": "タイトル「声を失った」にTOP1核心KW「声」が直接含まれる。CA=3。",
+      "GI_x_CA": 57,
+      "subscribers_at_publish": null
+    }
+  }
+}
