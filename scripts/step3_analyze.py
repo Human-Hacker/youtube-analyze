@@ -16,7 +16,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, OUTPUT_DIR, MODEL_FILE, YOUTUBE_LONG_DIR, SELECTION_REPORT_TEMPLATE
+from config import HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, OUTPUT_DIR, MODEL_FILE, YOUTUBE_LONG_DIR, find_all_selection_reports
 from common.data_loader import (
     load_golden_theory, save_golden_theory,
     load_insights, save_insights,
@@ -734,8 +734,8 @@ def generate_conclusion_report():
 
 def generate_production_feedback():
     """
-    model.json の数値を youtube-long/prompts/1. selection_report.md の記載値と比較し、
-    数値差分テーブルを自動生成する (W-22)。
+    model.json の数値を youtube-long/projects/{ARTIST}/selection_report.md の記載値と比較し、
+    数値差分テーブルを自動生成する (W-22, M57)。
 
     セクション1（数値差分）のみを出力。戦略的な変更分析（セクション2-3に相当する内容）は
     Agent F/G（youtube-feedback/）に移管済み。本関数はAgent Fへの入力前処理として機能する。
@@ -762,9 +762,10 @@ def generate_production_feedback():
     lines.append("\n---")
 
     # === セクション1: 数値差分テーブル ===
-    lines.append("\n## 1. 選定基準の数値差分（→ youtube-long/prompts/1. selection_report.md）")
+    lines.append("\n## 1. 選定基準の数値差分（→ youtube-long/projects/{ARTIST}/selection_report.md）")
 
-    has_youtube_long = os.path.exists(SELECTION_REPORT_TEMPLATE)
+    all_reports = find_all_selection_reports()
+    has_youtube_long = len(all_reports) > 0
 
     # 1-1. GI×CA判定基準
     lines.append("\n### 1-1. GI×CA判定基準")
@@ -783,14 +784,16 @@ def generate_production_feedback():
     # 1-3. 差異比較テーブル
     if has_youtube_long:
         lines.append("\n### 1-3. 数値差異テーブル")
-        current_values = _extract_selection_report_values()
-        lines.append("| 項目 | 現在の記載値 | model.json最新値 | 差異 |")
-        lines.append("|------|------------|-----------------|------|")
-        for item_name, current_val, new_val in current_values:
-            diff = "同一" if str(current_val) == str(new_val) else f"**要更新**"
-            lines.append(f"| {item_name} | {current_val} | {new_val} | {diff} |")
+        for artist_name, report_path in all_reports:
+            lines.append(f"\n#### {artist_name}")
+            current_values = _extract_selection_report_values(report_path)
+            lines.append("| 項目 | 現在の記載値 | model.json最新値 | 差異 |")
+            lines.append("|------|------------|-----------------|------|")
+            for item_name, current_val, new_val in current_values:
+                diff = "同一" if str(current_val) == str(new_val) else f"**要更新**"
+                lines.append(f"| {item_name} | {current_val} | {new_val} | {diff} |")
     else:
-        lines.append("\n> youtube-long が見つかりません。セクション1-3（差異比較）はスキップ。")
+        lines.append("\n> youtube-long/projects/ にselection_report.mdが見つかりません。セクション1-3（差異比較）はスキップ。")
 
     lines.append("\n---")
     lines.append(f"\n> 自動生成: `python scripts/step3_analyze.py --integrate` (W-22)")
@@ -803,9 +806,9 @@ def generate_production_feedback():
     return has_youtube_long
 
 
-def _extract_selection_report_values():
+def _extract_selection_report_values(report_path=None):
     """
-    youtube-long/prompts/1. selection_report.md から現在記載されている
+    youtube-long/projects/{ARTIST}/selection_report.md から現在記載されている
     GI×CA関連の数値を正規表現で抽出し、model.json最新値と比較用のタプルリストを返す。
     """
     results = []
@@ -818,10 +821,10 @@ def _extract_selection_report_values():
     gi_ca = model.get("gi_ca_model", {})
     corr = gi_ca.get("correlations", {})
 
-    if not os.path.exists(SELECTION_REPORT_TEMPLATE):
+    if report_path is None or not os.path.exists(report_path):
         return results
 
-    with open(SELECTION_REPORT_TEMPLATE, "r", encoding="utf-8") as f:
+    with open(report_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     # GI相関 r値

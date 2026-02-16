@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>youtube-analyze ワークフロー v4</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0d1117; color: #c9d1d9; padding: 32px; }
+  h1 { text-align: center; font-size: 22px; color: #58a6ff; margin-bottom: 6px; }
+  .subtitle { text-align: center; font-size: 13px; color: #8b949e; margin-bottom: 28px; }
+  .legend { display: flex; gap: 18px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #8b949e; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 3px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  .phase { margin-bottom: 28px; }
+  .phase-header { font-size: 14px; font-weight: 700; color: #8b949e; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #21262d; }
+
+  .row { display: flex; gap: 12px; margin-bottom: 12px; align-items: stretch; }
+  .node { border-radius: 8px; padding: 14px 16px; flex: 1; min-width: 0; position: relative; }
+  .node-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .node-desc { font-size: 11px; color: #8b949e; line-height: 1.5; }
+  .node-files { font-size: 10px; color: #6e7681; margin-top: 6px; font-family: 'SF Mono', monospace; }
+
+  .n-config { background: #161b22; border: 1px solid #30363d; }
+  .n-python { background: #0d2136; border: 1px solid #1f3a5f; }
+  .n-agent  { background: #1a0d2e; border: 1px solid #3b1f6e; }
+  .n-data   { background: #0d2818; border: 1px solid #1f5f2e; }
+  .n-output { background: #2a1800; border: 1px solid #5f3a00; }
+  .n-manual { background: #2d1215; border: 1px solid #5f2328; }
+  .n-conclusion { background: #1a2332; border: 2px solid #58a6ff; }
+  .n-new    { border-style: dashed !important; border-width: 2px !important; }
+
+  .n-config .node-title { color: #8b949e; }
+  .n-python .node-title { color: #58a6ff; }
+  .n-agent  .node-title { color: #bc8cff; }
+  .n-data   .node-title { color: #3fb950; }
+  .n-output .node-title { color: #d29922; }
+  .n-manual .node-title { color: #f85149; }
+  .n-conclusion .node-title { color: #58a6ff; }
+
+  .badge { font-size: 9px; padding: 1px 5px; border-radius: 3px; font-weight: 600; }
+  .badge-new { background: #238636; color: #fff; }
+  .badge-mod { background: #9e6a03; color: #fff; }
+  .badge-split { background: #1f6feb; color: #fff; }
+  .badge-del { background: #da3633; color: #fff; }
+  .badge-audit { background: #8957e5; color: #fff; }
+
+  .arrow-row { display: flex; justify-content: center; margin: 8px 0; }
+  .arrow { color: #30363d; font-size: 20px; }
+  .arrow-label { font-size: 10px; color: #6e7681; margin-left: 8px; }
+
+  .loop-box { border: 2px solid #3b1f6e; border-radius: 12px; padding: 16px; margin: 12px 0; position: relative; }
+  .loop-label { position: absolute; top: -10px; left: 20px; background: #0d1117; padding: 0 8px; font-size: 11px; color: #bc8cff; font-weight: 700; }
+
+  .flow-arrow { text-align: center; padding: 6px 0; }
+  .flow-arrow span { display: inline-block; color: #30363d; font-size: 18px; }
+
+  .substeps { margin-top: 8px; padding-left: 12px; }
+  .substep { font-size: 10px; color: #8b949e; line-height: 1.7; }
+  .substep::before { content: '→ '; color: #30363d; }
+
+  .phase-detail { display: flex; gap: 8px; margin-top: 8px; }
+  .phase-block { flex: 1; background: rgba(255,255,255,0.03); border-radius: 4px; padding: 8px; }
+  .phase-block-title { font-size: 10px; font-weight: 700; margin-bottom: 4px; }
+
+  .file-item { font-size: 11px; padding: 6px 10px; background: #161b22; border: 1px solid #21262d; border-radius: 4px; margin-bottom: 4px; font-family: 'SF Mono', monospace; display: flex; justify-content: space-between; }
+  .file-item .tag { font-size: 9px; color: #6e7681; }
+
+  .w { width: 100%; }
+  .w50 { flex: 0 0 calc(50% - 6px); }
+  .w33 { flex: 0 0 calc(33.3% - 8px); }
+  .w25 { flex: 0 0 calc(25% - 9px); }
+
+  .warn { font-size: 10px; color: #d29922; margin-top: 4px; }
+  .note { font-size: 10px; color: #8957e5; margin-top: 4px; }
+</style>
+</head>
+<body>
+<h1>youtube-analyze ワークフロー v4</h1>
+<p class="subtitle">W-1〜W-20 適用後の全体構成（結論レポート + 監査対応を含む）</p>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#1f3a5f"></div>Python スクリプト</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#3b1f6e"></div>LLM Agent（Claude Code）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#1f5f2e"></div>データファイル</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5f3a00"></div>出力・成果物</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#58a6ff"></div>結論レポート（W-12）</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#5f2328"></div>手動作業</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#238636; border-radius:2px"></div>新規</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#8957e5; border-radius:2px"></div>監査対応</div>
+</div>
+
+<div class="container">
+
+<!-- ====== CONFIG LAYER ====== -->
+<div class="phase">
+  <div class="phase-header">設定・知識ベース</div>
+  <div class="row">
+    <div class="node n-config w25">
+      <div class="node-title">config.py <span class="badge badge-audit">W-16</span></div>
+      <div class="node-desc">共通パス・閾値・定数。PDCA_DIR / MANUAL_DIR を削除済み</div>
+    </div>
+    <div class="node n-config w25">
+      <div class="node-title">coordinator.md <span class="badge badge-mod">W-9</span> <span class="badge badge-audit">W-17</span></div>
+      <div class="node-desc">分析サイクル仕様書。手動ステップ削除・IMPLEMENTATION_PLAN参照削除・結論レポート手順追加</div>
+    </div>
+    <div class="node n-config w25">
+      <div class="node-title">youtube_fundamentals.md</div>
+      <div class="node-desc">前提知識: アルゴリズム + 視聴者心理 + チャンネル固有</div>
+    </div>
+    <div class="node n-data n-new w25">
+      <div class="node-title">golden_theory.json <span class="badge badge-new">W-1</span></div>
+      <div class="node-desc">黄金理論二層構造: principles[] + checklist[] + rejected[]</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="node n-python n-new w50">
+      <div class="node-title">common/data_loader.py <span class="badge badge-new">W-7</span></div>
+      <div class="node-desc">共通データ読み込み: load_all_videos, load_golden_theory, load_insights 等</div>
+    </div>
+    <div class="node n-python n-new w50">
+      <div class="node-title">common/metrics.py <span class="badge badge-new">W-8</span></div>
+      <div class="node-desc">共通指標計算: compute_derived_metrics, classify_hit_miss, classify_growth_pattern</div>
+    </div>
+  </div>
+</div>
+
+<div class="flow-arrow"><span>▼</span></div>
+
+<!-- ====== STEP 1 ====== -->
+<div class="phase">
+  <div class="phase-header">Step 1 — データ取得</div>
+  <div class="row">
+    <div class="node n-python w50">
+      <div class="node-title">step1_auth.py</div>
+      <div class="node-desc">OAuth認証</div>
+    </div>
+    <div class="node n-python w50">
+      <div class="node-title">step1_fetch.py</div>
+      <div class="node-desc">YouTube API取得 + CSVマージ。Day別×トラフィックソースクロス集計、関連動画ソース詳細</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="node n-data w33">
+      <div class="node-title">data/videos/*.json</div>
+      <div class="node-desc">24本の動画データ（analytics + manual + script_analysis + daily_data + traffic_breakdown）</div>
+    </div>
+    <div class="node n-data w33">
+      <div class="node-title">data/scripts/*.json</div>
+      <div class="node-desc">24本の台本構造分析</div>
+    </div>
+    <div class="node n-data w33">
+      <div class="node-title">data/video_index.json <span class="badge badge-mod">W-10</span></div>
+      <div class="node-desc">24本マスタインデックス（幽霊エントリ削除済み）</div>
+    </div>
+  </div>
+</div>
+
+<div class="flow-arrow"><span>▼</span></div>
+
+<!-- ====== STEP 2 ====== -->
+<div class="phase">
+  <div class="phase-header">Step 2 — 分析サイクル（仮説生成→検証ループ）</div>
+
+  <!-- Phase 1 -->
+  <div class="row">
+    <div class="node n-python w">
+      <div class="node-title">step2_analyze.py <span class="badge badge-mod">W-2</span> — Phase 1: データ準備（自動）</div>
+      <div class="node-desc">data_summarizer.py を呼び出し → workspace準備 → Agent実行指示を表示</div>
+      <div class="substeps">
+        <div class="substep">data_summarizer.py 実行 → data_summary.md 生成（§1-§13。§6b AI評価は削除 <span class="badge badge-audit">W-15</span>）</div>
+        <div class="substep">CLI: <code>python step2_analyze.py</code> / <code>--diff VIDEO_ID</code></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flow-arrow"><span>▼</span> <span class="arrow-label">一旦停止。以下のループをClaude Codeで手動実行</span></div>
+
+  <!-- Loop box -->
+  <div class="loop-box">
+    <div class="loop-label">仮説生成→検証ループ（最大5サイクル）</div>
+
+    <!-- Agent C -->
+    <div class="row">
+      <div class="node n-agent w">
+        <div class="node-title">Agent C: メタ分析 <span class="badge badge-mod">W-4</span> <span class="badge badge-mod">W-11</span> <span class="badge badge-audit">W-18</span></div>
+        <div class="node-desc">水平思考 × 第一原理 × 仮説駆動で新仮説を生成。2フェーズ読み込み + 6ステップ分析フロー</div>
+        <div class="phase-detail">
+          <div class="phase-block">
+            <div class="phase-block-title" style="color:#3fb950">Phase 1: 概要読み込み（必須）</div>
+            <div class="substep">data_summary.md（地図）</div>
+            <div class="substep">insights.md（蓄積知見）</div>
+            <div class="substep">golden_theory.json（現在の理論）</div>
+            <div class="substep">model.json + index.md</div>
+            <div class="warn">※ model.jsonの3段階フィルター（精度66.7%）は参考値。golden_theory.jsonを優先 <span class="badge badge-audit">W-18</span></div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-block-title" style="color:#d29922">⓪ 読み込み計画</div>
+            <div class="substep">注目動画を最大8本選定</div>
+            <div class="substep">必要データ種別を判断</div>
+            <div class="substep">読み込み理由を明示</div>
+            <div class="substep" style="color:#6e7681">※初回は全件scan</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-block-title" style="color:#58a6ff">Phase 2: 選択的深掘り</div>
+            <div class="substep">videos/{id}.json（選定分のみ）</div>
+            <div class="substep">scripts/{id}.json（必要時のみ）</div>
+            <div class="substep">human_scores.json（必要時のみ）</div>
+          </div>
+        </div>
+        <div class="substeps">
+          <div class="substep">①共通点抽出 → ②前提列挙 → ③前提反転 → ④仮説生成 → ⑤提示</div>
+          <div class="substep">出力: Markdown（人間用）+ JSONブロック（機械パース用）</div>
+        </div>
+        <div class="node-files">→ data/workspace/new_hypotheses.md</div>
+      </div>
+    </div>
+
+    <div class="flow-arrow"><span>▼</span></div>
+
+    <!-- Agent E -->
+    <div class="row">
+      <div class="node n-agent w">
+        <div class="node-title">Agent E: 検証（レッドチーム） <span class="badge badge-mod">W-5</span> <span class="badge badge-audit">W-14</span></div>
+        <div class="node-desc">Agent Cの仮説をdata_summary.mdで全件スクリーニング。反例候補のみvideos/*.jsonで詳細確認。確証バイアス防止 + アンカリング防止。3状態判定（支持/修正/棄却）</div>
+        <div class="substeps">
+          <div class="substep">入力に golden_theory.json を追加（既存理論との整合性チェック）<span class="badge badge-audit">W-14</span></div>
+          <div class="substep">検証結果 + チェックリスト提案 + 原則更新 + 残存矛盾 + 探索的発見</div>
+          <div class="substep">出力: Markdown + JSONブロック（step2がパース）</div>
+        </div>
+        <div class="node-files">→ data/workspace/verification_report.md</div>
+      </div>
+    </div>
+
+    <div class="flow-arrow"><span>▼</span> <span class="arrow-label">矛盾残存 & サイクル &lt; 5 → ループ先頭へ</span></div>
+  </div>
+
+  <div class="flow-arrow"><span>▼</span> <span class="arrow-label">ループ完了後</span></div>
+
+  <!-- Phase 3 -->
+  <div class="row">
+    <div class="node n-python w">
+      <div class="node-title">step2_analyze.py --integrate <span class="badge badge-mod">W-2</span> <span class="badge badge-new">W-12</span> — Phase 3: 統合処理（自動）</div>
+      <div class="node-desc">Agent出力のJSONブロックをパースし、insights.md・golden_theory.json を更新 → step3を実行 → 結論レポート生成</div>
+      <div class="substeps">
+        <div class="substep">parse_agent_c_output() → 仮説リスト抽出</div>
+        <div class="substep">parse_agent_e_output() → 検証結果・チェックリスト提案・残存矛盾 抽出</div>
+        <div class="substep">update_insights() → insights.md に採択/棄却/学び/探索的発見を追記</div>
+        <div class="substep">update_golden_theory() → golden_theory.json にチェックリスト追加/棄却移動</div>
+        <div class="substep">run_step3() → step3_build_model.py を実行（モデル再構築）</div>
+        <div class="substep">矛盾残存チェック → 次サイクル要否を判定</div>
+        <div class="substep" style="color:#58a6ff; font-weight:700;">generate_conclusion_report() → analysis_conclusion.md を自動生成 <span class="badge badge-new">W-12</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 8px;">
+    <div class="node n-data w33">
+      <div class="node-title">insights.md <span class="badge badge-mod">W-3</span> <span class="badge badge-audit">W-13</span></div>
+      <div class="node-desc">YAML frontmatter + 構造化Markdown。棄却仮説はここに一本化（index.mdから移管）</div>
+    </div>
+    <div class="node n-data n-new w33">
+      <div class="node-title">golden_theory.json <span class="badge badge-new">W-1</span></div>
+      <div class="node-desc">チェックリスト追加・棄却条件移動・充足率再計算</div>
+    </div>
+    <div class="node n-conclusion n-new w33">
+      <div class="node-title">analysis_conclusion.md <span class="badge badge-new">W-12</span></div>
+      <div class="node-desc"><strong>分析の最終結論</strong>（ゴースト・デック形式）。黄金理論 + チェックリスト + 発見要約 + 統計 + 次のアクション。誰でも読める形式</div>
+    </div>
+  </div>
+</div>
+
+<div class="flow-arrow"><span>▼</span></div>
+
+<!-- ====== STEP 3 ====== -->
+<div class="phase">
+  <div class="phase-header">Step 3 — モデル構築 <span class="badge badge-split">W-6 分割</span></div>
+  <div class="row">
+    <div class="node n-python w">
+      <div class="node-title">step3_build_model.py <span class="badge badge-mod">W-6</span> — エントリーポイント</div>
+      <div class="node-desc">common/* → 黄金理論読み込み → フィルタ → パターン → 黄金理論検証 → モデル生成 → レポート → 履歴</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="node n-python w25">
+      <div class="node-title">step3_filters.py <span class="badge badge-new">W-6</span> <span class="badge badge-audit">W-18</span></div>
+      <div class="node-desc">3段階フィルタ分析（F1/F2/F3）</div>
+      <div class="warn">精度66.7% — 注意喚起を表示</div>
+    </div>
+    <div class="node n-python w25">
+      <div class="node-title">step3_patterns.py <span class="badge badge-new">W-6</span></div>
+      <div class="node-desc">パターン分析・グループ比較・ベンチマーク</div>
+    </div>
+    <div class="node n-python w25">
+      <div class="node-title">step3_report.py <span class="badge badge-new">W-6</span> <span class="badge badge-audit">W-20</span></div>
+      <div class="node-desc">Markdownレポート生成。読み手ヘッダー挿入（Agent/開発者用と明記）</div>
+    </div>
+    <div class="node n-python w25">
+      <div class="node-title">step3_history.py <span class="badge badge-new">W-6</span> <span class="badge badge-audit">W-19</span></div>
+      <div class="node-desc">バージョン管理。保持ポリシー: 直近5件 + マイルストーン（R²≧0.05変化）</div>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 8px;">
+    <div class="node n-output w33">
+      <div class="node-title">model.json</div>
+      <div class="node-desc">統合モデル（GI×CA + 黄金理論チェックリスト検証結果）</div>
+    </div>
+    <div class="node n-output w33">
+      <div class="node-title">analysis_report.md <span class="badge badge-audit">W-20</span></div>
+      <div class="node-desc">Agent C/E + 開発者向け。一般向けはanalysis_conclusion.mdを参照</div>
+    </div>
+    <div class="node n-output w33">
+      <div class="node-title">analysis_history/ <span class="badge badge-audit">W-13</span> <span class="badge badge-audit">W-19</span></div>
+      <div class="node-desc">index.md: バージョン履歴専用（棄却仮説はinsights.mdへ移管）。スナップショットは自動クリーンアップ</div>
+    </div>
+  </div>
+</div>
+
+<div class="flow-arrow"><span>▼</span></div>
+
+<!-- ====== STEP 4 ====== -->
+<div class="phase">
+  <div class="phase-header">Step 4 — PDCA評価（新動画公開時）</div>
+  <div class="row">
+    <div class="node n-python w50">
+      <div class="node-title">step4_pdca.py <span class="badge badge-audit">W-16</span></div>
+      <div class="node-desc">新動画をモデルで評価。出力先: data/workspace/ に変更（旧pdca_reports/は削除）</div>
+    </div>
+    <div class="node n-manual w50">
+      <div class="node-title">手動: GI×CA人間評価</div>
+      <div class="node-desc">新動画のGI_v3・CAを人間が評価 → human_scores.json更新</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== CONCLUSION REPORT DETAIL ====== -->
+<div class="phase" style="margin-top: 32px;">
+  <div class="phase-header">結論レポート（W-12）の構成</div>
+  <div class="row">
+    <div class="node n-conclusion w">
+      <div class="node-title" style="font-size: 15px;">analysis_conclusion.md — ゴースト・デック形式</div>
+      <div class="node-desc" style="font-size: 12px; line-height: 1.8;">
+        <strong>§1 結論: 黄金理論</strong> — なぜ伸びるのか（上位原則）+ 制作前チェックリスト + 信頼度<br>
+        <strong>§2 発見の要約</strong> — HIT共通点 / MISS共通点 / 試したが間違いだった仮説<br>
+        <strong>§3 統計サマリ</strong> — 予測力の高い指標（日本語変換済み）+ モデル精度推移<br>
+        <strong>§4 次のアクション</strong> — 未解決の問い / 次に検証すべきこと / データ品質の課題
+      </div>
+      <div class="note">データソース: golden_theory.json + insights.md + model.json + index.md を自動統合</div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== DATA FLOW ====== -->
+<div class="phase" style="margin-top: 20px;">
+  <div class="phase-header">データフロー概要</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+    <div>
+      <h3 style="font-size: 12px; color: #58a6ff; margin-bottom: 8px;">Python → ファイル</h3>
+      <div class="file-item">step1_fetch.py → videos/*.json <span class="tag">API data</span></div>
+      <div class="file-item">data_summarizer.py → data_summary.md <span class="tag">§6b削除済み</span></div>
+      <div class="file-item">step2 --integrate → insights.md <span class="tag">棄却仮説一本化</span></div>
+      <div class="file-item">step2 --integrate → golden_theory.json <span class="tag">W-2</span></div>
+      <div class="file-item" style="border-color:#58a6ff;">step2 --integrate → analysis_conclusion.md <span class="tag" style="color:#58a6ff;">W-12 NEW</span></div>
+      <div class="file-item">step3 → model.json + report + history <span class="tag">W-6</span></div>
+      <div class="file-item">step4 → workspace/pdca_{id}_{date}.md <span class="tag">W-16</span></div>
+    </div>
+    <div>
+      <h3 style="font-size: 12px; color: #bc8cff; margin-bottom: 8px;">Agent → ファイル</h3>
+      <div class="file-item">Agent C → new_hypotheses.md <span class="tag">MD + JSON</span></div>
+      <div class="file-item">Agent E → verification_report.md <span class="tag">MD + JSON</span></div>
+      <div class="file-item" style="border-color: #3b1f6e;">Agent C ← data_summary + insights + theory + model <span class="tag">Phase 1</span></div>
+      <div class="file-item" style="border-color: #3b1f6e;">Agent C ← videos/{選定分}.json <span class="tag">Phase 2</span></div>
+      <div class="file-item" style="border-color: #3b1f6e;">Agent E ← data_summary + golden_theory.json <span class="tag">W-14</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ====== CLI REFERENCE ====== -->
+<div class="phase" style="margin-top: 20px;">
+  <div class="phase-header">CLIリファレンス</div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+    <div class="file-item">python step1_fetch.py --force-refetch <span class="tag">全件API再取得</span></div>
+    <div class="file-item">python step1_fetch.py --merge <span class="tag">取得 + CSV統合</span></div>
+    <div class="file-item">python step2_analyze.py <span class="tag">Phase 1: データ準備</span></div>
+    <div class="file-item">python step2_analyze.py --diff VID <span class="tag">差分分析</span></div>
+    <div class="file-item" style="border-color:#58a6ff;">python step2_analyze.py --integrate <span class="tag" style="color:#58a6ff;">Phase 3: 統合 + 結論レポート</span></div>
+    <div class="file-item">python step3_build_model.py <span class="tag">モデル再構築</span></div>
+    <div class="file-item">python step4_pdca.py VIDEO_ID <span class="tag">PDCA評価（→workspace/）</span></div>
+    <div class="file-item">python data_summarizer.py --diff VID <span class="tag">差分要約</span></div>
+  </div>
+</div>
+
+<!-- ====== DELETED FILES ====== -->
+<div class="phase" style="margin-top: 20px;">
+  <div class="phase-header">削除済み・変更済み <span class="badge badge-del">W-10</span></div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">IMPLEMENTATION_PLAN.md <span class="tag">W-10</span></div>
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">workflow_diagram_v2.html <span class="tag">W-10</span></div>
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">data/manual_exports/ <span class="tag">W-10</span></div>
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">data/pdca_reports/ <span class="tag">W-10+16</span></div>
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">config.py: PDCA_DIR, MANUAL_DIR <span class="tag">W-16</span></div>
+    <div class="file-item" style="border-color:#da3633; opacity:0.6; text-decoration:line-through;">data_summary §6b AI評価 <span class="tag">W-15</span></div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

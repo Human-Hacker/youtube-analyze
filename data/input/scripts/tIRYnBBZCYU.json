@@ -1,0 +1,78 @@
+{
+  "video_id": "tIRYnBBZCYU",
+  "artist_name": "フレディーマーキュリー",
+  "script_file": "/Users/user/タスク/youtube-long/projects/フレディマーキュリー/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 6200,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "死ぬまで歌い続けた不屈の魂",
+    "has_antagonist": true,
+    "antagonist": "トライデント・スタジオ（搾取的マネジメント会社）・AIDS（病）",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "メアリー・オースティン（生涯唯一愛した女性）・日本のファン"
+  },
+  "hook_analysis": {
+    "opening_question": "音楽の歴史を変えた伝説の21分間のパフォーマンスとは何か？クイーンと日本人の深い関係とは？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 68
+  },
+  "mv_insertions": {
+    "count": 9,
+    "songs": [
+      "手をとり合って（Teo Torriatte）",
+      "キラー・クイーン",
+      "Bohemian Rhapsody",
+      "Somebody to Love",
+      "We Are the Champions",
+      "We Will Rock You",
+      "Another One Bites the Dust",
+      "These Are the Days of Our Lives",
+      "The Show Must Go On"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "フレディーマーキュリーの死因（AIDS）と最期の日々",
+    "top1_addressed": true,
+    "top2_topic": "ライブエイドの伝説的パフォーマンスの裏側",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 3,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 5,
+    "total": 23
+  },
+  "emotional_curve": {
+    "total_ups": 7,
+    "total_downs": 6,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "UDUD",
+      "second_act": "UDUD",
+      "third_act": "DUD"
+    },
+    "balance_description": "栄光と苦悩が交互に繰り返され、最後は死の絶望から不屈の魂への感動で締める波状型"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "音楽史を変えた伝説の21分間のパフォーマンスとクイーンと日本の深い関係を提示"
+  },
+  "non_mv_media": {
+    "total_links": 3,
+    "links_by_type": {
+      "interview": 0,
+      "live": 2,
+      "documentary": 0,
+      "other": 1
+    }
+  }
+}

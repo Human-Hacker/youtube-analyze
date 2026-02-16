@@ -1,0 +1,68 @@
+{
+  "video_id": "sjJYXnPGGJI",
+  "artist_name": "ブリトニースピアーズ",
+  "script_file": "/Users/user/タスク/youtube-long/projects/ブリトニースピアーズ/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 5900,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "支配からの解放",
+    "has_antagonist": true,
+    "antagonist": "父ジェイミー・スピアーズ（成年後見制度を悪用）、母（計画を吹き込んだ共犯者）、メディア（パパラッチ・印象操作）",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "ファン（#FreeBritney運動）、匿名の内部告発者"
+  },
+  "hook_analysis": {
+    "opening_question": "世界最大のポップスターが13年間家族に奴隷にされていたとは？裁判所で沈黙を破った告発の全貌とは？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 85
+  },
+  "mv_insertions": {
+    "count": 2,
+    "songs": ["...Baby One More Time", "Gimme More"],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "成年後見制度（コンサバトーシップ）で13年間奴隷にされた実態",
+    "top1_addressed": true,
+    "top2_topic": "2007年の丸刈り事件の本当の理由",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 4,
+    "G6_songs": 2,
+    "total": 21
+  },
+  "emotional_curve": {
+    "total_ups": 5,
+    "total_downs": 7,
+    "total_transitions": 12,
+    "pattern_by_act": {
+      "intro": "UDD",
+      "first_act": "UDDD",
+      "second_act": "UDD",
+      "third_act": "UU"
+    },
+    "balance_description": "下降が圧倒的に優勢で、成功から地獄へ一方的に落ち続け、最終幕でようやく解放される右肩下がり型"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "グラミー賞80冠の世界的ポップスターが13年間家族に奴隷にされていたという衝撃の事実と、裁判所での告発映像を冒頭に提示"
+  },
+  "non_mv_media": {
+    "total_links": 4,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 4,
+      "other": 0
+    }
+  }
+}

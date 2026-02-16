@@ -25,7 +25,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import VIDEOS_DIR, DATA_DIR, MODEL_FILE, HIT_THRESHOLD, OUTPUT_DIR
+from config import VIDEOS_DIR, DATA_DIR, MODEL_FILE, HIT_THRESHOLD, OUTPUT_DIR, PREDICTIONS_FILE
 from common.data_loader import validate_fundamentals
 from step1_fetch import fetch_single_video
 from step2_build_model import build_and_save
@@ -140,6 +140,79 @@ def generate_pdca_report(ev, video_data, model):
     return "\n".join(lines)
 
 
+def find_prediction(artist_name):
+    """predictions.jsonl から該当アーティストの最新pending予測を検索。
+
+    完全一致 → 部分一致（予測名がartist_nameに含まれる）の順で照合。
+    """
+    if not os.path.exists(PREDICTIONS_FILE):
+        return None
+    normalize = lambda s: s.lower().replace(" ", "").replace("　", "")
+    target = normalize(artist_name)
+    exact = None
+    partial = None
+    with open(PREDICTIONS_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            rec = json.loads(line)
+            if rec.get("type") == "verification":
+                continue
+            if rec.get("status") != "pending":
+                continue
+            pred_name = normalize(rec.get("artist_name", ""))
+            if pred_name == target:
+                exact = rec
+            elif pred_name and pred_name in target:
+                partial = rec
+    return exact or partial
+
+
+def append_verification(prediction, ev):
+    """検証レコードをpredictions.jsonl に追記（元の予測行は不変）。"""
+    verification = {
+        "type": "verification",
+        "prediction_id": prediction["prediction_id"],
+        "verification_date": datetime.now().isoformat(),
+        "video_id": ev["video_id"],
+        "actual": {
+            "views": ev["actual_views"],
+            "tier": ev["actual_tier"],
+            "is_hit": ev["is_hit"],
+        },
+        "comparison": {
+            "prediction_correct": prediction["prediction"]["hit_or_miss"] == ("HIT" if ev["is_hit"] else "MISS"),
+            "predicted_hit": prediction["prediction"]["hit_or_miss"] == "HIT",
+            "actual_hit": ev["is_hit"],
+        },
+    }
+    with open(PREDICTIONS_FILE, "a", encoding="utf-8") as f:
+        f.write(json.dumps(verification, ensure_ascii=False) + "\n")
+
+
+def generate_prediction_comparison(prediction, ev):
+    """予測照合セクション(Markdown文字列)を生成。"""
+    p = prediction["prediction"]
+    correct = p["hit_or_miss"] == ("HIT" if ev["is_hit"] else "MISS")
+    actual_hm = "HIT" if ev["is_hit"] else "MISS"
+    match_str = lambda a, b: "OK" if a == b else "NG"
+    conf_label = {"high": "高", "medium": "中", "low": "低"}.get(p["confidence"], p["confidence"])
+
+    lines = [
+        "## 予測照合",
+        f"\n| 項目 | 予測 | 実績 | 一致 |",
+        "|------|------|------|------|",
+        f"| HIT/MISS | {p['hit_or_miss']} | {actual_hm} | {match_str(p['hit_or_miss'], actual_hm)} |",
+        f"| ランク | {p['rank']} | {ev['actual_tier']} | - |",
+        f"| 信頼度 | {conf_label} | - | - |",
+        f"\n予測日: {prediction['prediction_date'][:10]}",
+        f"根拠: {p['reasoning']}",
+        f"結果: {'予測的中' if correct else '予測外れ'}",
+    ]
+    return "\n".join(lines)
+
+
 def update_model():
     """新データを含めてモデルを再構築（step2_build_model経由）"""
     print("\nモデル再構築中...")
@@ -186,6 +259,14 @@ def main():
 
     # レポート
     report = generate_pdca_report(ev, video_data, model)
+
+    # 予測照合
+    prediction = find_prediction(ev["artist_name"])
+    if prediction:
+        report += "\n\n" + generate_prediction_comparison(prediction, ev)
+        append_verification(prediction, ev)
+        print(f"  予測照合完了: {prediction['prediction_id']}")
+
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     rpath = os.path.join(OUTPUT_DIR, f"pdca_{args.video_id}_{datetime.now().strftime('%Y%m%d')}.md")
     with open(rpath, "w", encoding="utf-8") as f:

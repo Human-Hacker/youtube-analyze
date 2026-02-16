@@ -1,0 +1,68 @@
+{
+  "video_id": "zRrC0QMomEc",
+  "artist_name": "ジョンレノン",
+  "script_file": "/Users/user/タスク/youtube-long/projects/ジョンレノン/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 7500,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "拒絶と帰還",
+    "has_antagonist": true,
+    "antagonist": "マーク・チャップマン",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "オノ・ヨーコ"
+  },
+  "hook_analysis": {
+    "opening_question": "ジョンにサインをもらった数時間後に彼を撃ち、逃げもせずライ麦畑でつかまえてを読んでいた男の正体と動機は何か？",
+    "hook_answered_in_script": false,
+    "hook_answer_position_percent": 0
+  },
+  "mv_insertions": {
+    "count": 0,
+    "songs": [],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "ジョンレノン暗殺の詳細と犯人の動機",
+    "top1_addressed": true,
+    "top2_topic": "ビートルズ解散におけるジョンの本音とオノヨーコの役割",
+    "top2_addressed": true,
+    "ca_score": 2
+  },
+  "gi_scores": {
+    "G1_gossip": 4,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 2,
+    "total": 21
+  },
+  "emotional_curve": {
+    "total_ups": 6,
+    "total_downs": 7,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "D",
+      "first_act": "DDUDU",
+      "second_act": "UDUDUD",
+      "third_act": "UDUD"
+    },
+    "balance_description": "拒絶と帰還が繰り返されるジグザグ型。幸福を掴むたびに喪失が訪れ、最後の絶頂で突然命を断たれる"
+  },
+  "opening_30sec": {
+    "opening_type": "エピソード導入型",
+    "hook_strength": 5,
+    "description": "暗殺の瞬間を生々しく描写し、犯人がサインをもらった数時間後に射殺しライ麦畑を読んでいたという異様さを提示"
+  },
+  "non_mv_media": {
+    "total_links": 0,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}

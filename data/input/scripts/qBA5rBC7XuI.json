@@ -1,0 +1,68 @@
+{
+  "video_id": "qBA5rBC7XuI",
+  "artist_name": "マイケルジャクソン",
+  "script_file": "/Users/user/タスク/youtube-long/projects/マイケルジャクソン/後編script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 8200,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "善意の搾取",
+    "has_antagonist": true,
+    "antagonist": "メディア（ワコ・ジャコ報道）、ジャーナリストのマーティン・バシール、告発者エヴァン・チャンドラー、検事トム・スネドン、専属医コンラッド・マレー",
+    "emotional_bottoms_count": 5,
+    "bottoms_escalate": true,
+    "has_savior": false,
+    "savior": ""
+  },
+  "hook_analysis": {
+    "opening_question": "人類史上最も成功し最も慈善活動を行ったマイケルジャクソンが、なぜ性的暴行事件で起訴され300億円の負債を抱え命まで失ったのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 90
+  },
+  "mv_insertions": {
+    "count": 6,
+    "songs": ["We Are the World", "Earth Song（ミュンヘン事故映像）", "Heal the World", "Scream（ジャネットとのデュエット）", "Leave Me Alone", "THIS IS ITリハーサル映像"],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "マイケルジャクソンの死の真相（誰に殺されたのか）",
+    "top1_addressed": true,
+    "top2_topic": "児童性的虐待疑惑の真実",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 4,
+    "total": 24
+  },
+  "emotional_curve": {
+    "total_ups": 8,
+    "total_downs": 8,
+    "total_transitions": 16,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "UUUDUD",
+      "second_act": "DUDUDU",
+      "third_act": "UD"
+    },
+    "balance_description": "上昇と下降が均等に繰り返される、絶頂と絶望が交互に押し寄せる波状構造"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "4000億円を稼いだ人類史上最も成功したポップスターが、性的暴行で起訴され300億円の負債を抱え命まで失ったという衝撃の落差を提示"
+  },
+  "non_mv_media": {
+    "total_links": 13,
+    "links_by_type": {
+      "interview": 8,
+      "live": 1,
+      "documentary": 4,
+      "other": 0
+    }
+  }
+}

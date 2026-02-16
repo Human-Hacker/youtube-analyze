@@ -1,0 +1,1391 @@
+{
+  "version": "5.7",
+  "built_at": "2026-02-16T17:46:51.498107",
+  "dataset_size": 24,
+  "hit_threshold": 150000,
+  "classification": {
+    "hits": 12,
+    "misses": 12
+  },
+  "gi_ca_model": {
+    "scored_count": 24,
+    "total_count": 24,
+    "correlations": {
+      "GI×CA_vs_log_views": 0.276,
+      "GI×CA_vs_raw_views": 0.245,
+      "GI_only_vs_log_views": 0.42,
+      "CA_only_vs_log_views": -0.041,
+      "R_squared": 0.076,
+      "subscribers_at_publish_vs_views": -0.578
+    },
+    "threshold_16_accuracy": 45.8,
+    "details": [
+      {
+        "artist": "",
+        "views": 486214,
+        "gi_v3": 25,
+        "ca": 3,
+        "gi_x_ca": 75,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 164300,
+        "gi_v3": 25,
+        "ca": 3,
+        "gi_x_ca": 75,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 328174,
+        "gi_v3": 23,
+        "ca": 3,
+        "gi_x_ca": 69,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 66130,
+        "gi_v3": 22,
+        "ca": 3,
+        "gi_x_ca": 66,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 493220,
+        "gi_v3": 22,
+        "ca": 3,
+        "gi_x_ca": 66,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 303791,
+        "gi_v3": 19,
+        "ca": 3,
+        "gi_x_ca": 57,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 9991,
+        "gi_v3": 19,
+        "ca": 3,
+        "gi_x_ca": 57,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 234931,
+        "gi_v3": 19,
+        "ca": 3,
+        "gi_x_ca": 57,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 195268,
+        "gi_v3": 18,
+        "ca": 3,
+        "gi_x_ca": 54,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 32433,
+        "gi_v3": 17,
+        "ca": 3,
+        "gi_x_ca": 51,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 86466,
+        "gi_v3": 16,
+        "ca": 3,
+        "gi_x_ca": 48,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 63493,
+        "gi_v3": 16,
+        "ca": 3,
+        "gi_x_ca": 48,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 77220,
+        "gi_v3": 19,
+        "ca": 2.5,
+        "gi_x_ca": 47.5,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 1004247,
+        "gi_v3": 19,
+        "ca": 2.5,
+        "gi_x_ca": 47.5,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 75086,
+        "gi_v3": 19,
+        "ca": 2.5,
+        "gi_x_ca": 47.5,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 280019,
+        "gi_v3": 21,
+        "ca": 2,
+        "gi_x_ca": 42,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 204810,
+        "gi_v3": 16,
+        "ca": 2.5,
+        "gi_x_ca": 40,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 484348,
+        "gi_v3": 13,
+        "ca": 3,
+        "gi_x_ca": 39,
+        "is_hit": true,
+        "predicted_hit": true,
+        "correct": true
+      },
+      {
+        "artist": "",
+        "views": 106382,
+        "gi_v3": 19,
+        "ca": 2,
+        "gi_x_ca": 38,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 68871,
+        "gi_v3": 18,
+        "ca": 2,
+        "gi_x_ca": 36,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 12087,
+        "gi_v3": 11,
+        "ca": 3,
+        "gi_x_ca": 33,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 70623,
+        "gi_v3": 16,
+        "ca": 2,
+        "gi_x_ca": 32,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 42170,
+        "gi_v3": 10,
+        "ca": 2.5,
+        "gi_x_ca": 25,
+        "is_hit": false,
+        "predicted_hit": true,
+        "correct": false
+      },
+      {
+        "artist": "",
+        "views": 181031,
+        "gi_v3": 15,
+        "ca": 1,
+        "gi_x_ca": 15,
+        "is_hit": true,
+        "predicted_hit": false,
+        "correct": false
+      }
+    ]
+  },
+  "three_stage_filter": [
+    {
+      "video_id": "3WmCRFSbpa8",
+      "artist": "",
+      "views": 68871,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -0.8,
+      "f2_pass": true,
+      "f3_duration": 650,
+      "f3_engagement": 2.16,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "7zDmMAtQIrU",
+      "artist": "",
+      "views": 77220,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 72.7,
+      "f2_pass": true,
+      "f3_duration": 291,
+      "f3_engagement": 1.42,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "8kDsm0jp524",
+      "artist": "",
+      "views": 86466,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 45.0,
+      "f2_pass": true,
+      "f3_duration": 276,
+      "f3_engagement": 1.74,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "ARsWjxlohIY",
+      "artist": "",
+      "views": 195268,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 57.0,
+      "f2_pass": true,
+      "f3_duration": 358,
+      "f3_engagement": 2.24,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "IEQ6XE1LLZI",
+      "artist": "",
+      "views": 204810,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 3.7,
+      "f2_pass": true,
+      "f3_duration": 405,
+      "f3_engagement": 1.58,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "Kxq0y_6hxl0",
+      "artist": "",
+      "views": 328174,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 242.9,
+      "f2_pass": true,
+      "f3_duration": 451,
+      "f3_engagement": 1.6,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "MWG67okAspo",
+      "artist": "",
+      "views": 303791,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 192.1,
+      "f2_pass": true,
+      "f3_duration": 317,
+      "f3_engagement": 1.52,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "R2ebL510Itg",
+      "artist": "",
+      "views": 106382,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 215.1,
+      "f2_pass": true,
+      "f3_duration": 251,
+      "f3_engagement": 1.15,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "Ukjm9sDC3U4",
+      "artist": "",
+      "views": 486214,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 96.5,
+      "f2_pass": true,
+      "f3_duration": 482,
+      "f3_engagement": 1.18,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "W7WxjgWb8vQ",
+      "artist": "",
+      "views": 42170,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 15.2,
+      "f2_pass": true,
+      "f3_duration": 425,
+      "f3_engagement": 2.55,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "X9KIY2WjyPk",
+      "artist": "",
+      "views": 12087,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -40.3,
+      "f2_pass": false,
+      "f3_duration": 359,
+      "f3_engagement": 2.39,
+      "f3_pass": true,
+      "passed_all": false,
+      "first_fail": "F2_Day2Drop"
+    },
+    {
+      "video_id": "brzmIN16oz8",
+      "artist": "",
+      "views": 181031,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -4.1,
+      "f2_pass": true,
+      "f3_duration": 276,
+      "f3_engagement": 1.29,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "gTf9sCckzXg",
+      "artist": "",
+      "views": 70623,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 7.2,
+      "f2_pass": true,
+      "f3_duration": 471,
+      "f3_engagement": 2.06,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "gz9eCJZQ6vw",
+      "artist": "",
+      "views": 280019,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 5.3,
+      "f2_pass": true,
+      "f3_duration": 296,
+      "f3_engagement": 1.61,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "kWYWmEHTfPQ",
+      "artist": "",
+      "views": 66130,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -72.8,
+      "f2_pass": false,
+      "f3_duration": 424,
+      "f3_engagement": 1.54,
+      "f3_pass": true,
+      "passed_all": false,
+      "first_fail": "F2_Day2Drop"
+    },
+    {
+      "video_id": "q6Kga609RMI",
+      "artist": "",
+      "views": 9991,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 5.4,
+      "f2_pass": true,
+      "f3_duration": 404,
+      "f3_engagement": 2.22,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "qBA5rBC7XuI",
+      "artist": "",
+      "views": 164300,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -18.9,
+      "f2_pass": true,
+      "f3_duration": 779,
+      "f3_engagement": 2.19,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "s4roSkGLDZg",
+      "artist": "",
+      "views": 1004247,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 66.5,
+      "f2_pass": true,
+      "f3_duration": 339,
+      "f3_engagement": 1.18,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "sjJYXnPGGJI",
+      "artist": "",
+      "views": 234931,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 18.4,
+      "f2_pass": true,
+      "f3_duration": 363,
+      "f3_engagement": 1.15,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "t7B5ARRSRyg",
+      "artist": "",
+      "views": 484348,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 263.2,
+      "f2_pass": true,
+      "f3_duration": 389,
+      "f3_engagement": 1.55,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "tIRYnBBZCYU",
+      "artist": "",
+      "views": 493220,
+      "is_hit": true,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 135.1,
+      "f2_pass": true,
+      "f3_duration": 372,
+      "f3_engagement": 0.77,
+      "f3_pass": false,
+      "passed_all": false,
+      "first_fail": "F3_Depth"
+    },
+    {
+      "video_id": "wedwAk9LDcQ",
+      "artist": "",
+      "views": 75086,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": 50.4,
+      "f2_pass": true,
+      "f3_duration": 486,
+      "f3_engagement": 1.63,
+      "f3_pass": true,
+      "passed_all": true,
+      "first_fail": null
+    },
+    {
+      "video_id": "zI9jXscH9BI",
+      "artist": "",
+      "views": 32433,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -58.1,
+      "f2_pass": false,
+      "f3_duration": 604,
+      "f3_engagement": 2.87,
+      "f3_pass": true,
+      "passed_all": false,
+      "first_fail": "F2_Day2Drop"
+    },
+    {
+      "video_id": "zRrC0QMomEc",
+      "artist": "",
+      "views": 63493,
+      "is_hit": false,
+      "f1_ctr": null,
+      "f1_pass": null,
+      "f2_change": -59.9,
+      "f2_pass": false,
+      "f3_duration": 537,
+      "f3_engagement": 1.92,
+      "f3_pass": true,
+      "passed_all": false,
+      "first_fail": "F2_Day2Drop"
+    }
+  ],
+  "correlations": {
+    "cause_metrics": {
+      "総メディア数(MV+非MV)": {
+        "r_log_views": 0.508,
+        "r_raw_views": 0.668,
+        "n": 24,
+        "type": "cause"
+      },
+      "非MVリンク数": {
+        "r_log_views": 0.485,
+        "r_raw_views": 0.67,
+        "n": 24,
+        "type": "cause"
+      },
+      "MV挿入数": {
+        "r_log_views": 0.437,
+        "r_raw_views": 0.496,
+        "n": 24,
+        "type": "cause"
+      },
+      "文字数": {
+        "r_log_views": 0.25,
+        "r_raw_views": 0.243,
+        "n": 24,
+        "type": "cause"
+      },
+      "動画の長さ(秒)": {
+        "r_log_views": 0.198,
+        "r_raw_views": 0.122,
+        "n": 24,
+        "type": "cause"
+      },
+      "感情の底の数": {
+        "r_log_views": 0.192,
+        "r_raw_views": 0.23,
+        "n": 24,
+        "type": "cause"
+      },
+      "感情曲線の転換数": {
+        "r_log_views": -0.12,
+        "r_raw_views": 0.016,
+        "n": 24,
+        "type": "cause"
+      },
+      "導入30秒の引きの強さ": {
+        "r_log_views": 0.118,
+        "r_raw_views": 0.127,
+        "n": 24,
+        "type": "cause"
+      }
+    },
+    "effect_metrics": {
+      "シェア数": {
+        "r_log_views": 0.844,
+        "r_raw_views": 0.877,
+        "n": 24,
+        "type": "effect"
+      },
+      "いいね数": {
+        "r_log_views": 0.835,
+        "r_raw_views": 0.957,
+        "n": 24,
+        "type": "effect"
+      },
+      "登録者獲得数": {
+        "r_log_views": 0.794,
+        "r_raw_views": 0.766,
+        "n": 24,
+        "type": "effect"
+      },
+      "SUBSCRIBER視聴数": {
+        "r_log_views": 0.784,
+        "r_raw_views": 0.976,
+        "n": 24,
+        "type": "effect"
+      },
+      "コメント数": {
+        "r_log_views": 0.746,
+        "r_raw_views": 0.852,
+        "n": 24,
+        "type": "effect"
+      },
+      "いいね率(%)": {
+        "r_log_views": -0.705,
+        "r_raw_views": -0.555,
+        "n": 24,
+        "type": "effect"
+      },
+      "エンゲージメント率(%)": {
+        "r_log_views": -0.696,
+        "r_raw_views": -0.576,
+        "n": 24,
+        "type": "effect"
+      },
+      "平均視聴率(%)": {
+        "r_log_views": -0.648,
+        "r_raw_views": -0.542,
+        "n": 24,
+        "type": "effect"
+      },
+      "Day1→Day2変化率(%)": {
+        "r_log_views": 0.549,
+        "r_raw_views": 0.455,
+        "n": 24,
+        "type": "effect"
+      },
+      "流入元関連動画数": {
+        "r_log_views": -0.368,
+        "r_raw_views": -0.336,
+        "n": 24,
+        "type": "effect"
+      },
+      "コアターゲット比率(%)": {
+        "r_log_views": -0.25,
+        "r_raw_views": -0.254,
+        "n": 24,
+        "type": "effect"
+      },
+      "Day1関連動画視聴数": {
+        "r_log_views": 0.177,
+        "r_raw_views": -0.027,
+        "n": 24,
+        "type": "effect"
+      },
+      "平均視聴時間(秒)": {
+        "r_log_views": -0.175,
+        "r_raw_views": -0.194,
+        "n": 24,
+        "type": "effect"
+      },
+      "最大流入元の視聴数": {
+        "r_log_views": 0.132,
+        "r_raw_views": 0.015,
+        "n": 24,
+        "type": "effect"
+      },
+      "コメント率(%)": {
+        "r_log_views": -0.103,
+        "r_raw_views": -0.304,
+        "n": 24,
+        "type": "effect"
+      }
+    },
+    "vpd_correlations": {
+      "MV挿入数": {
+        "r_log_vpd": -0.023,
+        "n": 24
+      },
+      "感情の底の数": {
+        "r_log_vpd": 0.132,
+        "n": 24
+      },
+      "文字数": {
+        "r_log_vpd": 0.462,
+        "n": 24
+      },
+      "動画の長さ(秒)": {
+        "r_log_vpd": 0.352,
+        "n": 24
+      },
+      "感情曲線の転換数": {
+        "r_log_vpd": -0.133,
+        "n": 24
+      },
+      "導入30秒の引きの強さ": {
+        "r_log_vpd": -0.134,
+        "n": 24
+      },
+      "非MVリンク数": {
+        "r_log_vpd": -0.007,
+        "n": 24
+      },
+      "総メディア数(MV+非MV)": {
+        "r_log_vpd": -0.012,
+        "n": 24
+      },
+      "経過日数": {
+        "r_log_views": 0.351,
+        "r_log_vpd": -0.351,
+        "n": 24
+      }
+    }
+  },
+  "patterns": {
+    "comparisons": [
+      {
+        "name": "4要素完備",
+        "with_count": 19,
+        "with_avg": 193102,
+        "with_median": 77220,
+        "without_count": 5,
+        "without_avg": 280471,
+        "without_median": 181031,
+        "ratio": 0.69,
+        "log_diff": -0.334
+      },
+      {
+        "name": "MV挿入2箇所以上",
+        "with_count": 17,
+        "with_avg": 253201,
+        "with_median": 181031,
+        "without_count": 7,
+        "without_avg": 109554,
+        "without_median": 68871,
+        "ratio": 2.31,
+        "log_diff": 0.249
+      },
+      {
+        "name": "フック回答あり",
+        "with_count": 22,
+        "with_avg": 205527,
+        "with_median": 135341,
+        "without_count": 2,
+        "without_avg": 274853,
+        "without_median": 274853,
+        "ratio": 0.75,
+        "log_diff": -0.166
+      }
+    ],
+    "hook_fraud_cases": [
+      {
+        "artist": "",
+        "views": 486214,
+        "day1_day2": 96.5
+      },
+      {
+        "artist": "",
+        "views": 63493,
+        "day1_day2": -59.9
+      }
+    ]
+  },
+  "group_comparisons": {
+    "伸びた動画": {
+      "動画数": 12,
+      "平均再生数": 363362,
+      "中央値再生数": 291905,
+      "エンゲージメント率(%)": 1.49,
+      "平均視聴時間(秒)": 402.25,
+      "平均視聴率(%)": 33.87,
+      "Day1→Day2(%)": 88.14,
+      "MV挿入数": 4.75,
+      "感情の底の数": 4.33
+    },
+    "伸びてない動画": {
+      "動画数": 12,
+      "平均再生数": 59246,
+      "中央値再生数": 67500,
+      "エンゲージメント率(%)": 1.97,
+      "平均視聴時間(秒)": 431.5,
+      "平均視聴率(%)": 39.27,
+      "Day1→Day2(%)": 14.92,
+      "MV挿入数": 2.17,
+      "感情の底の数": 4.25
+    }
+  },
+  "benchmarks": {
+    "S_500k+": {
+      "count": 1,
+      "avg_views": 1004247,
+      "videos": [
+        {
+          "artist": "",
+          "views": 1004247,
+          "gi_x_ca": 47.5,
+          "engagement_rate": 1.177,
+          "day1_day2": 66.5
+        }
+      ]
+    },
+    "A_200k-500k": {
+      "count": 8,
+      "avg_views": 351938,
+      "videos": [
+        {
+          "artist": "",
+          "views": 493220,
+          "gi_x_ca": 66,
+          "engagement_rate": 0.765,
+          "day1_day2": 135.1
+        },
+        {
+          "artist": "",
+          "views": 486214,
+          "gi_x_ca": 75,
+          "engagement_rate": 1.182,
+          "day1_day2": 96.5
+        },
+        {
+          "artist": "",
+          "views": 484348,
+          "gi_x_ca": 39,
+          "engagement_rate": 1.547,
+          "day1_day2": 263.2
+        },
+        {
+          "artist": "",
+          "views": 328174,
+          "gi_x_ca": 69,
+          "engagement_rate": 1.598,
+          "day1_day2": 242.9
+        },
+        {
+          "artist": "",
+          "views": 303791,
+          "gi_x_ca": 57,
+          "engagement_rate": 1.522,
+          "day1_day2": 192.1
+        },
+        {
+          "artist": "",
+          "views": 280019,
+          "gi_x_ca": 42,
+          "engagement_rate": 1.615,
+          "day1_day2": 5.3
+        },
+        {
+          "artist": "",
+          "views": 234931,
+          "gi_x_ca": 57,
+          "engagement_rate": 1.15,
+          "day1_day2": 18.4
+        },
+        {
+          "artist": "",
+          "views": 204810,
+          "gi_x_ca": 40,
+          "engagement_rate": 1.576,
+          "day1_day2": 3.7
+        }
+      ]
+    },
+    "B_100k-200k": {
+      "count": 4,
+      "avg_views": 161745,
+      "videos": [
+        {
+          "artist": "",
+          "views": 195268,
+          "gi_x_ca": 54,
+          "engagement_rate": 2.239,
+          "day1_day2": 57.0
+        },
+        {
+          "artist": "",
+          "views": 181031,
+          "gi_x_ca": 15,
+          "engagement_rate": 1.291,
+          "day1_day2": -4.1
+        },
+        {
+          "artist": "",
+          "views": 164300,
+          "gi_x_ca": 75,
+          "engagement_rate": 2.195,
+          "day1_day2": -18.9
+        },
+        {
+          "artist": "",
+          "views": 106382,
+          "gi_x_ca": 38,
+          "engagement_rate": 1.152,
+          "day1_day2": 215.1
+        }
+      ]
+    },
+    "C_under_100k": {
+      "count": 11,
+      "avg_views": 54960,
+      "videos": [
+        {
+          "artist": "",
+          "views": 86466,
+          "gi_x_ca": 48,
+          "engagement_rate": 1.738,
+          "day1_day2": 45.0
+        },
+        {
+          "artist": "",
+          "views": 77220,
+          "gi_x_ca": 47.5,
+          "engagement_rate": 1.415,
+          "day1_day2": 72.7
+        },
+        {
+          "artist": "",
+          "views": 75086,
+          "gi_x_ca": 47.5,
+          "engagement_rate": 1.633,
+          "day1_day2": 50.4
+        },
+        {
+          "artist": "",
+          "views": 70623,
+          "gi_x_ca": 32,
+          "engagement_rate": 2.057,
+          "day1_day2": 7.2
+        },
+        {
+          "artist": "",
+          "views": 68871,
+          "gi_x_ca": 36,
+          "engagement_rate": 2.158,
+          "day1_day2": -0.8
+        },
+        {
+          "artist": "",
+          "views": 66130,
+          "gi_x_ca": 66,
+          "engagement_rate": 1.536,
+          "day1_day2": -72.8
+        },
+        {
+          "artist": "",
+          "views": 63493,
+          "gi_x_ca": 48,
+          "engagement_rate": 1.921,
+          "day1_day2": -59.9
+        },
+        {
+          "artist": "",
+          "views": 42170,
+          "gi_x_ca": 25,
+          "engagement_rate": 2.554,
+          "day1_day2": 15.2
+        },
+        {
+          "artist": "",
+          "views": 32433,
+          "gi_x_ca": 51,
+          "engagement_rate": 2.874,
+          "day1_day2": -58.1
+        },
+        {
+          "artist": "",
+          "views": 12087,
+          "gi_x_ca": 33,
+          "engagement_rate": 2.391,
+          "day1_day2": -40.3
+        },
+        {
+          "artist": "",
+          "views": 9991,
+          "gi_x_ca": 57,
+          "engagement_rate": 2.222,
+          "day1_day2": 5.4
+        }
+      ]
+    }
+  },
+  "video_list": [
+    {
+      "video_id": "s4roSkGLDZg",
+      "artist": "",
+      "views": 1004247,
+      "is_hit": true,
+      "gi_x_ca": 47.5,
+      "engagement_rate": 1.177,
+      "day1_day2": 66.5,
+      "published_at": "2025-09-05",
+      "age_days": 163,
+      "views_per_day": 6161.0,
+      "log_vpd": 3.79
+    },
+    {
+      "video_id": "tIRYnBBZCYU",
+      "artist": "",
+      "views": 493220,
+      "is_hit": true,
+      "gi_x_ca": 66,
+      "engagement_rate": 0.765,
+      "day1_day2": 135.1,
+      "published_at": "2025-11-05",
+      "age_days": 102,
+      "views_per_day": 4835.5,
+      "log_vpd": 3.684
+    },
+    {
+      "video_id": "Ukjm9sDC3U4",
+      "artist": "",
+      "views": 486214,
+      "is_hit": true,
+      "gi_x_ca": 75,
+      "engagement_rate": 1.182,
+      "day1_day2": 96.5,
+      "published_at": "2025-09-26",
+      "age_days": 142,
+      "views_per_day": 3424.0,
+      "log_vpd": 3.535
+    },
+    {
+      "video_id": "t7B5ARRSRyg",
+      "artist": "",
+      "views": 484348,
+      "is_hit": true,
+      "gi_x_ca": 39,
+      "engagement_rate": 1.547,
+      "day1_day2": 263.2,
+      "published_at": "2025-09-13",
+      "age_days": 155,
+      "views_per_day": 3124.8,
+      "log_vpd": 3.495
+    },
+    {
+      "video_id": "Kxq0y_6hxl0",
+      "artist": "",
+      "views": 328174,
+      "is_hit": true,
+      "gi_x_ca": 69,
+      "engagement_rate": 1.598,
+      "day1_day2": 242.9,
+      "published_at": "2025-09-23",
+      "age_days": 145,
+      "views_per_day": 2263.3,
+      "log_vpd": 3.355
+    },
+    {
+      "video_id": "MWG67okAspo",
+      "artist": "",
+      "views": 303791,
+      "is_hit": true,
+      "gi_x_ca": 57,
+      "engagement_rate": 1.522,
+      "day1_day2": 192.1,
+      "published_at": "2025-12-12",
+      "age_days": 65,
+      "views_per_day": 4673.7,
+      "log_vpd": 3.67
+    },
+    {
+      "video_id": "gz9eCJZQ6vw",
+      "artist": "",
+      "views": 280019,
+      "is_hit": true,
+      "gi_x_ca": 42,
+      "engagement_rate": 1.615,
+      "day1_day2": 5.3,
+      "published_at": "2025-07-26",
+      "age_days": 205,
+      "views_per_day": 1365.9,
+      "log_vpd": 3.135
+    },
+    {
+      "video_id": "sjJYXnPGGJI",
+      "artist": "",
+      "views": 234931,
+      "is_hit": true,
+      "gi_x_ca": 57,
+      "engagement_rate": 1.15,
+      "day1_day2": 18.4,
+      "published_at": "2025-10-10",
+      "age_days": 129,
+      "views_per_day": 1821.2,
+      "log_vpd": 3.26
+    },
+    {
+      "video_id": "IEQ6XE1LLZI",
+      "artist": "",
+      "views": 204810,
+      "is_hit": true,
+      "gi_x_ca": 40,
+      "engagement_rate": 1.576,
+      "day1_day2": 3.7,
+      "published_at": "2026-01-25",
+      "age_days": 21,
+      "views_per_day": 9752.9,
+      "log_vpd": 3.989
+    },
+    {
+      "video_id": "ARsWjxlohIY",
+      "artist": "",
+      "views": 195268,
+      "is_hit": true,
+      "gi_x_ca": 54,
+      "engagement_rate": 2.239,
+      "day1_day2": 57.0,
+      "published_at": "2025-08-14",
+      "age_days": 186,
+      "views_per_day": 1049.8,
+      "log_vpd": 3.021
+    },
+    {
+      "video_id": "brzmIN16oz8",
+      "artist": "",
+      "views": 181031,
+      "is_hit": true,
+      "gi_x_ca": 15,
+      "engagement_rate": 1.291,
+      "day1_day2": -4.1,
+      "published_at": "2025-09-14",
+      "age_days": 154,
+      "views_per_day": 1175.5,
+      "log_vpd": 3.07
+    },
+    {
+      "video_id": "qBA5rBC7XuI",
+      "artist": "",
+      "views": 164300,
+      "is_hit": true,
+      "gi_x_ca": 75,
+      "engagement_rate": 2.195,
+      "day1_day2": -18.9,
+      "published_at": "2025-09-28",
+      "age_days": 140,
+      "views_per_day": 1173.6,
+      "log_vpd": 3.07
+    },
+    {
+      "video_id": "R2ebL510Itg",
+      "artist": "",
+      "views": 106382,
+      "is_hit": false,
+      "gi_x_ca": 38,
+      "engagement_rate": 1.152,
+      "day1_day2": 215.1,
+      "published_at": "2025-12-09",
+      "age_days": 68,
+      "views_per_day": 1564.4,
+      "log_vpd": 3.194
+    },
+    {
+      "video_id": "8kDsm0jp524",
+      "artist": "",
+      "views": 86466,
+      "is_hit": false,
+      "gi_x_ca": 48,
+      "engagement_rate": 1.738,
+      "day1_day2": 45.0,
+      "published_at": "2025-10-18",
+      "age_days": 121,
+      "views_per_day": 714.6,
+      "log_vpd": 2.854
+    },
+    {
+      "video_id": "7zDmMAtQIrU",
+      "artist": "",
+      "views": 77220,
+      "is_hit": false,
+      "gi_x_ca": 47.5,
+      "engagement_rate": 1.415,
+      "day1_day2": 72.7,
+      "published_at": "2025-11-03",
+      "age_days": 104,
+      "views_per_day": 742.5,
+      "log_vpd": 2.871
+    },
+    {
+      "video_id": "wedwAk9LDcQ",
+      "artist": "",
+      "views": 75086,
+      "is_hit": false,
+      "gi_x_ca": 47.5,
+      "engagement_rate": 1.633,
+      "day1_day2": 50.4,
+      "published_at": "2025-12-19",
+      "age_days": 59,
+      "views_per_day": 1272.6,
+      "log_vpd": 3.105
+    },
+    {
+      "video_id": "gTf9sCckzXg",
+      "artist": "",
+      "views": 70623,
+      "is_hit": false,
+      "gi_x_ca": 32,
+      "engagement_rate": 2.057,
+      "day1_day2": 7.2,
+      "published_at": "2026-01-09",
+      "age_days": 38,
+      "views_per_day": 1858.5,
+      "log_vpd": 3.269
+    },
+    {
+      "video_id": "3WmCRFSbpa8",
+      "artist": "",
+      "views": 68871,
+      "is_hit": false,
+      "gi_x_ca": 36,
+      "engagement_rate": 2.158,
+      "day1_day2": -0.8,
+      "published_at": "2026-01-23",
+      "age_days": 23,
+      "views_per_day": 2994.4,
+      "log_vpd": 3.476
+    },
+    {
+      "video_id": "kWYWmEHTfPQ",
+      "artist": "",
+      "views": 66130,
+      "is_hit": false,
+      "gi_x_ca": 66,
+      "engagement_rate": 1.536,
+      "day1_day2": -72.8,
+      "published_at": "2025-09-03",
+      "age_days": 166,
+      "views_per_day": 398.4,
+      "log_vpd": 2.6
+    },
+    {
+      "video_id": "zRrC0QMomEc",
+      "artist": "",
+      "views": 63493,
+      "is_hit": false,
+      "gi_x_ca": 48,
+      "engagement_rate": 1.921,
+      "day1_day2": -59.9,
+      "published_at": "2026-02-01",
+      "age_days": 15,
+      "views_per_day": 4232.9,
+      "log_vpd": 3.627
+    },
+    {
+      "video_id": "W7WxjgWb8vQ",
+      "artist": "",
+      "views": 42170,
+      "is_hit": false,
+      "gi_x_ca": 25,
+      "engagement_rate": 2.554,
+      "day1_day2": 15.2,
+      "published_at": "2026-02-03",
+      "age_days": 12,
+      "views_per_day": 3514.2,
+      "log_vpd": 3.546
+    },
+    {
+      "video_id": "zI9jXscH9BI",
+      "artist": "",
+      "views": 32433,
+      "is_hit": false,
+      "gi_x_ca": 51,
+      "engagement_rate": 2.874,
+      "day1_day2": -58.1,
+      "published_at": "2026-01-11",
+      "age_days": 36,
+      "views_per_day": 900.9,
+      "log_vpd": 2.955
+    },
+    {
+      "video_id": "X9KIY2WjyPk",
+      "artist": "",
+      "views": 12087,
+      "is_hit": false,
+      "gi_x_ca": 33,
+      "engagement_rate": 2.391,
+      "day1_day2": -40.3,
+      "published_at": "2025-08-16",
+      "age_days": 184,
+      "views_per_day": 65.7,
+      "log_vpd": 1.818
+    },
+    {
+      "video_id": "q6Kga609RMI",
+      "artist": "",
+      "views": 9991,
+      "is_hit": false,
+      "gi_x_ca": 57,
+      "engagement_rate": 2.222,
+      "day1_day2": 5.4,
+      "published_at": "2025-11-29",
+      "age_days": 79,
+      "views_per_day": 126.5,
+      "log_vpd": 2.102
+    }
+  ]
+}

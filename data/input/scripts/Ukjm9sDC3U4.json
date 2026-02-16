@@ -1,0 +1,68 @@
+{
+  "video_id": "Ukjm9sDC3U4",
+  "artist_name": "マイケルジャクソン",
+  "script_file": "/Users/user/タスク/youtube-long/projects/マイケルジャクソン/前編script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 7800,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "孤立",
+    "has_antagonist": true,
+    "antagonist": "父ジョー・ジャクソン、人種差別的な音楽業界、プロモーターのドン・キング",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": false,
+    "savior": ""
+  },
+  "hook_analysis": {
+    "opening_question": "人類史上最も成功したエンターテイナーであるマイケルジャクソンの人生に一体何があったのか？（911通報音声で死を暗示）",
+    "hook_answered_in_script": false,
+    "hook_answer_position_percent": 0
+  },
+  "mv_insertions": {
+    "count": 7,
+    "songs": ["Childhood", "I Want You Back", "ABC / The Love You Save（メドレー）", "They Don't Care About Us", "Billie Jean（ムーンウォーク）", "Ben / Human Nature", "Ed Sullivan Show映像"],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "マイケルジャクソンの死の真相",
+    "top1_addressed": false,
+    "top2_topic": "幼少期の虐待と整形の関係",
+    "top2_addressed": true,
+    "ca_score": 2
+  },
+  "gi_scores": {
+    "G1_gossip": 3,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 4,
+    "total": 22
+  },
+  "emotional_curve": {
+    "total_ups": 5,
+    "total_downs": 8,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "UDD",
+      "first_act": "DUD",
+      "second_act": "UDUD",
+      "third_act": "DDUD"
+    },
+    "balance_description": "下降優位の重厚な悲劇構造。成功のたびにより深い絶望が訪れ、最終的に完全な孤立へ向かう"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "911通報音声で死を暗示しつつ、史上最も成功したエンターテイナーの栄光と悲劇の落差を一気に提示"
+  },
+  "non_mv_media": {
+    "total_links": 16,
+    "links_by_type": {
+      "interview": 14,
+      "live": 0,
+      "documentary": 2,
+      "other": 0
+    }
+  }
+}

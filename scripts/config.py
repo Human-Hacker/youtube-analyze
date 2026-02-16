@@ -20,10 +20,33 @@ PROMPTS_DIR = os.path.join(BASE_DIR, "prompts")
 HISTORY_DIR = os.path.join(DATA_DIR, "history")
 HISTORY_INDEX = os.path.join(HISTORY_DIR, "index.md")
 INSIGHTS_FILE = os.path.join(OUTPUT_DIR, "insights.md")
+PREDICTIONS_FILE = os.path.join(DATA_DIR, "predictions.jsonl")
+PREDICTIONS_DIR = os.path.join(OUTPUT_DIR, "predictions")
 
 # youtube-long パイプライン接続 (W-22)
 YOUTUBE_LONG_DIR = os.path.join(os.path.dirname(BASE_DIR), "youtube-long")
-SELECTION_REPORT_TEMPLATE = os.path.join(YOUTUBE_LONG_DIR, "prompts", "1. selection_report.md")
+
+# selection_report.mdはテンプレートではなく、各アーティストのプロジェクトフォルダに生成される
+# 後方互換: SELECTION_REPORT_TEMPLATE は非推奨。get_selection_report_path() を使用すること
+SELECTION_REPORT_TEMPLATE = None  # 旧パスは無効（M57）
+
+
+def get_selection_report_path(artist_name):
+    """アーティスト名からselection_report.mdのパスを構築する"""
+    return os.path.join(YOUTUBE_LONG_DIR, "projects", artist_name, "selection_report.md")
+
+
+def find_all_selection_reports():
+    """youtube-long/projects/配下の全selection_report.mdを走査して返す"""
+    projects_dir = os.path.join(YOUTUBE_LONG_DIR, "projects")
+    results = []
+    if not os.path.exists(projects_dir):
+        return results
+    for entry in os.listdir(projects_dir):
+        report_path = os.path.join(projects_dir, entry, "selection_report.md")
+        if os.path.isfile(report_path):
+            results.append((entry, report_path))
+    return results
 
 # OAuth スコープ
 SCOPES = [

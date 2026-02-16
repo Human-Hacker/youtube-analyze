@@ -1,0 +1,74 @@
+{
+  "video_id": "q6Kga609RMI",
+  "artist_name": "オアシス",
+  "script_file": "/Users/user/タスク/youtube-long/projects/オアシス/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 5300,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "母の愛による兄弟の再生",
+    "has_antagonist": true,
+    "antagonist": "父トミー・ギャラガー（虐待するアルコール依存症の父）",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "母ペギー・ギャラガー"
+  },
+  "hook_analysis": {
+    "opening_question": "世界を巻き込んだ兄弟喧嘩で解散したオアシスが、15年後に驚くべき形で再結成できた理由とは？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 90
+  },
+  "mv_insertions": {
+    "count": 5,
+    "songs": [
+      "Hello（再結成ライブ映像）",
+      "Wonderwall（アルバム言及）",
+      "Don't Look Back In Anger（アルバム言及）",
+      "ネブワース公演映像",
+      "MTVアンプラグド映像"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "オアシスが再結成した本当の理由",
+    "top1_addressed": true,
+    "top2_topic": "ノエルとリアムの兄弟喧嘩の真相（解散の裏側）",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 4,
+    "G3_emotional": 4,
+    "G4_movie": 4,
+    "G6_songs": 3,
+    "total": 20
+  },
+  "emotional_curve": {
+    "total_ups": 5,
+    "total_downs": 5,
+    "total_transitions": 10,
+    "pattern_by_act": {
+      "intro": "DU",
+      "first_act": "DUDU",
+      "second_act": "UDUD",
+      "third_act": "DU"
+    },
+    "balance_description": "均等な上下動。虐待→音楽での成功→兄弟崩壊→母の愛による再結成という対称的な構造"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "ビートルズ超えの伝説のバンドが全世界を巻き込む兄弟喧嘩で解散し、15年後に驚くべき形で再結成したという事実"
+  },
+  "non_mv_media": {
+    "total_links": 6,
+    "links_by_type": {
+      "interview": 1,
+      "live": 5,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "video_id": "Kxq0y_6hxl0",
+  "artist_name": "テイラースウィフト",
+  "script_file": "/Users/user/タスク/youtube-long/projects/テイラースウィフト/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 8500,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "復讐と証明",
+    "has_antagonist": true,
+    "antagonist": "カニエ・ウェスト / キム・カーダシアン / スクーター・ブラウン",
+    "emotional_bottoms_count": 5,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "ファン（スウィフティーズ）と母アンドレア"
+  },
+  "hook_analysis": {
+    "opening_question": "世界中に恥を晒す事件とは何か？業界の権力者と戦い勝利した方法とは？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 70
+  },
+  "mv_insertions": {
+    "count": 5,
+    "songs": [
+      "Innocent",
+      "Blank Space",
+      "Look What You Made Me Do",
+      "thanK you aIMee",
+      "Soon You'll Get Better"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "カニエ・ウェストとの確執の全貌（VMA事件・Famous・電話音声リーク）",
+    "top1_addressed": true,
+    "top2_topic": "アルバム権利を奪われたマスター音源問題とテイラーズバージョンの戦略",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 4,
+    "total": 24
+  },
+  "emotional_curve": {
+    "total_ups": 6,
+    "total_downs": 7,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "DU",
+      "first_act": "DUDU",
+      "second_act": "DUDUD",
+      "third_act": "UDU"
+    },
+    "balance_description": "屈辱と復讐が対になった階段構造。VMA事件→グラミー、蛇騒動→Reputation、音源強奪→Taylors Versionと、より大きな逆境の後により大きな勝利が来る上昇螺旋"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "世界中に恥を晒す事件の映像と、インタビューでの屈辱的なやり取りを連続提示し、一体何があったのかという強烈な疑問を生む"
+  },
+  "non_mv_media": {
+    "total_links": 18,
+    "links_by_type": {
+      "interview": 10,
+      "live": 2,
+      "documentary": 2,
+      "other": 4
+    }
+  }
+}

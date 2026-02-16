@@ -86,3 +86,4 @@ data/
 | new_hypotheses.md | 新仮説候補 |
 | verification_report.md | 検証レポート |
 | prompt_modifications.md | プロンプト修正記録 |
+| v6.0 | 2026-02-16 | 24本(HIT:12) | R2=0.076, 閾値16精度=45.8% |

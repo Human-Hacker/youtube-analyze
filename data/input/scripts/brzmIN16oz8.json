@@ -1,0 +1,76 @@
+{
+  "video_id": "brzmIN16oz8",
+  "artist_name": "ブルーノマーズ",
+  "script_file": "/Users/user/タスク/youtube-long/projects/ブルーノマーズ/sctipt.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 4500,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "家族愛",
+    "has_antagonist": false,
+    "antagonist": "なし（貧困・環境が敵）",
+    "emotional_bottoms_count": 3,
+    "bottoms_escalate": true,
+    "has_savior": false,
+    "savior": "なし（母の言葉とフィリップ・ローレンスが支え）"
+  },
+  "hook_analysis": {
+    "opening_question": "電気もトイレもない廃墟で育ったブルーノマーズに一体何があったのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 20
+  },
+  "mv_insertions": {
+    "count": 7,
+    "songs": [
+      "I Love You, Mom",
+      "Count on Me",
+      "Billionaire",
+      "Just the Way You Are",
+      "Grenade",
+      "When I Was Your Man",
+      "APT."
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "75億円のギャンブル借金の噂の真相",
+    "top1_addressed": true,
+    "top2_topic": "マイケルジャクソンの後継者と呼ばれる理由・幼少期の環境",
+    "top2_addressed": true,
+    "ca_score": 2
+  },
+  "gi_scores": {
+    "G1_gossip": 3,
+    "G2_curiosity": 3,
+    "G3_emotional": 4,
+    "G4_movie": 3,
+    "G6_songs": 4,
+    "total": 17
+  },
+  "emotional_curve": {
+    "total_ups": 14,
+    "total_downs": 7,
+    "total_transitions": 21,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "UDDUU",
+      "second_act": "UDDUUU",
+      "third_act": "UUDUU"
+    },
+    "balance_description": "上昇優位の成長物語型。苦難は短く、そこから立ち上がる上昇が長く描かれるポジティブな構造"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "グラミー15回受賞の成功者が電気もトイレもない廃墟で育ったという落差を提示"
+  },
+  "non_mv_media": {
+    "total_links": 10,
+    "links_by_type": {
+      "interview": 7,
+      "live": 2,
+      "documentary": 0,
+      "other": 1
+    }
+  }
+}

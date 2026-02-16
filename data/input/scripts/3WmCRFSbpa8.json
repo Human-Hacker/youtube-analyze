@@ -1,0 +1,68 @@
+{
+  "video_id": "3WmCRFSbpa8",
+  "artist_name": "エルヴィスプレスリー",
+  "script_file": "/Users/user/タスク/youtube-long/projects/エルヴィス・プレスリー/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 7800,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "依存",
+    "has_antagonist": true,
+    "antagonist": "トムパーカー大佐",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "スティーブ・バインダー"
+  },
+  "hook_analysis": {
+    "opening_question": "トイレで冷たくなって発見されたエルヴィス。体内から14種類以上の薬物が検出されたが、一体彼に何が起きていたのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 90
+  },
+  "mv_insertions": {
+    "count": 0,
+    "songs": [],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "エルヴィスの死因と薬物依存の真相",
+    "top1_addressed": true,
+    "top2_topic": "パーカー大佐の正体と搾取の実態",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 4,
+    "G6_songs": 2,
+    "total": 21
+  },
+  "emotional_curve": {
+    "total_ups": 6,
+    "total_downs": 7,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "D",
+      "first_act": "UDUDU",
+      "second_act": "UDUD",
+      "third_act": "UDDD"
+    },
+    "balance_description": "上昇のたびにより深い谷へ落ちる下降優位の悲劇型曲線"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "ギネス認定の伝説的アーティストがトイレで死体で発見され体内から14種類の薬物が検出されたという衝撃事実"
+  },
+  "non_mv_media": {
+    "total_links": 0,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}

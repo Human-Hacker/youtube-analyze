@@ -1,0 +1,68 @@
+{
+  "video_id": "W7WxjgWb8vQ",
+  "artist_name": "アデル",
+  "script_file": "/Users/user/タスク/youtube-long/projects/アデル/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 5400,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "見捨てられる恐怖",
+    "has_antagonist": true,
+    "antagonist": "父マーク",
+    "emotional_bottoms_count": 3,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "母ペニー"
+  },
+  "hook_analysis": {
+    "opening_question": "わずか4枚のアルバムで1億2千万枚を売った歌姫が、ある事件で突如声を失い歌手としての死を迎えようとしていた。何が起きたのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 45
+  },
+  "mv_insertions": {
+    "count": 0,
+    "songs": [],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "アデルの活動休止の理由",
+    "top1_addressed": true,
+    "top2_topic": "父親との確執と和解の真相",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 3,
+    "G2_curiosity": 4,
+    "G3_emotional": 5,
+    "G4_movie": 4,
+    "G6_songs": 3,
+    "total": 19
+  },
+  "emotional_curve": {
+    "total_ups": 12,
+    "total_downs": 7,
+    "total_transitions": 19,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "DUUUD",
+      "second_act": "UDDUUUU",
+      "third_act": "DUDUU"
+    },
+    "balance_description": "上昇優位の再生型構造。絶望から回復への流れが繰り返され、最終的に赦しと解放に到達する"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "4枚のアルバムで1億2千万枚を売った歌姫が突如声を失ったという衝撃的事実を提示"
+  },
+  "non_mv_media": {
+    "total_links": 0,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}

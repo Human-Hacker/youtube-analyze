@@ -1,0 +1,71 @@
+{
+  "video_id": "MWG67okAspo",
+  "artist_name": "ジョンボンジョヴィ",
+  "script_file": "/Users/user/タスク/youtube-long/projects/ジョンボンジョヴィ/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 5800,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "復活",
+    "has_antagonist": true,
+    "antagonist": "音楽業界（マネジメントチーム・レコード会社）・声帯萎縮症という病",
+    "emotional_bottoms_count": 4,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "妻ドロシア・ハーリー"
+  },
+  "hook_analysis": {
+    "opening_question": "マイケルジャクソンを差し置いて頂点に立ったボンジョヴィのリーダーが、なぜツアー中に泥酔駆け落ち事件を起こしたのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 25
+  },
+  "mv_insertions": {
+    "count": 2,
+    "songs": [
+      "It's My Life",
+      "Forever（アルバム告知映像）"
+    ],
+    "placement_at_heavy_moments": false
+  },
+  "curiosity_alignment": {
+    "top1_topic": "ボンジョヴィの声が出なくなった理由と手術の結果",
+    "top1_addressed": true,
+    "top2_topic": "リッチー・サンボラ脱退の真相",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 4,
+    "G2_curiosity": 4,
+    "G3_emotional": 5,
+    "G4_movie": 4,
+    "G6_songs": 2,
+    "total": 19
+  },
+  "emotional_curve": {
+    "total_ups": 4,
+    "total_downs": 5,
+    "total_transitions": 9,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "UDDU",
+      "second_act": "UDD",
+      "third_act": "DDU"
+    },
+    "balance_description": "絶頂からの連続転落と最終復活。成功→業界の束縛→バンド崩壊→声喪失と底が深くなり続け、手術とリハビリを経て最後に劇的復活する谷底脱出型"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "マイケルジャクソンを超えた頂点のバンドのリーダーが泥酔駆け落ち事件を起こしたという衝撃的逆説で引き込む"
+  },
+  "non_mv_media": {
+    "total_links": 1,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 1
+    }
+  }
+}

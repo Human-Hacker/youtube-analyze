@@ -1,0 +1,454 @@
+{
+  "fetch_timestamp": "2026-02-16T01:12:24.349915",
+  "metadata": {
+    "video_id": "Kxq0y_6hxl0",
+    "title": "資産2,000億円の歌姫を襲う芸能界の闇。テイラースウィフトが業界の権力者と戦い、勝利した方法",
+    "published_at": "2025-09-23T11:00:38Z",
+    "description": "テイラースウィフト　人生\nテイラースウィフト　ライブ\nテイラースウィフト　人気曲\n\nThis video was created for commentary/educational purposes, with respect to all original creators.",
+    "tags": [],
+    "duration_seconds": 1504,
+    "duration_display": "25:04",
+    "current_stats": {
+      "view_count": 328174,
+      "like_count": 4348,
+      "comment_count": 270
+    },
+    "thumbnail_url": "https://i.ytimg.com/vi/Kxq0y_6hxl0/maxresdefault.jpg"
+  },
+  "analytics_overview": {
+    "views": 326668,
+    "estimated_minutes_watched": 2457893,
+    "average_view_duration_seconds": 451,
+    "average_view_percentage": 30.020000000000003,
+    "likes": 4309,
+    "comments": 237,
+    "shares": 627,
+    "subscribers_gained": 1524,
+    "subscribers_lost": 55
+  },
+  "traffic_sources": {
+    "SUBSCRIBER": {
+      "views": 200332,
+      "estimated_minutes_watched": 1125108,
+      "percentage": 61.3
+    },
+    "RELATED_VIDEO": {
+      "views": 111318,
+      "estimated_minutes_watched": 1203201,
+      "percentage": 34.1
+    },
+    "YT_CHANNEL": {
+      "views": 3617,
+      "estimated_minutes_watched": 44247,
+      "percentage": 1.1
+    },
+    "NO_LINK_OTHER": {
+      "views": 3038,
+      "estimated_minutes_watched": 17013,
+      "percentage": 0.9
+    },
+    "YT_SEARCH": {
+      "views": 2902,
+      "estimated_minutes_watched": 22016,
+      "percentage": 0.9
+    },
+    "YT_OTHER_PAGE": {
+      "views": 2772,
+      "estimated_minutes_watched": 26342,
+      "percentage": 0.8
+    },
+    "EXT_URL": {
+      "views": 844,
+      "estimated_minutes_watched": 2991,
+      "percentage": 0.3
+    },
+    "END_SCREEN": {
+      "views": 811,
+      "estimated_minutes_watched": 8483,
+      "percentage": 0.2
+    },
+    "SHORTS_CONTENT_LINKS": {
+      "views": 598,
+      "estimated_minutes_watched": 4390,
+      "percentage": 0.2
+    },
+    "PLAYLIST": {
+      "views": 400,
+      "estimated_minutes_watched": 3719,
+      "percentage": 0.1
+    },
+    "ANNOTATION": {
+      "views": 26,
+      "estimated_minutes_watched": 241,
+      "percentage": 0.0
+    },
+    "NOTIFICATION": {
+      "views": 10,
+      "estimated_minutes_watched": 136,
+      "percentage": 0.0
+    }
+  },
+  "demographics": {
+    "breakdown": {
+      "age13-17": {
+        "female": 0.2,
+        "male": 0.2
+      },
+      "age18-24": {
+        "female": 1.3,
+        "male": 1.2
+      },
+      "age25-34": {
+        "female": 6.3,
+        "male": 4.9
+      },
+      "age35-44": {
+        "female": 11.3,
+        "male": 10,
+        "genderUserSpecified": 0
+      },
+      "age45-54": {
+        "female": 16.7,
+        "male": 15.8,
+        "genderUserSpecified": 0
+      },
+      "age55-64": {
+        "female": 13.2,
+        "male": 10.8
+      },
+      "age65-": {
+        "female": 4.7,
+        "male": 3.4
+      }
+    },
+    "core_target_45_64_percent": 56.5
+  },
+  "daily_data": {
+    "daily": [
+      {
+        "day_number": 1,
+        "date": "2025-09-23",
+        "views": 13045,
+        "avg_view_duration": 518,
+        "subs_gained": 64,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 319,
+            "minutes_watched": 3049.0
+          },
+          "SUBSCRIBER": {
+            "views": 9979,
+            "minutes_watched": 75917.0
+          },
+          "SEARCH": {
+            "views": 101,
+            "minutes_watched": 568.0
+          },
+          "RELATED": {
+            "views": 2646,
+            "minutes_watched": 33216.0
+          }
+        }
+      },
+      {
+        "day_number": 2,
+        "date": "2025-09-24",
+        "views": 44733,
+        "avg_view_duration": 383,
+        "subs_gained": 160,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 593,
+            "minutes_watched": 5060.0
+          },
+          "SUBSCRIBER": {
+            "views": 37729,
+            "minutes_watched": 207914.0
+          },
+          "SEARCH": {
+            "views": 55,
+            "minutes_watched": 373.0
+          },
+          "RELATED": {
+            "views": 6356,
+            "minutes_watched": 72840.0
+          }
+        }
+      },
+      {
+        "day_number": 3,
+        "date": "2025-09-25",
+        "views": 25708,
+        "avg_view_duration": 368,
+        "subs_gained": 76,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 438,
+            "minutes_watched": 3749.0
+          },
+          "SUBSCRIBER": {
+            "views": 21555,
+            "minutes_watched": 113917.0
+          },
+          "SEARCH": {
+            "views": 38,
+            "minutes_watched": 310.0
+          },
+          "RELATED": {
+            "views": 3677,
+            "minutes_watched": 39999.0
+          }
+        }
+      },
+      {
+        "day_number": 4,
+        "date": "2025-09-26",
+        "views": 14869,
+        "avg_view_duration": 396,
+        "subs_gained": 55,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 443,
+            "minutes_watched": 4103.0
+          },
+          "SUBSCRIBER": {
+            "views": 12246,
+            "minutes_watched": 69140.0
+          },
+          "SEARCH": {
+            "views": 44,
+            "minutes_watched": 423.0
+          },
+          "RELATED": {
+            "views": 2136,
+            "minutes_watched": 24540.0
+          }
+        }
+      },
+      {
+        "day_number": 5,
+        "date": "2025-09-27",
+        "views": 12562,
+        "avg_view_duration": 436,
+        "subs_gained": 70,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 549,
+            "minutes_watched": 5333.0
+          },
+          "SUBSCRIBER": {
+            "views": 9465,
+            "minutes_watched": 56700.0
+          },
+          "SEARCH": {
+            "views": 24,
+            "minutes_watched": 135.0
+          },
+          "RELATED": {
+            "views": 2524,
+            "minutes_watched": 29145.0
+          }
+        }
+      },
+      {
+        "day_number": 6,
+        "date": "2025-09-28",
+        "views": 11583,
+        "avg_view_duration": 462,
+        "subs_gained": 53,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 548,
+            "minutes_watched": 5566.0
+          },
+          "SUBSCRIBER": {
+            "views": 7847,
+            "minutes_watched": 46516.0
+          },
+          "SEARCH": {
+            "views": 29,
+            "minutes_watched": 155.0
+          },
+          "RELATED": {
+            "views": 3159,
+            "minutes_watched": 36997.0
+          }
+        }
+      },
+      {
+        "day_number": 7,
+        "date": "2025-09-29",
+        "views": 13419,
+        "avg_view_duration": 473,
+        "subs_gained": 75,
+        "traffic_breakdown": {
+          "OTHER": {
+            "views": 397,
+            "minutes_watched": 3739.0
+          },
+          "SUBSCRIBER": {
+            "views": 8699,
+            "minutes_watched": 53114.0
+          },
+          "SEARCH": {
+            "views": 33,
+            "minutes_watched": 283.0
+          },
+          "RELATED": {
+            "views": 4290,
+            "minutes_watched": 48867.0
+          }
+        }
+      }
+    ],
+    "day1_to_day2_change_percent": 242.9,
+    "related_video_sources": [
+      {
+        "source_video_id": "s4roSkGLDZg",
+        "source_video_title": "",
+        "views": 325,
+        "estimated_minutes_watched": 4081
+      },
+      {
+        "source_video_id": "t7B5ARRSRyg",
+        "source_video_title": "",
+        "views": 230,
+        "estimated_minutes_watched": 3378
+      },
+      {
+        "source_video_id": "Ukjm9sDC3U4",
+        "source_video_title": "",
+        "views": 167,
+        "estimated_minutes_watched": 2126
+      },
+      {
+        "source_video_id": "brzmIN16oz8",
+        "source_video_title": "",
+        "views": 161,
+        "estimated_minutes_watched": 2461
+      },
+      {
+        "source_video_id": "qBA5rBC7XuI",
+        "source_video_title": "",
+        "views": 159,
+        "estimated_minutes_watched": 2276
+      },
+      {
+        "source_video_id": "qPiYjThN918",
+        "source_video_title": "",
+        "views": 125,
+        "estimated_minutes_watched": 1303
+      },
+      {
+        "source_video_id": "gz9eCJZQ6vw",
+        "source_video_title": "",
+        "views": 113,
+        "estimated_minutes_watched": 1594
+      },
+      {
+        "source_video_id": "kWYWmEHTfPQ",
+        "source_video_title": "",
+        "views": 93,
+        "estimated_minutes_watched": 1345
+      },
+      {
+        "source_video_id": "ARsWjxlohIY",
+        "source_video_title": "",
+        "views": 86,
+        "estimated_minutes_watched": 1124
+      },
+      {
+        "source_video_id": "rEc1Yn5zWqI",
+        "source_video_title": "",
+        "views": 82,
+        "estimated_minutes_watched": 1193
+      },
+      {
+        "source_video_id": "KrYHbhXU5kI",
+        "source_video_title": "",
+        "views": 65,
+        "estimated_minutes_watched": 864
+      },
+      {
+        "source_video_id": "tpA6I6WPbSQ",
+        "source_video_title": "",
+        "views": 65,
+        "estimated_minutes_watched": 694
+      },
+      {
+        "source_video_id": "sPLqsLsooJY",
+        "source_video_title": "",
+        "views": 61,
+        "estimated_minutes_watched": 772
+      },
+      {
+        "source_video_id": "Yfypoq1uNSw",
+        "source_video_title": "",
+        "views": 59,
+        "estimated_minutes_watched": 872
+      },
+      {
+        "source_video_id": "-z7eXd56x88",
+        "source_video_title": "",
+        "views": 50,
+        "estimated_minutes_watched": 625
+      },
+      {
+        "source_video_id": "gtOZHj7sZgk",
+        "source_video_title": "",
+        "views": 47,
+        "estimated_minutes_watched": 519
+      },
+      {
+        "source_video_id": "8W17mqibyGU",
+        "source_video_title": "",
+        "views": 46,
+        "estimated_minutes_watched": 404
+      },
+      {
+        "source_video_id": "ZLTxKkbMRCY",
+        "source_video_title": "",
+        "views": 44,
+        "estimated_minutes_watched": 544
+      },
+      {
+        "source_video_id": "EJ8hleDWHkY",
+        "source_video_title": "",
+        "views": 40,
+        "estimated_minutes_watched": 497
+      },
+      {
+        "source_video_id": "FWOVyQCwB5U",
+        "source_video_title": "",
+        "views": 38,
+        "estimated_minutes_watched": 518
+      },
+      {
+        "source_video_id": "k3UWi61FkMU",
+        "source_video_title": "",
+        "views": 38,
+        "estimated_minutes_watched": 481
+      },
+      {
+        "source_video_id": "WE1qQDZyIKk",
+        "source_video_title": "",
+        "views": 37,
+        "estimated_minutes_watched": 500
+      },
+      {
+        "source_video_id": "krVvLT2vnDU",
+        "source_video_title": "",
+        "views": 36,
+        "estimated_minutes_watched": 317
+      },
+      {
+        "source_video_id": "BZtNg-ZwWr8",
+        "source_video_title": "",
+        "views": 35,
+        "estimated_minutes_watched": 254
+      }
+    ]
+  },
+  "manual_data": null,
+  "script_analysis": null
+}

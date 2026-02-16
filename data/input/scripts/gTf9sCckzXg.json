@@ -1,0 +1,72 @@
+{
+  "video_id": "gTf9sCckzXg",
+  "artist_name": "デヴィッドボウイ",
+  "script_file": "/Users/user/タスク/youtube-long/projects/デヴィッドボウイ/script.md",
+  "analysis_date": "2026-02-15",
+  "word_count": 7200,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "正気と狂気の境界",
+    "has_antagonist": true,
+    "antagonist": "悪徳マネージャー、トニー・デフリーズ・自ら生み出した別人格（ジギー/デューク）",
+    "emotional_bottoms_count": 5,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "日本（京都）・娘レクシー・兄テリーの死がもたらした覚醒"
+  },
+  "hook_analysis": {
+    "opening_question": "史上最も影響力のあるデヴィッドボウイが、自ら作り出した別人格に苦しめられ、69歳の誕生日直後に謎の死を遂げた理由とは？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 90
+  },
+  "mv_insertions": {
+    "count": 3,
+    "songs": [
+      "Starman",
+      "Rock 'n' Roll Suicide（ジギー解散告知映像）",
+      "Lazarus"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "ジギー・スターダストという別人格の正体と誕生の理由",
+    "top1_addressed": true,
+    "top2_topic": "ボウイの死の真相（肝臓癌と最期のアルバム）",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 4,
+    "G2_curiosity": 5,
+    "G3_emotional": 5,
+    "G4_movie": 5,
+    "G6_songs": 4,
+    "total": 23
+  },
+  "emotional_curve": {
+    "total_ups": 6,
+    "total_downs": 7,
+    "total_transitions": 13,
+    "pattern_by_act": {
+      "intro": "DU",
+      "first_act": "DUDU",
+      "second_act": "DUDUDUD",
+      "third_act": "UDU"
+    },
+    "balance_description": "下降優勢の波状構造。幼少期トラウマから始まり、成功と転落を繰り返しながら最期はアートとして昇華する"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "史上最も影響力のあるアーティストが別人格に苦しめられ69歳で謎の死を遂げたという衝撃的事実の提示"
+  },
+  "non_mv_media": {
+    "total_links": 1,
+    "links_by_type": {
+      "interview": 0,
+      "live": 1,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}
