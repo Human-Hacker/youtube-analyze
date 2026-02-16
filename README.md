@@ -1,237 +1,95 @@
 # YouTube Analytics Agent for ウタヨミ
 
-## ファイル一覧
+## パイプライン実行順序
 
 ```
-youtube-analytics/
+Step 1: python scripts/step1_fetch.py           # データ取得（YouTube API）
+Step 2: python scripts/step2_build_model.py      # モデル構築（相関分析・フィルター）
+  ┌─── 分析ループ（最大5回）─────────────────────────┐
+  │ Step 3: python scripts/step3_analyze.py          # 分析準備（データ集計）
+  │ Step 4: Agent C (agents/analyze-step4-hypothesis.md)  # 仮説生成
+  │ Step 5: Agent E (agents/analyze-step5-verification.md) # 仮説検証
+  │ Step 6: python scripts/step3_analyze.py --integrate    # 結果統合
+  └─── 未収束なら Step 3 へ ─────────────────────────┘
+Step 7: python scripts/step7_pdca.py VIDEO_ID    # PDCA評価（新動画）
+```
+
+## ディレクトリ構造
+
+```
+youtube-analyze/
+├── commands/
+│   └── analyze-pipeline.md          # パイプライン司令官（詳細仕様）
 │
-├── README.md                              ← このファイル
+├── agents/
+│   ├── analyze-step4-hypothesis.md  # Step 4: 仮説生成（メタ分析）
+│   └── analyze-step5-verification.md # Step 5: 仮説検証（レッドチーム）
+│
+├── prompts/
+│   ├── coordinator.md               # 分析サイクル仕様書
+│   ├── youtube_fundamentals.md      # YouTube前提知識
+│   └── scoring_criteria.md          # GI/CAスコアリング基準
 │
 ├── scripts/
-│   ├── config.py                          ← 共通設定（直接実行しない）
-│   ├── step0_setup.md                     ← Google Cloud初期設定ガイド（手動で読む）
-│   ├── step1_auth.py                      ← OAuth認証
-│   ├── step2_test.py                      ← API接続テスト
-│   ├── step3_fetch_all.py                 ← 全動画データ一括取得
-│   ├── step4_merge_manual.py              ← 手動CSVとAPIデータの結合
-│   ├── step5_build_model.py               ← 「伸びる動画モデル」構築
-│   └── step6_pdca_update.py               ← 新動画PDCA評価・モデル更新
-│
-├── data/
-│   ├── videos/                            ← 動画ごとのJSON（step3で自動生成）
-│   ├── scripts/                           ← 台本構造分析JSON（Claude Codeで生成）
-│   ├── manual_exports/
-│   │   └── manual_export.csv              ← YouTube Studioから手動取得データ
-│   ├── pdca_reports/                      ← PDCAレポート（step6で自動生成）
-│   ├── model_history/                     ← モデルバージョン履歴（自動生成）
-│   ├── video_index.json                   ← 全動画一覧（step3で自動生成）
-│   ├── model.json                         ← 現在のモデル（step5で自動生成）
-│   └── analysis_report.md                 ← 分析レポート（step5で自動生成）
+│   ├── auth.py                      # OAuth認証ユーティリティ
+│   ├── step1_fetch.py               # Step 1: データ取得
+│   ├── step2_build_model.py         # Step 2: モデル構築
+│   ├── step2_filters.py             #   └─ 3段階フィルター
+│   ├── step2_patterns.py            #   └─ パターン分析
+│   ├── step2_history.py             #   └─ 履歴管理
+│   ├── step2_report.py              #   └─ レポート生成
+│   ├── step3_analyze.py             # Step 3/6: 分析準備 & 結果統合
+│   ├── step7_pdca.py                # Step 7: PDCA評価
+│   ├── data_summarizer.py           # データ集計ユーティリティ
+│   ├── config.py                    # 設定（パス・閾値）
+│   └── common/
+│       ├── data_loader.py           # データ読み込み
+│       └── metrics.py               # 統計計算
 │
 ├── templates/
-│   └── script_analysis_template.json      ← 台本分析のテンプレート
+│   └── script_analysis_template.json # 台本分析テンプレート
 │
-├── client_secret.json                     ← Google Cloudからダウンロード（※Git管理しない）
-└── token.json                             ← 初回認証で自動生成（※Git管理しない）
+├── data/
+│   ├── input/                       # 入力データ
+│   │   ├── videos/                  # 動画アナリティクスJSON（24本）
+│   │   ├── scripts/                 # 台本構造分析JSON（24本）
+│   │   ├── video_index.json         # 全動画一覧
+│   │   ├── human_scores.json        # 人間評価スコア（GI/CA）
+│   │   └── analysis_fundamentals.json # 分析の不変基盤
+│   ├── output/                      # 出力データ
+│   │   ├── model.json               # 現在のモデル
+│   │   ├── analysis_report.md       # 分析レポート
+│   │   ├── analysis_conclusion.md   # 分析結論（誰でも読める形式）
+│   │   └── golden_theory.json       # 黄金理論（原則+チェックリスト）
+│   ├── workspace/                   # 作業用（エージェント入出力）
+│   │   ├── data_summary.md          # 全動画指標サマリ
+│   │   ├── new_hypotheses.md        # Agent C出力
+│   │   ├── verification_report.md   # Agent E出力
+│   │   └── prompt_modifications.md  # プロンプト改善提案
+│   └── history/                     # 履歴
+│       ├── insights.md              # 採択/棄却仮説の全履歴
+│       ├── index.md                 # バージョン履歴
+│       └── v{X.X}_{date}/           # スナップショット
+│
+├── projects/                        # アーティスト別手動データ（CSV）
+├── client_secret.json               # Google Cloud認証（※Git管理外）
+└── token.json                       # OAuthトークン（※Git管理外）
 ```
 
----
+## 初回セットアップ
 
-## 実行手順 & Claude Codeでのコマンド
+1. Google Cloud設定 → `client_secret.json` を配置
+2. `python scripts/auth.py` で OAuth認証（`token.json` 生成）
+3. `python scripts/step1_fetch.py` で全動画データ取得
+4. YouTube Studio から手動CSV取得 → `python scripts/step1_fetch.py --merge`
+5. 台本構造分析JSON を `data/input/scripts/` に配置
+6. `python scripts/step2_build_model.py` でモデル構築
 
----
+## 継続運用（新動画公開ごと）
 
-### ━━━ 初回セットアップ（1回だけ） ━━━
+1. `python scripts/step7_pdca.py VIDEO_ID` で予測 vs 実績を評価
+2. 手動CSV追記 + 台本分析 → `python scripts/step7_pdca.py VIDEO_ID --skip-fetch --update-model`
 
----
+## 分析サイクル
 
-### Step 0: Google Cloud設定（手動作業）
-
-`scripts/step0_setup.md` を読んで設定を完了させてください。
-完了後、`client_secret.json` を `youtube-analytics/` 直下に配置。
-
----
-
-### Step 1: OAuth認証
-
-**Claude Codeで以下をコピペ:**
-```
-youtube-analytics/scripts/step1_auth.py を実行して
-```
-
-→ ブラウザが開く → Googleアカウントでログイン → `token.json` が生成される
-
----
-
-### Step 2: API接続テスト
-
-**Claude Codeで以下をコピペ:**
-```
-youtube-analytics/scripts/step2_test.py を実行して
-```
-
-→ チャンネル名・登録者数・最新動画・直近7日分データが表示されれば成功
-
----
-
-### ━━━ モデル構築（初回） ━━━
-
----
-
-### Step 3: 全動画のAPIデータ一括取得
-
-**Claude Codeで以下をコピペ:**
-```
-youtube-analytics/scripts/step3_fetch_all.py を実行して
-```
-
-→ 全長編動画のアナリティクスを取得 → `data/videos/{video_id}.json` に保存
-→ `data/video_index.json` に全動画の一覧が保存される
-
-**※ 1動画だけ取得したい場合:**
-```
-youtube-analytics/scripts/step3_fetch_all.py を引数 VIDEO_ID で実行して
-```
-
----
-
-### Step 4-A: YouTube Studioから手動データ取得（手動作業）
-
-YouTube Studio (https://studio.youtube.com) で各動画の以下を確認し、
-`data/manual_exports/manual_export.csv` に記入してください:
-
-| 取得するデータ | YouTube Studioでの場所 |
-|---------------|----------------------|
-| ブラウジングIMP数 | アナリティクス → トラフィックソース → ブラウジング機能 → インプレッション数 |
-| ブラウジングCTR | 同上 → クリック率 |
-| 関連動画IMP数 | アナリティクス → トラフィックソース → 関連動画 → インプレッション数 |
-| 関連動画CTR | 同上 → クリック率 |
-| コア視聴者率 | アナリティクス → 視聴者 → コア視聴者の% |
-| 新規視聴者率 | アナリティクス → 視聴者 → 新しい視聴者の% |
-
-**video_id は `data/video_index.json` を見て確認してください。**
-
-CSVの形式:
-```csv
-video_id,artist_name,browsing_impressions,browsing_ctr,related_impressions,related_ctr,core_viewer_pct,new_viewer_pct
-XXXXX,ジャスティン・ビーバー,1500000,7.8,300000,4.5,8.5,47.5
-YYYYY,マイケル・ジャクソン,800000,5.4,200000,3.2,12.0,35.0
-```
-
----
-
-### Step 4-B: 手動データのマージ
-
-**Claude Codeで以下をコピペ:**
-```
-youtube-analytics/scripts/step4_merge_manual.py を実行して
-```
-
-→ CSVのデータが各動画のJSONの `manual_data` フィールドに結合される
-
----
-
-### Step 4-C: 台本の構造分析
-
-**Claude Codeで以下をコピペ:**
-```
-/Users/user/タスク/youtube-long/projects/{アーティスト名}/script 配下の台本を読み込んで、
-youtube-analyze/templates/script_analysis_template.json の形式で分析し、
-youtube-analyze/data/scripts/{video_id}.json として保存して。
-
-youtube-analyze/data/video_index.json でアーティスト名とvideo_idの対応を確認して。
-
-各台本について以下を判定:
-1. 一言テーマがあるか（台本全体を貫く一言）
-2. 明確な加害者がいるか（視聴者が「許せない」と感じる存在）
-3. 感情の底が3回以上あり、エスカレートしているか
-4. 救済者がいるか
-5. 冒頭のフック（問い）に台本内で答えているか
-6. MVの挿入箇所と曲名
-7. 好奇心マップTOP1-2に台本が答えているか（CAスコア 0-3）
-8. GIスコアの各項目（G1-G6、各1-5）
-```
-
----
-
-### Step 5: モデル構築
-
-**Claude Codeで以下をコピペ:**
-```
-youtube-analytics/scripts/step5_build_model.py を実行して
-```
-
-→ `data/model.json`（モデル定義）と `data/analysis_report.md`（分析レポート）が生成される
-
-**構築後の確認:**
-```
-youtube-analytics/data/analysis_report.md を読んで、モデルの内容を要約して
-```
-
----
-
-### ━━━ 継続運用（新動画公開ごと） ━━━
-
----
-
-### Step 6: PDCA評価
-
-#### 6-A: 新動画のデータ取得 + 評価
-
-**Claude Codeで以下をコピペ（VIDEO_IDを実際のIDに置換）:**
-```
-youtube-analytics/scripts/step6_pdca_update.py を引数 VIDEO_ID で実行して
-```
-
-→ データ取得 → 予測vs実績の比較 → `data/pdca_reports/` にレポート出力
-
-#### 6-B: 手動CSV更新 + 台本分析（Step 4-A, 4-B, 4-C と同じ）
-
-新動画分のデータを `manual_export.csv` に追記 → マージ → 台本分析
-
-#### 6-C: モデル更新
-
-**Claude Codeで以下をコピペ（VIDEO_IDを実際のIDに置換）:**
-```
-youtube-analytics/scripts/step6_pdca_update.py を引数 VIDEO_ID --skip-fetch --update-model で実行して
-```
-
-→ モデル再構築 → `data/model.json` 更新 → 旧モデルは `data/model_history/` にバックアップ
-
----
-
-## 全体フロー図
-
-```
-[初回のみ]
-  Step 0（手動）
-    ↓
-  Step 1 → Step 2 → Step 3
-    ↓
-  Step 4-A（手動） → Step 4-B → Step 4-C
-    ↓
-  Step 5
-    ↓
-  model.json + analysis_report.md 完成
-    ↓
-  selection.md / selection_report.md に反映
-
-
-[新動画公開ごと]
-  Step 6-A（データ取得+評価）
-    ↓
-  Step 4-A（手動CSV追記） → Step 4-B → Step 4-C（台本分析）
-    ↓
-  Step 6-C（モデル更新）
-    ↓
-  model.json 更新 → selection.md に反映
-```
-
----
-
-## .gitignore
-
-```
-client_secret.json
-token.json
-```
+詳細は `commands/analyze-pipeline.md` を参照。
