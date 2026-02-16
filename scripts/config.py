@@ -17,10 +17,13 @@ HUMAN_SCORES_FILE = os.path.join(INPUT_DIR, "human_scores.json")
 MODEL_FILE = os.path.join(OUTPUT_DIR, "model.json")
 AGENTS_DIR = os.path.join(BASE_DIR, "agents")
 PROMPTS_DIR = os.path.join(BASE_DIR, "prompts")
-WORKSPACE_DIR = os.path.join(DATA_DIR, "workspace")
 HISTORY_DIR = os.path.join(DATA_DIR, "history")
 HISTORY_INDEX = os.path.join(HISTORY_DIR, "index.md")
-INSIGHTS_FILE = os.path.join(HISTORY_DIR, "insights.md")
+INSIGHTS_FILE = os.path.join(OUTPUT_DIR, "insights.md")
+
+# youtube-long パイプライン接続 (W-22)
+YOUTUBE_LONG_DIR = os.path.join(os.path.dirname(BASE_DIR), "youtube-long")
+SELECTION_REPORT_TEMPLATE = os.path.join(YOUTUBE_LONG_DIR, "prompts", "1. selection_report.md")
 
 # OAuth スコープ
 SCOPES = [

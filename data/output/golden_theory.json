@@ -1,15 +1,47 @@
 {
-  "version": "2.0",
+  "version": "3.0",
   "last_updated": "2026-02-16",
-  "last_cycle": 6,
+  "last_cycle": "phase2_integrated",
   "principles": [
     {
       "id": "P1",
-      "statement": "G1+G6>=8（ゴシップ露出度+楽曲知名度の合計）がHIT/MISS分類の最有力条件（精度79.2%）。公開時話題性(G7)を補助条件として追加することで偽陽性削減が可能（暫定精度87.5%）。ただしG7の操作的定義は未確立",
-      "mechanism": "G1(ゴシップ露出度=ストック)がクリック動機を、G6(楽曲知名度)が視聴維持(ノスタルジア)を駆動。G7(公開時話題性=フロー)がストック指標と現在の需要のギャップを調整。三者が揃うとアルゴリズム推薦が増幅される",
-      "status": "hypothesis",
-      "established_cycle": 3,
-      "supporting_evidence": [],
+      "statement": "G1+G6>=8 OR G_ST>=5 がHIT/MISS分類の最有力条件（精度83.3%=20/24）。G1(ゴシップ露出度)+G6(楽曲知名度)の合計8以上、または日本Spotifyストリーミング需要が極めて高い場合にHITする",
+      "mechanism": "G1(ゴシップ露出度=ストック)がクリック動機を、G6(楽曲知名度)が視聴維持(ノスタルジア)を駆動。G_ST(日本ストリーミング需要)はYouTube Musicとのクロスプラットフォーム推薦を駆動。G7(公開時話題性)は単独での弁別力が弱い（実測で棄却）",
+      "status": "conditionally_adopted",
+      "established_cycle": "phase2",
+      "supporting_evidence": [
+        "G1+G6>=8の精度79.2%(19/24)が10サイクルで安定",
+        "G_ST>=5のEdSheeranがG1+G6=5でHIT(484K)→G_STの独立予測力を実証",
+        "G_ST=5はEdSheeranのみ(n=1)だが、Shape of YouがJP Spotify #1で累計1.2億ストリームという圧倒的根拠"
+      ],
+      "contradicting_evidence": [
+        "偽陽性: マドンナ(G1+G6=9,MISS)、オアシス(G1+G6=10,MISS)",
+        "偽陰性: ブリトニー(G1+G6=7,G_ST=1,HIT)、ポール(G1+G6=7,G_ST=1,HIT)"
+      ]
+    },
+    {
+      "id": "P2",
+      "statement": "G7(公開時トピカリティ)は単独での予測力が弱い。G7=5(最大)のオアシスが全24本最低再生。G7はHITの十分条件ではない",
+      "mechanism": "話題性(フロー)だけでは不十分。ストリーミング需要(G_ST)やエコシステム需要(G_YT)が伴わないと、アルゴリズム推薦のパイプラインが機能しない",
+      "status": "adopted",
+      "established_cycle": "phase2",
+      "supporting_evidence": [
+        "オアシス: G7=5(再結成来日公演直後)なのにMISS(9,991再生)",
+        "デヴィッドボウイ: G7=5(没後10年)なのにMISS",
+        "エドシーラン: G7=2(特にニュースなし)なのにHIT(484K)"
+      ],
+      "contradicting_evidence": []
+    },
+    {
+      "id": "P3",
+      "statement": "Sランク条件（G1+G6>=8 かつ G_ST>=3）がHIT率90%超の最強予測条件。次の動画選定はSランク優先",
+      "mechanism": "G1+G6(ストック認知)とG_ST(現在のストリーミング需要)の両方が高いアーティストは、クリック動機・視聴維持・クロスプラットフォーム推薦の全てが機能する",
+      "status": "conditionally_adopted",
+      "established_cycle": "phase2",
+      "supporting_evidence": [
+        "Sランク該当: テイラー,フレディ,ブルーノ,ガガ,ビリー,JB(全てHIT)",
+        "Cランク(G_ST<=2,G_YT<=3): マドンナ(MISS),オアシス(MISS),ボンジョヴィ(HIT)でHIT率33%"
+      ],
       "contradicting_evidence": []
     }
   ],
@@ -107,12 +139,73 @@
         "total": 12,
         "rate": 0.167
       },
-      "discriminative_power": "high",
-      "status": "under_investigation",
+      "discriminative_power": "low",
+      "status": "rejected",
       "established_cycle": 6,
+      "rejected_cycle": "phase2",
+      "linked_principle": "P2",
+      "data_category": "human_scores",
+      "notes": "G7実測でオアシスG7=5(最大)がMISS(最低再生)と判明。G7による偽陽性削減は機能しない。暫定精度87.5%は棄却"
+    },
+    {
+      "id": "C13",
+      "condition": "G1+G6>=8 OR G_ST>=5（日本Spotifyストリーミング需要）",
+      "hit_fulfillment": {
+        "count": 10,
+        "total": 12,
+        "rate": 0.833
+      },
+      "miss_fulfillment": {
+        "count": 2,
+        "total": 12,
+        "rate": 0.167
+      },
+      "discriminative_power": "high",
+      "status": "conditionally_adopted",
+      "established_cycle": "phase2",
       "linked_principle": "P1",
       "data_category": "human_scores",
-      "notes": "G1+G6>=8群内の補助条件。G7の操作的定義未確立。暫定精度87.5%"
+      "notes": "精度83.3%(20/24)。G_ST>=5によりEdSheeranを正しくHIT分類(+1)。偽陽性マドンナ,オアシス。偽陰性ブリトニー,ポール"
+    },
+    {
+      "id": "C14",
+      "condition": "G1+G6>=8 かつ G_ST>=3（Sランク条件: HIT率90%超）",
+      "hit_fulfillment": {
+        "count": 6,
+        "total": 12,
+        "rate": 0.50
+      },
+      "miss_fulfillment": {
+        "count": 0,
+        "total": 12,
+        "rate": 0.0
+      },
+      "discriminative_power": "high",
+      "status": "conditionally_adopted",
+      "established_cycle": "phase2",
+      "linked_principle": "P3",
+      "data_category": "human_scores",
+      "notes": "MISS群充足率0%=偽陽性ゼロ。Sランク該当6本全てHIT(テイラー,フレディ,ブルーノ,ガガ,ビリー,JB)。動画選定の最優先条件"
+    },
+    {
+      "id": "C12",
+      "condition": "G1<=2 OR G6<=2 → 企画見送り推奨（レッドフラグ）",
+      "hit_fulfillment": {
+        "count": 2,
+        "total": 12,
+        "rate": 0.167
+      },
+      "miss_fulfillment": {
+        "count": 9,
+        "total": 12,
+        "rate": 0.75
+      },
+      "discriminative_power": "high",
+      "status": "conditionally_adopted",
+      "established_cycle": 8,
+      "linked_principle": "P1",
+      "data_category": "human_scores",
+      "notes": "C9(G1+G6>=8)の裏返し表現。独立チェックリスト項目ではなくC9の否定基準補足"
     }
   ],
   "rejected_conditions": [

@@ -96,20 +96,20 @@ step3_analyze.py が実行する分析サイクルの仕様。
 
 1. **`data/input/analysis_fundamentals.json`** — 分析の不変基盤。目的・定義・指標・方法論の全てがここに定義されている。この内容に反する分析は無効とする。
 2. `data/output/golden_theory.json` — 現在の黄金理論（変動する知見の蓄積）
-3. `data/history/insights.md` — 過去の仮説・検証結果の履歴
+3. `data/output/insights.md` — 過去の仮説・検証結果の履歴
 
 ## サイクルフロー
 ```
 Phase 1: データ準備
-  1. data_summarizer.py 実行 → data/workspace/data_summary.md 生成
+  1. data_summarizer.py 実行 → data/output/data_summary.md 生成
 ```
 
 ## Phase 2: 仮説生成→検証ループ（最大5サイクル）
 
 ### サイクルの実行手順
 1. `python scripts/step3_analyze.py` でデータ準備（Step 3）
-2. Claude Code で Agent C を実行 → `workspace/new_hypotheses.md` 生成（Step 4）
-3. Claude Code で Agent E を実行 → `workspace/verification_report.md` 生成（Step 5）
+2. Claude Code で Agent C を実行 → `output/new_hypotheses.md` 生成（Step 4）
+3. Claude Code で Agent E を実行 → `output/verification_report.md` 生成（Step 5）
 4. `python scripts/step3_analyze.py --integrate` で統合処理（Step 6）
    - Agent出力のJSONブロックをパース
    - insights.md を更新（採択/棄却/学びを追記）
@@ -145,7 +145,7 @@ Phase 3: 知見の蓄積（step2 --integrate で自動実行）
 サイクルが完了（正常終了・成果あり終了・上限終了のいずれか）すると、以下が更新される:
 - `data/output/analysis_conclusion.md` — **分析の最終結論**（誰でも読める形式）
 - `data/output/golden_theory.json` — 黄金理論の構造化データ
-- `data/history/insights.md` — 採択/棄却の全履歴
+- `data/output/insights.md` — 採択/棄却の全履歴
 - `data/output/model.json` — 統計モデル
 
 ## 方法論レビュー（Step 8 詳細）

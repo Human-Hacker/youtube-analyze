@@ -22,17 +22,17 @@ Step 7: python scripts/step7_pdca.py VIDEO_ID    # PDCA評価（新動画の予�
 |------|------|-------------|------|------|
 | 1 | script | `python scripts/step1_fetch.py` | YouTube API | `data/input/videos/*.json`, `data/input/video_index.json` |
 | 2 | script | `python scripts/step2_build_model.py` | `data/input/videos/*.json`, `data/input/human_scores.json` | `data/output/model.json`, `data/output/analysis_report.md` |
-| 3 | script | `python scripts/step3_analyze.py` | `data/output/model.json`, 全入力データ | `data/workspace/data_summary.md` |
-| 4 | agent | `agents/analyze-step4-hypothesis.md` | `data/workspace/data_summary.md`, `data/history/insights.md`, `data/output/golden_theory.json` | `data/workspace/new_hypotheses.md` |
-| 5 | agent | `agents/analyze-step5-verification.md` | `data/workspace/new_hypotheses.md`, 全入力データ | `data/workspace/verification_report.md` |
-| 6 | script | `python scripts/step3_analyze.py --integrate` | `data/workspace/new_hypotheses.md`, `data/workspace/verification_report.md` | `data/history/insights.md`, `data/output/golden_theory.json`, `data/output/analysis_conclusion.md` |
-| 7 | script | `python scripts/step7_pdca.py VIDEO_ID` | 新動画データ, `data/output/model.json` | `data/workspace/pdca_*.md` |
+| 3 | script | `python scripts/step3_analyze.py` | `data/output/model.json`, 全入力データ | `data/output/data_summary.md` |
+| 4 | agent | `agents/analyze-step4-hypothesis.md` | `data/output/data_summary.md`, `data/output/insights.md`, `data/output/golden_theory.json` | `data/output/new_hypotheses.md` |
+| 5 | agent | `agents/analyze-step5-verification.md` | `data/output/new_hypotheses.md`, 全入力データ | `data/output/verification_report.md` |
+| 6 | script | `python scripts/step3_analyze.py --integrate` | `data/output/new_hypotheses.md`, `data/output/verification_report.md` | `data/output/insights.md`, `data/output/golden_theory.json`, `data/output/analysis_conclusion.md` |
+| 7 | script | `python scripts/step7_pdca.py VIDEO_ID` | 新動画データ, `data/output/model.json` | `data/output/pdca_*.md` |
 
 ## ループ条件
 
 - **正常終了**: 全仮説が「支持」or「修正」で、未解決矛盾がゼロ
 - **成果ありで終了**: 一部採択・一部棄却だが、新たな手がかりがない
-- **上限終了**: 5サイクル到達。残存矛盾を `data/history/insights.md` に記録して終了
+- **上限終了**: 5サイクル到達。残存矛盾を `data/output/insights.md` に記録して終了
 
 ## エージェント一覧
 
@@ -80,8 +80,7 @@ youtube-analyze/
 ├── data/
 │   ├── input/                       # 入力データ（API取得・手動評価）
 │   ├── output/                      # 出力データ（モデル・分析結果）
-│   ├── workspace/                   # 作業用（エージェント入出力）
-│   └── history/                     # 履歴（バージョン管理・インサイト）
+│   └── history/                     # 履歴（バージョン管理）
 ├── templates/                       # テンプレート
 └── projects/                        # アーティスト別手動データ
 ```
@@ -92,6 +91,6 @@ youtube-analyze/
 |------|------|
 | Step 1 でAPI認証エラー | `python scripts/auth.py` で再認証 |
 | Step 2 でデータ不足 | `data/input/videos/` にJSONが存在するか確認 |
-| Step 4/5 でAgent出力が不正 | `data/workspace/` の出力ファイルを確認し、JSONブロックのフォーマットを修正 |
+| Step 4/5 でAgent出力が不正 | `data/output/` の出力ファイルを確認し、JSONブロックのフォーマットを修正 |
 | Step 6 でパースエラー | Agent出力のJSONブロックが正しい形式か確認 |
-| ループが収束しない | 5サイクル上限で自動終了。`data/history/insights.md` に未解決問題を記録 |
+| ループが収束しない | 5サイクル上限で自動終了。`data/output/insights.md` に未解決問題を記録 |

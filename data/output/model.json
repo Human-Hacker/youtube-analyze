@@ -1,6 +1,6 @@
 {
-  "version": "5.5",
-  "built_at": "2026-02-16T17:12:44.776971",
+  "version": "5.9",
+  "built_at": "2026-02-16T18:29:45.617855",
   "dataset_size": 24,
   "hit_threshold": 150000,
   "classification": {
@@ -769,40 +769,40 @@
     },
     "vpd_correlations": {
       "MV挿入数": {
-        "r_log_vpd": -0.026,
+        "r_log_vpd": -0.021,
         "n": 24
       },
       "感情の底の数": {
-        "r_log_vpd": 0.13,
+        "r_log_vpd": 0.14,
         "n": 24
       },
       "文字数": {
-        "r_log_vpd": 0.463,
+        "r_log_vpd": 0.466,
         "n": 24
       },
       "動画の長さ(秒)": {
-        "r_log_vpd": 0.354,
+        "r_log_vpd": 0.357,
         "n": 24
       },
       "感情曲線の転換数": {
-        "r_log_vpd": -0.133,
+        "r_log_vpd": -0.137,
         "n": 24
       },
       "導入30秒の引きの強さ": {
-        "r_log_vpd": -0.132,
+        "r_log_vpd": -0.129,
         "n": 24
       },
       "非MVリンク数": {
-        "r_log_vpd": -0.009,
+        "r_log_vpd": -0.003,
         "n": 24
       },
       "総メディア数(MV+非MV)": {
-        "r_log_vpd": -0.015,
+        "r_log_vpd": -0.009,
         "n": 24
       },
       "経過日数": {
-        "r_log_views": 0.351,
-        "r_log_vpd": -0.354,
+        "r_log_views": 0.352,
+        "r_log_vpd": -0.345,
         "n": 24
       }
     }
@@ -1097,9 +1097,9 @@
       "engagement_rate": 0.765,
       "day1_day2": 135.1,
       "published_at": "2025-11-05",
-      "age_days": 102,
-      "views_per_day": 4835.5,
-      "log_vpd": 3.684
+      "age_days": 103,
+      "views_per_day": 4788.5,
+      "log_vpd": 3.68
     },
     {
       "video_id": "Ukjm9sDC3U4",
@@ -1123,9 +1123,9 @@
       "engagement_rate": 1.547,
       "day1_day2": 263.2,
       "published_at": "2025-09-13",
-      "age_days": 155,
-      "views_per_day": 3124.8,
-      "log_vpd": 3.495
+      "age_days": 156,
+      "views_per_day": 3104.8,
+      "log_vpd": 3.492
     },
     {
       "video_id": "Kxq0y_6hxl0",
@@ -1149,9 +1149,9 @@
       "engagement_rate": 1.522,
       "day1_day2": 192.1,
       "published_at": "2025-12-12",
-      "age_days": 65,
-      "views_per_day": 4673.7,
-      "log_vpd": 3.67
+      "age_days": 66,
+      "views_per_day": 4602.9,
+      "log_vpd": 3.663
     },
     {
       "video_id": "gz9eCJZQ6vw",
@@ -1214,9 +1214,9 @@
       "engagement_rate": 1.291,
       "day1_day2": -4.1,
       "published_at": "2025-09-14",
-      "age_days": 154,
-      "views_per_day": 1175.5,
-      "log_vpd": 3.07
+      "age_days": 155,
+      "views_per_day": 1167.9,
+      "log_vpd": 3.067
     },
     {
       "video_id": "qBA5rBC7XuI",
@@ -1240,9 +1240,9 @@
       "engagement_rate": 1.152,
       "day1_day2": 215.1,
       "published_at": "2025-12-09",
-      "age_days": 68,
-      "views_per_day": 1564.4,
-      "log_vpd": 3.194
+      "age_days": 69,
+      "views_per_day": 1541.8,
+      "log_vpd": 3.188
     },
     {
       "video_id": "8kDsm0jp524",
@@ -1266,9 +1266,9 @@
       "engagement_rate": 1.415,
       "day1_day2": 72.7,
       "published_at": "2025-11-03",
-      "age_days": 104,
-      "views_per_day": 742.5,
-      "log_vpd": 2.871
+      "age_days": 105,
+      "views_per_day": 735.4,
+      "log_vpd": 2.867
     },
     {
       "video_id": "wedwAk9LDcQ",
@@ -1331,9 +1331,9 @@
       "engagement_rate": 1.921,
       "day1_day2": -59.9,
       "published_at": "2026-02-01",
-      "age_days": 14,
-      "views_per_day": 4535.2,
-      "log_vpd": 3.657
+      "age_days": 15,
+      "views_per_day": 4232.9,
+      "log_vpd": 3.627
     },
     {
       "video_id": "W7WxjgWb8vQ",
@@ -1344,9 +1344,9 @@
       "engagement_rate": 2.554,
       "day1_day2": 15.2,
       "published_at": "2026-02-03",
-      "age_days": 12,
-      "views_per_day": 3514.2,
-      "log_vpd": 3.546
+      "age_days": 13,
+      "views_per_day": 3243.8,
+      "log_vpd": 3.511
     },
     {
       "video_id": "zI9jXscH9BI",

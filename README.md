@@ -56,18 +56,17 @@ youtube-analyze/
 │   │   ├── video_index.json         # 全動画一覧
 │   │   ├── human_scores.json        # 人間評価スコア（GI/CA）
 │   │   └── analysis_fundamentals.json # 分析の不変基盤
-│   ├── output/                      # 出力データ
+│   ├── output/                      # 現バージョンの全出力
 │   │   ├── model.json               # 現在のモデル
+│   │   ├── golden_theory.json       # 黄金理論（原則+チェックリスト）
+│   │   ├── insights.md              # 採択/棄却仮説の全履歴
 │   │   ├── analysis_report.md       # 分析レポート
 │   │   ├── analysis_conclusion.md   # 分析結論（誰でも読める形式）
-│   │   └── golden_theory.json       # 黄金理論（原則+チェックリスト）
-│   ├── workspace/                   # 作業用（エージェント入出力）
 │   │   ├── data_summary.md          # 全動画指標サマリ
 │   │   ├── new_hypotheses.md        # Agent C出力
 │   │   ├── verification_report.md   # Agent E出力
 │   │   └── prompt_modifications.md  # プロンプト改善提案
-│   └── history/                     # 履歴
-│       ├── insights.md              # 採択/棄却仮説の全履歴
+│   └── history/                     # 過去バージョンのスナップショット
 │       ├── index.md                 # バージョン履歴
 │       └── v{X.X}_{date}/           # スナップショット
 │

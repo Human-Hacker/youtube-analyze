@@ -9,7 +9,7 @@ Step 7: 新動画のPDCA評価 → モデル更新
 動作:
   1. 新動画のアナリティクスデータを取得（--skip-fetch で省略可）
   2. 現在のモデルと比較 → 予測 vs 実績を評価
-  3. PDCAレポートを data/workspace/ に出力
+  3. PDCAレポートを data/output/ に出力
   4. --update-model を付けるとモデルを再構築（step2_build_model経由）
 
 運用サイクル:
@@ -25,7 +25,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import VIDEOS_DIR, DATA_DIR, MODEL_FILE, HIT_THRESHOLD, WORKSPACE_DIR
+from config import VIDEOS_DIR, DATA_DIR, MODEL_FILE, HIT_THRESHOLD, OUTPUT_DIR
 from common.data_loader import validate_fundamentals
 from step1_fetch import fetch_single_video
 from step2_build_model import build_and_save
@@ -186,8 +186,8 @@ def main():
 
     # レポート
     report = generate_pdca_report(ev, video_data, model)
-    os.makedirs(WORKSPACE_DIR, exist_ok=True)
-    rpath = os.path.join(WORKSPACE_DIR, f"pdca_{args.video_id}_{datetime.now().strftime('%Y%m%d')}.md")
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    rpath = os.path.join(OUTPUT_DIR, f"pdca_{args.video_id}_{datetime.now().strftime('%Y%m%d')}.md")
     with open(rpath, "w", encoding="utf-8") as f:
         f.write(report)
     print(f"  ✅ PDCAレポート: {rpath}")

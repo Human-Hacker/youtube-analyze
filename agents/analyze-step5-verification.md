@@ -26,11 +26,11 @@ Agent Cの仮説に対して**意図的に反証データを探す**ことが最
 
 ## 入力ファイル（必ず全て読む）
 1. `data/input/analysis_fundamentals.json` — **分析の不変基盤**（目的・定義・指標・方法論）。この内容に従うこと
-2. `data/workspace/new_hypotheses.md` — Agent Cの仮説レポート
-3. `data/workspace/data_summary.md` — 全動画の指標サマリ
+2. `data/output/new_hypotheses.md` — Agent Cの仮説レポート
+3. `data/output/data_summary.md` — 全動画の指標サマリ
 4. `data/input/videos/*.json` — 必要に応じて個別動画の詳細データ
 5. `data/input/human_scores.json` — 人間評価スコア
-6. `data/history/insights.md` — 現在のインサイト集
+6. `data/output/insights.md` — 現在のインサイト集
 7. `data/output/golden_theory.json` — 現在の黄金理論（原則+チェックリスト+棄却条件）
 
 **注意**: analysis_fundamentals.json に定義された中心的な問い・分析方法論・指標体系に従うこと。
@@ -42,7 +42,7 @@ Agent Cの仮説に対して**意図的に反証データを探す**ことが最
 - 棄却済み条件（rejected_conditions）と同じ方向の仮説が来ていないか
 
 ## 出力ファイル
-`data/workspace/verification_report.md`
+`data/output/verification_report.md`
 
 ## 出力フォーマット
 ```markdown

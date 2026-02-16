@@ -10,7 +10,7 @@ import json, os, sys, argparse, math
 from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from config import VIDEOS_DIR, DATA_DIR, WORKSPACE_DIR, HUMAN_SCORES_FILE, HIT_THRESHOLD
+from config import VIDEOS_DIR, DATA_DIR, OUTPUT_DIR, HUMAN_SCORES_FILE, HIT_THRESHOLD
 from common.data_loader import load_all_videos, load_human_scores, validate_fundamentals
 from common.metrics import avg_or_none as _avg, median_or_none as _median, deep as _deep, fmt as _fmt, fmt_int as _fmt_int
 
@@ -661,12 +661,10 @@ def main():
     parser.add_argument("--diff", metavar="VIDEO_ID", help="指定動画の詳細 + 全体比較")
     args = parser.parse_args()
 
-    os.makedirs(WORKSPACE_DIR, exist_ok=True)
-
     # 不変基盤の整合性チェック (W-23)
     validate_fundamentals()
 
-    output_path = os.path.join(WORKSPACE_DIR, "data_summary.md")
+    output_path = os.path.join(OUTPUT_DIR, "data_summary.md")
 
     videos = load_all_videos()
     human_scores = load_human_scores()

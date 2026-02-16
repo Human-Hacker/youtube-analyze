@@ -16,7 +16,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import WORKSPACE_DIR, HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, OUTPUT_DIR, MODEL_FILE
+from config import HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, OUTPUT_DIR, MODEL_FILE, YOUTUBE_LONG_DIR, SELECTION_REPORT_TEMPLATE
 from common.data_loader import (
     load_golden_theory, save_golden_theory,
     load_insights, save_insights,
@@ -71,11 +71,11 @@ def print_agent_instructions(mode="full", diff_video_id=None):
     print(f"""
 【1】Agent C（メタ分析）を実行:
   → agents/analyze-step4-hypothesis.md の仕様に従い実行
-  → 出力: data/workspace/new_hypotheses.md
+  → 出力: data/output/new_hypotheses.md
 
 【2】Agent E（検証）を実行:
   → agents/analyze-step5-verification.md の仕様に従い実行
-  → 出力: data/workspace/verification_report.md
+  → 出力: data/output/verification_report.md
 
 【3】統合処理を実行:
   python scripts/step3_analyze.py --integrate
@@ -84,8 +84,8 @@ def print_agent_instructions(mode="full", diff_video_id=None):
 
 def check_agent_outputs():
     """Agent出力ファイルの存在チェック"""
-    hyp_path = os.path.join(WORKSPACE_DIR, "new_hypotheses.md")
-    ver_path = os.path.join(WORKSPACE_DIR, "verification_report.md")
+    hyp_path = os.path.join(OUTPUT_DIR, "new_hypotheses.md")
+    ver_path = os.path.join(OUTPUT_DIR, "verification_report.md")
 
     missing = []
     if not os.path.exists(hyp_path):
@@ -422,7 +422,7 @@ def integrate(auto=False):
         return False
 
     # 2. Agent C出力をパース
-    hyp_path = os.path.join(WORKSPACE_DIR, "new_hypotheses.md")
+    hyp_path = os.path.join(OUTPUT_DIR, "new_hypotheses.md")
     hypotheses = parse_agent_c_output(hyp_path)
 
     # 2.5 方法論コンプライアンスチェック (W-23)
@@ -432,7 +432,7 @@ def integrate(auto=False):
             print(f"  方法論WARNING: {len(methodology_warnings)}件")
 
     # 3. Agent E出力をパース
-    ver_path = os.path.join(WORKSPACE_DIR, "verification_report.md")
+    ver_path = os.path.join(OUTPUT_DIR, "verification_report.md")
     verification = parse_agent_e_output(ver_path)
 
     if not hypotheses and not verification:
@@ -470,12 +470,20 @@ def integrate(auto=False):
             print(f"  自動適用: {result['auto_applied']}件")
         if result["manual_count"]:
             print(f"  手動確認が必要: {result['manual_count']}件")
-            print(f"  → data/workspace/prompt_modifications.md を確認してください")
+            print(f"  → data/output/prompt_modifications.md を確認してください")
 
     # 9. 結論レポート生成
     print("\n[統合] 結論レポート生成中...")
     generate_conclusion_report()
     print("  analysis_conclusion.md 生成完了")
+
+    # 10. 制作パイプラインへのフィードバック生成 (W-22)
+    print("\n[統合] 制作フィードバック生成中...")
+    fb_result = generate_production_feedback()
+    if fb_result:
+        print("  production_feedback.md 生成完了")
+    else:
+        print("  スキップ（youtube-longが見つからないためセクション1省略）")
 
     return True
 
@@ -485,7 +493,7 @@ def apply_methodology_review(review, cycle):
     Agent Eの方法論レビューに基づきプロンプト改善を実行する (W-21)。
 
     自動適用: insights.md への品質メトリクスの記録
-    手動確認用: workspace/prompt_modifications.md に提案内容を出力
+    手動確認用: output/prompt_modifications.md に提案内容を出力
     """
     result = {"auto_applied": 0, "manual_count": 0}
 
@@ -511,7 +519,7 @@ def apply_methodology_review(review, cycle):
         save_insights(frontmatter, body)
         result["auto_applied"] += 1
 
-    # 2. 改善提案をworkspace/prompt_modifications.mdに出力
+    # 2. 改善提案をoutput/prompt_modifications.mdに出力
     proposed = review.get("proposed_changes", [])
     if proposed:
         date = datetime.now().strftime("%Y-%m-%d")
@@ -529,7 +537,7 @@ def apply_methodology_review(review, cycle):
             lines.append(f"- **理由**: {p.get('reason', '')}")
             lines.append(f"- **優先度**: {p.get('priority', '?')}\n")
 
-        mod_path = os.path.join(WORKSPACE_DIR, "prompt_modifications.md")
+        mod_path = os.path.join(OUTPUT_DIR, "prompt_modifications.md")
         with open(mod_path, "w", encoding="utf-8") as f:
             f.write("\n".join(lines))
         result["manual_count"] = len(proposed)
@@ -724,6 +732,118 @@ def generate_conclusion_report():
         f.write("\n".join(lines))
 
 
+def generate_production_feedback():
+    """
+    model.json の数値を youtube-long/prompts/1. selection_report.md の記載値と比較し、
+    数値差分テーブルを自動生成する (W-22)。
+
+    セクション1（数値差分）のみを出力。戦略的な変更分析（セクション2-3に相当する内容）は
+    Agent F/G（youtube-feedback/）に移管済み。本関数はAgent Fへの入力前処理として機能する。
+
+    出力: data/output/production_feedback.md
+    Returns: True if fully generated, False if youtube-long not found (partial)
+    """
+    frontmatter, body = load_insights()
+
+    model = {}
+    if os.path.exists(MODEL_FILE):
+        with open(MODEL_FILE, "r", encoding="utf-8") as f:
+            model = json.load(f)
+
+    date = datetime.now().strftime("%Y-%m-%d")
+    cycle = frontmatter.get("total_cycles", 0)
+    gi_ca = model.get("gi_ca_model", {})
+    corr = gi_ca.get("correlations", {})
+
+    lines = []
+    lines.append("# 制作パイプラインへのフィードバック（数値差分）")
+    lines.append(f"\n> 生成日時: {date} | 分析サイクル: {cycle}回完了")
+    lines.append("> 本ファイルはW-22による自動生成。戦略的な変更分析はAgent F/G（youtube-feedback/）が担当。")
+    lines.append("\n---")
+
+    # === セクション1: 数値差分テーブル ===
+    lines.append("\n## 1. 選定基準の数値差分（→ youtube-long/prompts/1. selection_report.md）")
+
+    has_youtube_long = os.path.exists(SELECTION_REPORT_TEMPLATE)
+
+    # 1-1. GI×CA判定基準
+    lines.append("\n### 1-1. GI×CA判定基準")
+    acc = gi_ca.get("threshold_16_accuracy")
+    scored = gi_ca.get("scored_count", 0)
+    lines.append(f"- 現在の閾値: GI×CA ≥ 16")
+    lines.append(f"- model.jsonの最新閾値精度: {acc}%（{scored}本評価）" if acc else "- model.jsonの閾値精度: 未計算")
+
+    # 1-2. 回帰式の更新
+    lines.append("\n### 1-2. 回帰式")
+    lines.append("- 現在の記載値: 推定再生数 ≒ -306,908 + 38,970 × GIスコア")
+    r_gi_ca = corr.get("GI×CA_vs_log_views", "N/A")
+    r2 = corr.get("R_squared", "N/A")
+    lines.append(f"- model.json最新: GI×CA vs log(再生数) r={r_gi_ca}, R²={r2}")
+
+    # 1-3. 差異比較テーブル
+    if has_youtube_long:
+        lines.append("\n### 1-3. 数値差異テーブル")
+        current_values = _extract_selection_report_values()
+        lines.append("| 項目 | 現在の記載値 | model.json最新値 | 差異 |")
+        lines.append("|------|------------|-----------------|------|")
+        for item_name, current_val, new_val in current_values:
+            diff = "同一" if str(current_val) == str(new_val) else f"**要更新**"
+            lines.append(f"| {item_name} | {current_val} | {new_val} | {diff} |")
+    else:
+        lines.append("\n> youtube-long が見つかりません。セクション1-3（差異比較）はスキップ。")
+
+    lines.append("\n---")
+    lines.append(f"\n> 自動生成: `python scripts/step3_analyze.py --integrate` (W-22)")
+    lines.append("> 戦略的変更分析は `youtube-feedback/` の Agent F/G を実行してください。")
+
+    output_path = os.path.join(OUTPUT_DIR, "production_feedback.md")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+
+    return has_youtube_long
+
+
+def _extract_selection_report_values():
+    """
+    youtube-long/prompts/1. selection_report.md から現在記載されている
+    GI×CA関連の数値を正規表現で抽出し、model.json最新値と比較用のタプルリストを返す。
+    """
+    results = []
+
+    model = {}
+    if os.path.exists(MODEL_FILE):
+        with open(MODEL_FILE, "r", encoding="utf-8") as f:
+            model = json.load(f)
+
+    gi_ca = model.get("gi_ca_model", {})
+    corr = gi_ca.get("correlations", {})
+
+    if not os.path.exists(SELECTION_REPORT_TEMPLATE):
+        return results
+
+    with open(SELECTION_REPORT_TEMPLATE, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # GI相関 r値
+    m = re.search(r'[rR]値?\s*[=:≒]\s*\+?([\d.]+)', content)
+    current_r = m.group(1) if m else "記載なし"
+    new_r = corr.get("GI×CA_vs_log_views", "N/A")
+    results.append(("GI×CA相関 r値", f"+{current_r}", f"{new_r}"))
+
+    # 閾値16精度
+    m = re.search(r'閾値\s*16\s*.*?精度[：:]\s*([\d.]+)%', content)
+    current_acc = f"{m.group(1)}%" if m else "記載なし"
+    new_acc = f"{gi_ca.get('threshold_16_accuracy', 'N/A')}%"
+    results.append(("閾値16精度", current_acc, new_acc))
+
+    # CA=3平均再生数
+    m = re.search(r'CA\s*=\s*3.*?平均\s*([\d,万]+)', content)
+    current_ca3 = m.group(1) if m else "記載なし"
+    results.append(("CA=3平均再生数", current_ca3, "要手動確認"))
+
+    return results
+
+
 def main():
     parser = argparse.ArgumentParser(description="Step 2: LLM分析コーディネーター（半自動）")
     parser.add_argument("--diff", metavar="VIDEO_ID", help="差分分析（指定動画のみ）")
@@ -734,8 +854,6 @@ def main():
     print("=" * 60)
     print("Step 2: LLM分析コーディネーター")
     print("=" * 60)
-
-    os.makedirs(WORKSPACE_DIR, exist_ok=True)
 
     # 不変基盤の整合性チェック (W-23)
     try:
@@ -760,7 +878,7 @@ def main():
         print(f"\n{'='*60}")
         print("現在のファイル状態:")
         for name in ["data_summary.md", "new_hypotheses.md", "verification_report.md"]:
-            path = os.path.join(WORKSPACE_DIR, name)
+            path = os.path.join(OUTPUT_DIR, name)
             if os.path.exists(path):
                 mtime = datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%d %H:%M")
                 print(f"  OK: {name} ({mtime})")

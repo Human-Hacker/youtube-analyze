@@ -3,3 +3,5 @@ token.json
 __pycache__/
 *.pyc
 .DS_Store
+data/manual_exports/
+data/pdca_reports/
