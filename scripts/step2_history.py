@@ -7,7 +7,7 @@ import os
 import re
 from datetime import datetime
 
-from config import MODEL_FILE, ANALYSIS_HISTORY_DIR, HISTORY_INDEX
+from config import MODEL_FILE, HISTORY_DIR, HISTORY_INDEX
 
 
 # スナップショット保持ポリシー
@@ -34,7 +34,7 @@ def save_history_snapshot(model, report_text):
     """model.json と analysis_report.md を履歴フォルダに保存"""
     version = model["version"]
     date = datetime.now().strftime("%Y%m%d")
-    snapshot_dir = os.path.join(ANALYSIS_HISTORY_DIR, f"v{version}_{date}")
+    snapshot_dir = os.path.join(HISTORY_DIR, f"v{version}_{date}")
     os.makedirs(snapshot_dir, exist_ok=True)
 
     with open(os.path.join(snapshot_dir, "model.json"), "w", encoding="utf-8") as f:
@@ -57,13 +57,13 @@ def cleanup_old_snapshots():
     - R²が0.05以上変化したバージョンはマイルストーンとして永久保持
     - 削除対象はディレクトリのみ削除（index.mdの履歴テーブルには残る）
     """
-    if not os.path.exists(ANALYSIS_HISTORY_DIR):
+    if not os.path.exists(HISTORY_DIR):
         return
 
     # スナップショットディレクトリを列挙（v{X.X}_{date} 形式）
     snapshot_dirs = []
-    for name in os.listdir(ANALYSIS_HISTORY_DIR):
-        full_path = os.path.join(ANALYSIS_HISTORY_DIR, name)
+    for name in os.listdir(HISTORY_DIR):
+        full_path = os.path.join(HISTORY_DIR, name)
         if os.path.isdir(full_path) and name.startswith("v"):
             snapshot_dirs.append((name, full_path))
 
@@ -117,7 +117,7 @@ def cleanup_old_snapshots():
 
 def update_history_index(model):
     """index.md に1行サマリを追記"""
-    os.makedirs(ANALYSIS_HISTORY_DIR, exist_ok=True)
+    os.makedirs(HISTORY_DIR, exist_ok=True)
 
     version = model["version"]
     date = datetime.now().strftime("%Y-%m-%d")

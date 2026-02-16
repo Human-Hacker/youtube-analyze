@@ -4,8 +4,8 @@ import json
 import os
 
 from config import (
-    VIDEOS_DIR, SCRIPTS_DIR, DATA_DIR, HUMAN_SCORES_FILE,
-    ANALYSIS_HISTORY_DIR, INSIGHTS_FILE,
+    VIDEOS_DIR, SCRIPTS_DIR, DATA_DIR, INPUT_DIR, OUTPUT_DIR, HUMAN_SCORES_FILE,
+    HISTORY_DIR, INSIGHTS_FILE,
     HIT_THRESHOLD, PRIMARY_ANALYSIS_WINDOW, SECONDARY_ANALYSIS_WINDOW, DATA_CATEGORIES,
 )
 
@@ -41,8 +41,8 @@ def load_all_videos():
 
 
 def load_video_index():
-    """data/video_index.json を読み込み、video_id -> エントリの辞書を返す"""
-    path = os.path.join(DATA_DIR, "video_index.json")
+    """data/input/video_index.json を読み込み、video_id -> エントリの辞書を返す"""
+    path = os.path.join(INPUT_DIR, "video_index.json")
     if not os.path.exists(path):
         return {}
     with open(path, "r", encoding="utf-8") as f:
@@ -60,8 +60,8 @@ def load_human_scores():
 
 
 def load_golden_theory():
-    """data/golden_theory.json を読み込む。存在しなければ空の初期構造を返す"""
-    path = os.path.join(DATA_DIR, "golden_theory.json")
+    """data/output/golden_theory.json を読み込む。存在しなければ空の初期構造を返す"""
+    path = os.path.join(OUTPUT_DIR, "golden_theory.json")
     if not os.path.exists(path):
         return {
             "version": "1.0",
@@ -76,8 +76,8 @@ def load_golden_theory():
 
 
 def save_golden_theory(data):
-    """data/golden_theory.json を書き込む"""
-    path = os.path.join(DATA_DIR, "golden_theory.json")
+    """data/output/golden_theory.json を書き込む"""
+    path = os.path.join(OUTPUT_DIR, "golden_theory.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
@@ -124,10 +124,10 @@ def save_insights(frontmatter, body):
 
 def load_fundamentals():
     """analysis_fundamentals.json を読み込み、返す。存在しない場合はエラー終了。"""
-    path = os.path.join(DATA_DIR, "analysis_fundamentals.json")
+    path = os.path.join(INPUT_DIR, "analysis_fundamentals.json")
     if not os.path.exists(path):
         raise FileNotFoundError(
-            "FATAL: data/analysis_fundamentals.json が見つかりません。"
+            "FATAL: data/input/analysis_fundamentals.json が見つかりません。"
             "分析の不変基盤ファイルが必要です。"
         )
     with open(path, "r", encoding="utf-8") as f:

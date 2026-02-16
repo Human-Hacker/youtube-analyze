@@ -32,12 +32,12 @@ from datetime import datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from googleapiclient.discovery import build
-from step1_auth import get_credentials
-from config import VIDEOS_DIR, DATA_DIR, DAYS_AFTER_PUBLISH, CHANNEL_ID
+from auth import get_credentials
+from config import VIDEOS_DIR, DATA_DIR, INPUT_DIR, DAYS_AFTER_PUBLISH, CHANNEL_ID
 
 
 # ============================================================
-#  1動画のデータ取得（step4_pdca.py からも呼ばれる）
+#  1動画のデータ取得（step7_pdca.py からも呼ばれる）
 # ============================================================
 
 def fetch_single_video(video_id, creds=None):
@@ -397,7 +397,7 @@ def _filter_long(youtube, video_ids, min_sec=60):
 
 
 def _save_index(long_videos):
-    path = os.path.join(DATA_DIR, "video_index.json")
+    path = os.path.join(INPUT_DIR, "video_index.json")
     with open(path, "w", encoding="utf-8") as f:
         json.dump({"updated_at": datetime.now().isoformat(), "total_count": len(long_videos), "videos": long_videos}, f, ensure_ascii=False, indent=2)
     print(f"動画インデックス保存: {path}")
@@ -574,7 +574,7 @@ def build_manual_data(traffic, segments):
 
 def merge():
     """video_index.json の manual_data_path から CSV を読み取り、各動画JSONにマージ"""
-    index_path = os.path.join(DATA_DIR, "video_index.json")
+    index_path = os.path.join(INPUT_DIR, "video_index.json")
     with open(index_path, "r", encoding="utf-8") as f:
         index = json.load(f)
 

@@ -5,7 +5,7 @@
 水平思考×第一原理×仮説駆動で新仮説を生成する。あらゆる前提を疑い、あらゆる可能性を考える。
 
 ### 前提知識
-`agents/youtube_fundamentals.md` を必ず参照すること。YouTubeアルゴリズム・視聴者心理・チャンネル固有データの前提知識が記載されている。
+`prompts/youtube_fundamentals.md` を必ず参照すること。YouTubeアルゴリズム・視聴者心理・チャンネル固有データの前提知識が記載されている。
 
 ### 中心的な問い（Issue Statement — 全仮説はここから派生させる）
 1. 伸びた動画（15万回再生以上）全てに共通することは何か？
@@ -70,22 +70,22 @@ Phase 1の概要データを読んだ上で、以下を判断し「読み込み�
 ## 入力ファイル
 
 ### Phase 1: 概要読み込み（必ず全て読む）
-1. `data/analysis_fundamentals.json` — **分析の不変基盤**（目的・定義・指標・方法論）。この内容に従うこと
+1. `data/input/analysis_fundamentals.json` — **分析の不変基盤**（目的・定義・指標・方法論）。この内容に従うこと
 2. `data/workspace/data_summary.md` — 全動画の指標サマリ（data_summarizer.py出力）
-3. `data/analysis_history/insights.md` — 現在の確立されたインサイト集
-4. `data/model.json` — 現在のモデル定義（correlations.cause_metricsは制作者コントロール可能な6件のみ）
+3. `data/history/insights.md` — 現在の確立されたインサイト集
+4. `data/output/model.json` — 現在のモデル定義（correlations.cause_metricsは制作者コントロール可能な6件のみ）
    - model.json の3段階フィルター結果は参考値。精度が低い（66.7%）ため、
      黄金理論チェックリスト（golden_theory.json）を優先すること
-5. `data/analysis_history/index.md` — バージョン履歴・未解決問題
-6. `data/golden_theory.json` — 現在の黄金理論（原則+チェックリスト+棄却条件）
+5. `data/history/index.md` — バージョン履歴・未解決問題
+6. `data/output/golden_theory.json` — 現在の黄金理論（原則+チェックリスト+棄却条件）
 
 **注意**: analysis_fundamentals.json に定義された中心的な問い・分析方法論・指標体系に従うこと。
 このファイルの内容を変更・無視・省略することは禁止。
 
 ### Phase 2: 選択的深掘り（⓪読み込み計画で選定したもののみ読む）
-- `data/videos/{id}.json` — 注目動画のみ。全件読まない
-- `data/scripts/{id}.json` — 台本データが仮説に関連する場合のみ
-- `data/human_scores.json` — GIサブスコアの詳細が必要な場合のみ
+- `data/input/videos/{id}.json` — 注目動画のみ。全件読まない
+- `data/input/scripts/{id}.json` — 台本データが仮説に関連する場合のみ
+- `data/input/human_scores.json` — GIサブスコアの詳細が必要な場合のみ
 
 ### data_summary.mdのセクション構成
 | セクション | 内容 | 分析における用途 |
@@ -105,7 +105,7 @@ Phase 1の概要データを読んだ上で、以下を判断し「読み込み�
 
 ### データの3分類を意識すること
 - **アナリティクスデータ**: videos/*.jsonのanalytics_overview, traffic_sources, demographics, daily_data, manual_data
-- **台本データ**: videos/*.jsonのscript_analysis（またはdata/scripts/*.json）
+- **台本データ**: videos/*.jsonのscript_analysis（またはdata/input/scripts/*.json）
 - **メタデータ**: human_scores.json（GI×CA人間評価）、video_index.jsonの公開日・登録者数
 
 ## 出力ファイル

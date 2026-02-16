@@ -1,7 +1,7 @@
 # 分析コーディネーター仕様書
 
 ## 概要
-step2_analyze.py が実行する分析サイクルの仕様。
+step3_analyze.py が実行する分析サイクルの仕様。
 
 ## 分析の最上位目的
 **伸びた動画の共通点と伸びていない動画の共通点を明らかにし、「伸びる動画の黄金理論」を構築すること。**
@@ -15,7 +15,7 @@ step2_analyze.py が実行する分析サイクルの仕様。
 
 ### 分析手法（三本柱）
 1. **水平思考**: 前提列挙→前提反転→代替説生成のフレームワークをAgent Cの分析フローに組み込む
-2. **第一原理主義**: `agents/youtube_fundamentals.md` に明文化された前提知識から演繹的に考える
+2. **第一原理主義**: `prompts/youtube_fundamentals.md` に明文化された前提知識から演繹的に考える
 3. **仮説駆動アプローチ**: McKinsey方式の「答えから始める」手法。中心的な問いからDay 1 Answerを設定し、検証→進化させる
 
 ### Agent間の役割分担
@@ -67,13 +67,13 @@ step2_analyze.py が実行する分析サイクルの仕様。
 #### メタデータ（定量評価・コンテキスト情報）
 | カテゴリ | 指標 | 形式 | 採点基準 |
 |---------|------|------|---------|
-| GI評価 | G1(ゴシップ), G2(好奇心), G3(感情), G4(映画化), G6(楽曲知名度), GI_v3合計 | num(各1-5) | `data/scoring_criteria.md`の定量基準 |
+| GI評価 | G1(ゴシップ), G2(好奇心), G3(感情), G4(映画化), G6(楽曲知名度), GI_v3合計 | num(各1-5) | `prompts/scoring_criteria.md`の定量基準 |
 | CA評価 | CAスコア(0-3), GI×CA | num | TOP1-2核心KWとタイトルのキーワード照合 |
 | 好奇心TOP1-2 | Web検索由来のトピック + 核心キーワード | str | 5検索クエリの出現頻度順 |
 | エビデンス | G{N}_evidence, CA_evidence, curiosity_search_date | str | 検索クエリ・件数・照合結果 |
 | コンテキスト | 公開日, 公開曜日, 公開時登録者数, 時事性（関連イベントの有無） | date/num/str | - |
 
-> **スコアリングプロセス**: GI/CAの採点は`data/scoring_criteria.md`の定量基準に従う。主観判断は禁止。
+> **スコアリングプロセス**: GI/CAの採点は`prompts/scoring_criteria.md`の定量基準に従う。主観判断は禁止。
 > source="quantitative"（定量基準準拠）、source="human"（旧方式）、source="ai_calibrated"（AI推定、予測使用禁止）
 
 ### 重点的に見るべきデータ範囲
@@ -94,9 +94,9 @@ step2_analyze.py が実行する分析サイクルの仕様。
 
 ## 必読ファイル（分析開始前に必ず読むこと）
 
-1. **`data/analysis_fundamentals.json`** — 分析の不変基盤。目的・定義・指標・方法論の全てがここに定義されている。この内容に反する分析は無効とする。
-2. `data/golden_theory.json` — 現在の黄金理論（変動する知見の蓄積）
-3. `data/analysis_history/insights.md` — 過去の仮説・検証結果の履歴
+1. **`data/input/analysis_fundamentals.json`** — 分析の不変基盤。目的・定義・指標・方法論の全てがここに定義されている。この内容に反する分析は無効とする。
+2. `data/output/golden_theory.json` — 現在の黄金理論（変動する知見の蓄積）
+3. `data/history/insights.md` — 過去の仮説・検証結果の履歴
 
 ## サイクルフロー
 ```
@@ -107,14 +107,14 @@ Phase 1: データ準備
 ## Phase 2: 仮説生成→検証ループ（最大5サイクル）
 
 ### サイクルの実行手順
-1. `python scripts/step2_analyze.py` でデータ準備
-2. Claude Code で Agent C を実行 → `workspace/new_hypotheses.md` 生成
-3. Claude Code で Agent E を実行 → `workspace/verification_report.md` 生成
-4. `python scripts/step2_analyze.py --integrate` で統合処理
+1. `python scripts/step3_analyze.py` でデータ準備（Step 3）
+2. Claude Code で Agent C を実行 → `workspace/new_hypotheses.md` 生成（Step 4）
+3. Claude Code で Agent E を実行 → `workspace/verification_report.md` 生成（Step 5）
+4. `python scripts/step3_analyze.py --integrate` で統合処理（Step 6）
    - Agent出力のJSONブロックをパース
    - insights.md を更新（採択/棄却/学びを追記）
    - golden_theory.json を更新（チェックリスト追加/棄却移動）
-   - step3_build_model.py を実行（モデル再構築）
+   - step2_build_model.py を実行（モデル再構築）
 5. 矛盾チェック:
    - `unresolved_contradictions` が空 → 完了
    - 残存あり & サイクル < 5 → 手順1に戻る
@@ -135,7 +135,7 @@ Phase 1: データ準備
 Phase 3: 知見の蓄積（step2 --integrate で自動実行）
   5. Agent出力のJSONブロックをパース → insights.md 自動更新
   6. golden_theory.json 自動更新（チェックリスト追加/棄却移動）
-  7. step3_build_model.py 実行（モデル再構築）
+  7. step2_build_model.py 実行（モデル再構築）
   8. 【方法論レビュー】Agent Eの「分析方法の評価」セクションを確認し、
      必要に応じてAgent C/E定義ファイル自体を修正する（下記参照）
   9. 結論レポート生成（analysis_conclusion.md を更新）
@@ -143,10 +143,10 @@ Phase 3: 知見の蓄積（step2 --integrate で自動実行）
 
 ### サイクル完了後の成果物
 サイクルが完了（正常終了・成果あり終了・上限終了のいずれか）すると、以下が更新される:
-- `data/analysis_conclusion.md` — **分析の最終結論**（誰でも読める形式）
-- `data/golden_theory.json` — 黄金理論の構造化データ
-- `data/analysis_history/insights.md` — 採択/棄却の全履歴
-- `data/model.json` — 統計モデル
+- `data/output/analysis_conclusion.md` — **分析の最終結論**（誰でも読める形式）
+- `data/output/golden_theory.json` — 黄金理論の構造化データ
+- `data/history/insights.md` — 採択/棄却の全履歴
+- `data/output/model.json` — 統計モデル
 
 ## 方法論レビュー（Step 8 詳細）
 サイクル完了後、分析方法自体を評価・改善するステップ。
@@ -160,12 +160,12 @@ Phase 3: 知見の蓄積（step2 --integrate で自動実行）
 5. **Agent E自身の検証品質**: 見逃しや過度に厳しい判定がなかったか
 
 ### 改善アクション
-- Agent C/E定義ファイル（`agents/agent_c_meta_analysis.md`, `agents/agent_e_verification.md`）を直接編集
+- Agent C/E定義ファイル（`agents/analyze-step4-hypothesis.md`, `agents/analyze-step5-verification.md`）を直接編集
 - 新たな禁止事項、ガイドライン、データ検証ルールを追加
 - 変更内容を `insights.md` の備考に記録
 
 ## 差分モード（--diff VIDEO_ID）
-- data_summarizer.py --diff VIDEO_ID を実行
+- data_summarizer.py --diff VIDEO_ID を実行（step3_analyze.py から自動呼出）
 - Agent Cに「この新規動画が既存モデルと矛盾しないか」を重点的に分析させる
 - Agent Eで検証
 - 矛盾がなければ1サイクルで終了
@@ -176,5 +176,5 @@ Phase 3: 知見の蓄積（step2 --integrate で自動実行）
 
 ## エージェント呼び出し方法
 Claude Code の Task ツールで呼び出す:
-- Agent C: `agents/agent_c_meta_analysis.md`
-- Agent E: `agents/agent_e_verification.md`
+- Agent C: `agents/analyze-step4-hypothesis.md`
+- Agent E: `agents/analyze-step5-verification.md`

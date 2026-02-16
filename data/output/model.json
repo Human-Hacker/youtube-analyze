@@ -1,6 +1,6 @@
 {
-  "version": "5.3",
-  "built_at": "2026-02-16T16:41:46.696579",
+  "version": "5.5",
+  "built_at": "2026-02-16T17:12:44.776971",
   "dataset_size": 24,
   "hit_threshold": 150000,
   "classification": {
@@ -769,40 +769,40 @@
     },
     "vpd_correlations": {
       "MV挿入数": {
-        "r_log_vpd": -0.028,
+        "r_log_vpd": -0.026,
         "n": 24
       },
       "感情の底の数": {
-        "r_log_vpd": 0.133,
+        "r_log_vpd": 0.13,
         "n": 24
       },
       "文字数": {
-        "r_log_vpd": 0.464,
+        "r_log_vpd": 0.463,
         "n": 24
       },
       "動画の長さ(秒)": {
-        "r_log_vpd": 0.355,
+        "r_log_vpd": 0.354,
         "n": 24
       },
       "感情曲線の転換数": {
-        "r_log_vpd": -0.134,
-        "n": 24
-      },
-      "導入30秒の引きの強さ": {
         "r_log_vpd": -0.133,
         "n": 24
       },
+      "導入30秒の引きの強さ": {
+        "r_log_vpd": -0.132,
+        "n": 24
+      },
       "非MVリンク数": {
-        "r_log_vpd": -0.011,
+        "r_log_vpd": -0.009,
         "n": 24
       },
       "総メディア数(MV+非MV)": {
-        "r_log_vpd": -0.018,
+        "r_log_vpd": -0.015,
         "n": 24
       },
       "経過日数": {
-        "r_log_views": 0.355,
-        "r_log_vpd": -0.352,
+        "r_log_views": 0.351,
+        "r_log_vpd": -0.354,
         "n": 24
       }
     }
@@ -1162,9 +1162,9 @@
       "engagement_rate": 1.615,
       "day1_day2": 5.3,
       "published_at": "2025-07-26",
-      "age_days": 204,
-      "views_per_day": 1372.6,
-      "log_vpd": 3.138
+      "age_days": 205,
+      "views_per_day": 1365.9,
+      "log_vpd": 3.135
     },
     {
       "video_id": "sjJYXnPGGJI",
@@ -1175,9 +1175,9 @@
       "engagement_rate": 1.15,
       "day1_day2": 18.4,
       "published_at": "2025-10-10",
-      "age_days": 128,
-      "views_per_day": 1835.4,
-      "log_vpd": 3.264
+      "age_days": 129,
+      "views_per_day": 1821.2,
+      "log_vpd": 3.26
     },
     {
       "video_id": "IEQ6XE1LLZI",
@@ -1201,9 +1201,9 @@
       "engagement_rate": 2.239,
       "day1_day2": 57.0,
       "published_at": "2025-08-14",
-      "age_days": 185,
-      "views_per_day": 1055.5,
-      "log_vpd": 3.023
+      "age_days": 186,
+      "views_per_day": 1049.8,
+      "log_vpd": 3.021
     },
     {
       "video_id": "brzmIN16oz8",
@@ -1253,9 +1253,9 @@
       "engagement_rate": 1.738,
       "day1_day2": 45.0,
       "published_at": "2025-10-18",
-      "age_days": 120,
-      "views_per_day": 720.5,
-      "log_vpd": 2.858
+      "age_days": 121,
+      "views_per_day": 714.6,
+      "log_vpd": 2.854
     },
     {
       "video_id": "7zDmMAtQIrU",
@@ -1279,9 +1279,9 @@
       "engagement_rate": 1.633,
       "day1_day2": 50.4,
       "published_at": "2025-12-19",
-      "age_days": 58,
-      "views_per_day": 1294.6,
-      "log_vpd": 3.112
+      "age_days": 59,
+      "views_per_day": 1272.6,
+      "log_vpd": 3.105
     },
     {
       "video_id": "gTf9sCckzXg",
@@ -1292,9 +1292,9 @@
       "engagement_rate": 2.057,
       "day1_day2": 7.2,
       "published_at": "2026-01-09",
-      "age_days": 37,
-      "views_per_day": 1908.7,
-      "log_vpd": 3.281
+      "age_days": 38,
+      "views_per_day": 1858.5,
+      "log_vpd": 3.269
     },
     {
       "video_id": "3WmCRFSbpa8",
@@ -1318,9 +1318,9 @@
       "engagement_rate": 1.536,
       "day1_day2": -72.8,
       "published_at": "2025-09-03",
-      "age_days": 165,
-      "views_per_day": 400.8,
-      "log_vpd": 2.603
+      "age_days": 166,
+      "views_per_day": 398.4,
+      "log_vpd": 2.6
     },
     {
       "video_id": "zRrC0QMomEc",
@@ -1357,9 +1357,9 @@
       "engagement_rate": 2.874,
       "day1_day2": -58.1,
       "published_at": "2026-01-11",
-      "age_days": 35,
-      "views_per_day": 926.7,
-      "log_vpd": 2.967
+      "age_days": 36,
+      "views_per_day": 900.9,
+      "log_vpd": 2.955
     },
     {
       "video_id": "X9KIY2WjyPk",
@@ -1370,9 +1370,9 @@
       "engagement_rate": 2.391,
       "day1_day2": -40.3,
       "published_at": "2025-08-16",
-      "age_days": 183,
-      "views_per_day": 66.0,
-      "log_vpd": 1.82
+      "age_days": 184,
+      "views_per_day": 65.7,
+      "log_vpd": 1.818
     },
     {
       "video_id": "q6Kga609RMI",
@@ -1383,9 +1383,9 @@
       "engagement_rate": 2.222,
       "day1_day2": 5.4,
       "published_at": "2025-11-29",
-      "age_days": 78,
-      "views_per_day": 128.1,
-      "log_vpd": 2.108
+      "age_days": 79,
+      "views_per_day": 126.5,
+      "log_vpd": 2.102
     }
   ]
 }

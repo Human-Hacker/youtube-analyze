@@ -1,9 +1,9 @@
 """
-Step 2: LLM分析コーディネーター（半自動オーケストレーター）
+Step 3/6: LLM分析コーディネーター（半自動オーケストレーター）
 
-Phase 1: データ準備（自動） -> Agent実行指示を表示
-Phase 2: Agent C/E 実行（手動 -- Claude Codeで実行）
-Phase 3: Agent出力の統合（自動 -- --integrate で実行）
+Step 3: データ準備（自動） -> Agent実行指示を表示
+  → Step 4: Agent C（仮説生成）、Step 5: Agent E（仮説検証）を手動実行
+Step 6: Agent出力の統合（自動 -- --integrate で実行）
 """
 
 import argparse
@@ -16,7 +16,7 @@ from datetime import datetime
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import WORKSPACE_DIR, ANALYSIS_HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, MODEL_FILE
+from config import WORKSPACE_DIR, HISTORY_DIR, INSIGHTS_FILE, HISTORY_INDEX, DATA_DIR, OUTPUT_DIR, MODEL_FILE
 from common.data_loader import (
     load_golden_theory, save_golden_theory,
     load_insights, save_insights,
@@ -70,15 +70,15 @@ def print_agent_instructions(mode="full", diff_video_id=None):
 
     print(f"""
 【1】Agent C（メタ分析）を実行:
-  → agents/agent_c_meta_analysis.md の仕様に従い実行
+  → agents/analyze-step4-hypothesis.md の仕様に従い実行
   → 出力: data/workspace/new_hypotheses.md
 
 【2】Agent E（検証）を実行:
-  → agents/agent_e_verification.md の仕様に従い実行
+  → agents/analyze-step5-verification.md の仕様に従い実行
   → 出力: data/workspace/verification_report.md
 
 【3】統合処理を実行:
-  python scripts/step2_analyze.py --integrate
+  python scripts/step3_analyze.py --integrate
 """)
 
 
@@ -395,8 +395,8 @@ def update_golden_theory(verification):
 
 
 def run_step3():
-    """step3_build_model.py を実行"""
-    cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "step3_build_model.py")]
+    """step2_build_model.py を実行"""
+    cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "step2_build_model.py")]
     print("\n[統合] モデル再構築中...")
     result = subprocess.run(cmd, capture_output=True, text=True)
     print(result.stdout)
@@ -560,7 +560,7 @@ def generate_conclusion_report():
 
     # index.md 読み込み（バージョン履歴用）
     index_content = ""
-    index_path = os.path.join(ANALYSIS_HISTORY_DIR, "index.md")
+    index_path = os.path.join(HISTORY_DIR, "index.md")
     if os.path.exists(index_path):
         with open(index_path, "r", encoding="utf-8") as f:
             index_content = f.read()
@@ -716,10 +716,10 @@ def generate_conclusion_report():
     lines.append(f"- サンプルサイズ: {n}本（統計的検出力に限界あり）")
 
     lines.append("\n---")
-    lines.append("\n> このレポートは `python scripts/step2_analyze.py --integrate` の実行時に自動生成されます。")
+    lines.append("\n> このレポートは `python scripts/step3_analyze.py --integrate` の実行時に自動生成されます。")
     lines.append("> 詳細データ: model.json / golden_theory.json / insights.md")
 
-    output_path = os.path.join(DATA_DIR, "analysis_conclusion.md")
+    output_path = os.path.join(OUTPUT_DIR, "analysis_conclusion.md")
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 

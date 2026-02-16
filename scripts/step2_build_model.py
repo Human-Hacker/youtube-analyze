@@ -1,5 +1,5 @@
 """
-Step 3: 「伸びる動画モデル」構築 — 第一原理に基づく分析
+Step 2: 「伸びる動画モデル」構築 — 第一原理に基づく分析
 
 第一原理アプローチ:
   - 原因指標と結果指標を明確に分離（因果の混同を排除）
@@ -10,13 +10,13 @@ Step 3: 「伸びる動画モデル」構築 — 第一原理に基づく分析
   - 中央値の追加（外れ値に頑健）
 
 実行方法:
-  python scripts/step3_build_model.py
+  python scripts/step2_build_model.py
 
 出力:
-  - data/model.json                          <- モデル定義
-  - data/analysis_report.md                  <- 人間向け分析レポート
-  - data/analysis_history/v{X.X}_{date}/     <- 履歴スナップショット
-  - data/analysis_history/index.md           <- 履歴インデックス更新
+  - data/output/model.json                   <- モデル定義
+  - data/output/analysis_report.md           <- 人間向け分析レポート
+  - data/history/v{X.X}_{date}/              <- 履歴スナップショット
+  - data/history/index.md                    <- 履歴インデックス更新
 """
 
 import json
@@ -27,13 +27,13 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from config import DATA_DIR, MODEL_FILE, HIT_THRESHOLD
+from config import DATA_DIR, OUTPUT_DIR, MODEL_FILE, HIT_THRESHOLD
 from common.data_loader import load_all_videos, load_video_index, load_human_scores, load_golden_theory, save_golden_theory, validate_fundamentals
 from common.metrics import deep, avg, median, pearson
-from step3_filters import analyze_three_stage_filter, analyze_gi_ca_model
-from step3_patterns import compute_correlations, analyze_patterns, compute_group_comparisons, compute_benchmarks
-from step3_report import generate_report
-from step3_history import get_next_version, save_history_snapshot, update_history_index
+from step2_filters import analyze_three_stage_filter, analyze_gi_ca_model
+from step2_patterns import compute_correlations, analyze_patterns, compute_group_comparisons, compute_benchmarks
+from step2_report import generate_report
+from step2_history import get_next_version, save_history_snapshot, update_history_index
 
 
 # ===========================================================================
@@ -377,7 +377,7 @@ def build_and_save():
     print(f"  {MODEL_FILE}")
 
     report = generate_report(model, records)
-    rpath = os.path.join(DATA_DIR, "analysis_report.md")
+    rpath = os.path.join(OUTPUT_DIR, "analysis_report.md")
     with open(rpath, "w", encoding="utf-8") as f:
         f.write(report)
     print(f"  {rpath}")

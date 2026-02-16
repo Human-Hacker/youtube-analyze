@@ -2,7 +2,7 @@
 Step 1: OAuth 2.0 認証
 
 実行方法:
-  python scripts/step1_auth.py
+  python scripts/auth.py
 
 動作:
   初回はブラウザが開き、Googleアカウントでログインを求められます。

@@ -6,7 +6,7 @@ Agent Cが生成した仮説を、全データで検証する。
 ただし「完璧でなくても有用な仮説」は修正提案付きで活かす。
 
 ### 前提知識
-`agents/youtube_fundamentals.md` を必ず参照すること。YouTubeアルゴリズム・視聴者心理・チャンネル固有データの前提知識が記載されている。
+`prompts/youtube_fundamentals.md` を必ず参照すること。YouTubeアルゴリズム・視聴者心理・チャンネル固有データの前提知識が記載されている。
 
 ### レッドチームとしての役割（確証バイアス防止）
 Agent Cの仮説に対して**意図的に反証データを探す**ことが最重要の役割である。
@@ -25,13 +25,13 @@ Agent Cの仮説に対して**意図的に反証データを探す**ことが最
 仮説を棄却する場合でも、「黄金理論のどの部分を修正すべきか」を必ず提案する。
 
 ## 入力ファイル（必ず全て読む）
-1. `data/analysis_fundamentals.json` — **分析の不変基盤**（目的・定義・指標・方法論）。この内容に従うこと
+1. `data/input/analysis_fundamentals.json` — **分析の不変基盤**（目的・定義・指標・方法論）。この内容に従うこと
 2. `data/workspace/new_hypotheses.md` — Agent Cの仮説レポート
 3. `data/workspace/data_summary.md` — 全動画の指標サマリ
-4. `data/videos/*.json` — 必要に応じて個別動画の詳細データ
-5. `data/human_scores.json` — 人間評価スコア
-6. `data/analysis_history/insights.md` — 現在のインサイト集
-7. `data/golden_theory.json` — 現在の黄金理論（原則+チェックリスト+棄却条件）
+4. `data/input/videos/*.json` — 必要に応じて個別動画の詳細データ
+5. `data/input/human_scores.json` — 人間評価スコア
+6. `data/history/insights.md` — 現在のインサイト集
+7. `data/output/golden_theory.json` — 現在の黄金理論（原則+チェックリスト+棄却条件）
 
 **注意**: analysis_fundamentals.json に定義された中心的な問い・分析方法論・指標体系に従うこと。
 このファイルの内容を変更・無視・省略することは禁止。
