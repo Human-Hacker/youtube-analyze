@@ -37,7 +37,7 @@ from config import VIDEOS_DIR, DATA_DIR, INPUT_DIR, DAYS_AFTER_PUBLISH, CHANNEL_
 
 
 # ============================================================
-#  1動画のデータ取得（step7_pdca.py からも呼ばれる）
+#  1動画のデータ取得（step13_pdca.py からも呼ばれる）
 # ============================================================
 
 def fetch_single_video(video_id, creds=None):

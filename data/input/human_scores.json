@@ -737,6 +737,62 @@
       "CA_evidence": "タイトル「声を失った」にTOP1核心KW「声」が直接含まれる。CA=3。",
       "GI_x_CA": 57,
       "subscribers_at_publish": null
+    },
+    "GCcuRkQTXy8": {
+      "artist": "シャキーラ",
+      "source": "quantitative",
+      "G1": 5,
+      "G1_evidence": "ピケ浮気・破局騒動(front-row, tvgroove, spur, numero等 複数独立記事), スペイン脱税事件(ロイター, ELLE, Vogue, NME, サンスポ等), 盗作裁判(courrier), 声帯出血・うつ告白(ellegirl, courrier, vogue)。独立記事10件以上",
+      "G2": 1,
+      "G2_evidence": "Googleサジェスト「シャキーラ」単体: zoo, ズートピア, 曲, トライ・エヴリシング, ワカ・ワカ, ピケ, 年齢等。好奇心系ワード(なぜ/理由/死因/現在/真実/衝撃/闇等)は0個出現",
+      "G3": 3,
+      "G3_evidence": "該当: F.家族崩壊(ピケ浮気による11年の事実婚崩壊・子供親権争い), B.重病/障害(声帯出血で歌えなくなる危機・うつ状態告白), J.復活(BZRP #53世界的大ヒット・グラミー受賞) = 3個",
+      "G4": 2,
+      "G4_evidence": "シャキーラ本人の伝記映画/ドキュメンタリーの日本劇場公開なし。ズートピア出演は声の出演であり伝記作品ではない。配信のみレベル",
+      "G6": 3,
+      "G6_evidence": "トライ・エヴリシング(ズートピア主題歌・カラオケDAM収録)1曲が突出認知。Waka WakaはW杯公式ソングだが日本CM直接タイアップは未確認。Zoo(ズートピア2)は2025-2026年浸透中。1曲タイアップ",
+      "GI_v3": 14,
+      "curiosity_top1": "ピケとの破局・浮気騒動",
+      "curiosity_top1_kw": [
+        "ピケ",
+        "浮気",
+        "離婚"
+      ],
+      "curiosity_top2": "脱税事件と復活",
+      "curiosity_top2_kw": [
+        "脱税",
+        "ディスソング",
+        "復活"
+      ],
+      "curiosity_search_date": "2026-02-27",
+      "CA": 2,
+      "CA_evidence": "TOP1核心KW「ピケ/浮気/離婚」はタイトルに不一致。「裏切られ続けてきた」は「浮気」の上位概念(関連語)として対応。TOP2核心KWもタイトルに不一致。関連語レベル",
+      "GI_x_CA": 28,
+      "subscribers_at_publish": null
+    },
+    "-mMMSf1EpfM": {
+      "artist": "ケイティペリー",
+      "source": "quantitative",
+      "G1": 4,
+      "G1_evidence": "セクハラ告発2件(front-row/crank-in/huffpost), トルドー交際報道(CNN/Reddit), 不動産トラブル(tvgroove), バースデーケーキ炎上(ELLE), テイラー確執(rockinon), 宇宙飛行批判(numero)。5-9件",
+      "G2": 3,
+      "G2_evidence": "好奇心系ワード: なぜ(なぜ人気/なぜモテる), 現在(現在の状況) = 2個。衝撃/真実/闇/死因は0件",
+      "G3": 4,
+      "G3_evidence": "該当: E.貧困(フードスタンプ/ギター売却), F.家族崩壊(宗教的両親が悪魔の子と呼ぶ), G.自殺(バスルームでの自殺願望), H.搾取(複数レーベルからの解雇), J.復活(娘デイジーによる無条件の愛) = 5個",
+      "G4": 3,
+      "G4_evidence": "『ケイティ・ペリー パート・オブ・ミー 3D』(2012) TOHOシネマズ等で日本劇場公開。日本プレミアも開催(AFP)。興行1億未満",
+      "G6": 5,
+      "G6_evidence": "Firework(ドコモirumo CM/石原さとみ出演2023), Smile(ランドリンCM), Act My Age(ランドリンCM2回目起用)。3曲以上",
+      "GI_v3": 19,
+      "curiosity_top1": "恋愛遍歴（トルドー交際/オーランド離婚/離婚歴）",
+      "curiosity_top1_kw": ["トルドー", "離婚", "恋愛"],
+      "curiosity_top2": "なぜ人気があるのか/成功の理由",
+      "curiosity_top2_kw": ["人気", "理由"],
+      "curiosity_search_date": "2026-03-02",
+      "CA": 2,
+      "CA_evidence": "TOP1核心KW「トルドー/離婚/恋愛」はタイトルに不一致。TOP2核心KW「人気/理由」もタイトルに不一致。「トラウマ」がTOP1(離婚)の関連語として対応。関連語レベル",
+      "GI_x_CA": 38,
+      "subscribers_at_publish": null
     }
   }
 }

@@ -1,0 +1,151 @@
+graph TD
+    %% ===== Phase 1: Intelligence =====
+    subgraph INTELLIGENCE["Phase 1: Intelligence（情報収集）"]
+        direction TB
+        S1["step1_fetch.py<br/>YouTube API データ取得"]
+        S2["step2_sync_scores.py<br/>人間評価スコア同期"]
+        S3["step3_summarize.py<br/>data_summary.md<br/>+ domain packs 生成"]
+        S1 -->|"videos/*.json<br/>video_index.json"| S2
+        S2 -->|"human_scores.json"| S3
+    end
+
+    %% Phase 1 出力: 3ファイル
+    FDS(["data_summary.md（スクリプト専用）"])
+    FRDP(["retention_data_pack.md（Step 4専用）"])
+    FCDP(["ctr_data_pack.md（Step 5専用）"])
+    S3 --> FDS
+    S3 --> FRDP
+    S3 --> FCDP
+
+    %% ===== Phase 2 & 3: 並列分析 =====
+    FRDP --> S4
+    FCDP --> S5
+
+    subgraph RETENTION["Phase 2: Retention Analysis（維持率分析）"]
+        direction TB
+        S4["step4_retention.md<br/>Agent: 維持率曲線×台本構造マッピング<br/>skill: retention_expertise.md"]
+        FRA(["retention_analysis.md<br/>（付録: 全動画維持率テーブル）"])
+        S4 --> FRA
+    end
+
+    subgraph CTR["Phase 3: CTR Analysis（CTR分析）"]
+        direction TB
+        S5["step5_ctr.md<br/>Agent: CTR 4要因分析<br/>skill: ctr_hook_expertise.md"]
+        FCA(["ctr_analysis.md<br/>（付録: 全動画CTRテーブル）"])
+        S5 --> FCA
+    end
+
+    %% ===== Phase 4: Paired Comparison =====
+    FRA --> S6
+    FCA --> S6
+
+    subgraph COMPARISON["Phase 4: Paired Comparison（ペア比較）"]
+        direction TB
+        S6["step6_pair_select.md<br/>Agent: HIT/MISSマッチドペア選定<br/>skill: case_control_methodology.md"]
+        S7["step7_case_study.md<br/>Agent: 4軸差分深掘り分析<br/>skill: four_axis_analysis.md"]
+        FCS(["case_studies.md<br/>（Phase総括Appendix付き）"])
+        S6 -->|"pair_selection.md<br/>（全データ埋め込み済み）"| S7
+        S7 --> FCS
+    end
+
+    FCS --> S8
+
+    %% ===== Phase 5: Multi-Axis Model =====
+    subgraph MODEL["Phase 5: Multi-Axis Model（多軸モデル構築）"]
+        direction TB
+        S8["step8_build_model.py<br/>4軸モデル構築<br/>Topic×Hook×Retention×Virality"]
+        S9["step9_hypothesize.md<br/>Agent: 4軸統合仮説生成<br/>skill: hypothesis_generation.md"]
+        S10["step10_verify.md<br/>Agent: レッドチーム検証<br/>skill: verification_methodology.md"]
+        S11["step11_integrate.py --integrate<br/>知見統合・収束判定"]
+        CONVERGE{"収束判定"}
+
+        S8 -->|"model.json"| S9
+        S9 -->|"new_hypotheses.md"| S10
+        S10 -->|"verification_report.md"| S11
+        S11 --> CONVERGE
+    end
+
+    CONVERGE -->|"未収束 and サイクル < 5"| S9
+    CONVERGE -->|"収束 or 5サイクル到達"| FAC
+
+    FAC(["analysis_conclusion.md（Phase 5 final出力）"])
+
+    %% ===== Phase 6: PDCA =====
+    subgraph PDCA["Phase 6: PDCA（予測→検証→学習）"]
+        direction TB
+        S12["step12_predict.py<br/>予測ロック（バイアス防止）"]
+        S13["step13_pdca.py<br/>PDCA評価 + 予測照合"]
+        S12_OUT(["predictions/pred_*.md<br/>predictions.jsonl"])
+        S13_OUT(["pdca_*.md"])
+        S12 --> S12_OUT
+        S13 --> S13_OUT
+    end
+
+    FAC --> S12
+    S13_TRIGGER{"モデル更新が必要?"}
+    S13_OUT --> S13_TRIGGER
+    S13_TRIGGER -->|"Yes"| S9
+    S13_TRIGGER -->|"No"| DONE((完了))
+
+    %% ===== ループ状態 =====
+    subgraph LOOP_STATE["ループ状態（累積・Phase 5で更新）"]
+        LS1["insights.md（累積知見）"]
+        LS2["golden_theory.json（黄金理論）"]
+    end
+
+    LS1 -.->|"既存知見参照"| S9
+    LS2 -.->|"既存原則参照"| S9
+    LS1 -.->|"既存知見参照"| S10
+    LS2 -.->|"既存原則参照"| S10
+    S11 -.->|"更新"| LS1
+    S11 -.->|"更新"| LS2
+
+    %% ===== checker例外 =====
+    HSJ["human_scores.json（生データ）"]
+    HSJ -.->|"独立検証用"| S10
+
+    %% ===== ドメイン知識 =====
+    subgraph SKILLS["skills/（エージェント専用ドメイン知識）"]
+        SK4["retention_expertise.md"]
+        SK5["ctr_hook_expertise.md"]
+        SK6["case_control_methodology.md"]
+        SK7["four_axis_analysis.md"]
+        SK9["hypothesis_generation.md"]
+        SK10["verification_methodology.md"]
+    end
+
+    SK4 -.->|"専用skill"| S4
+    SK5 -.->|"専用skill"| S5
+    SK6 -.->|"専用skill"| S6
+    SK7 -.->|"専用skill"| S7
+    SK9 -.->|"専用skill"| S9
+    SK10 -.->|"専用skill"| S10
+
+    %% data_summary.mdはスクリプト専用
+    FDS -.->|"スクリプト参照"| S8
+    FDS -.->|"スクリプト参照"| S11
+
+    %% ===== スタイリング =====
+    classDef intelligenceStyle fill:#E3F2FD,stroke:#1565C0,color:#000
+    classDef retentionStyle fill:#FFF3E0,stroke:#E65100,color:#000
+    classDef ctrStyle fill:#F3E5F5,stroke:#6A1B9A,color:#000
+    classDef comparisonStyle fill:#FCE4EC,stroke:#AD1457,color:#000
+    classDef modelStyle fill:#E8EAF6,stroke:#283593,color:#000
+    classDef pdcaStyle fill:#E8F5E9,stroke:#2E7D32,color:#000
+    classDef knowledgeStyle fill:#FAFAFA,stroke:#757575,color:#000
+    classDef finalStyle fill:#FFF9C4,stroke:#F9A825,color:#000
+    classDef loopStyle fill:#E0F7FA,stroke:#00695C,color:#000
+    classDef decisionStyle fill:#E8E8E8,stroke:#999,color:#333
+    classDef checkerStyle fill:#FFEBEE,stroke:#C62828,color:#000
+
+    class S1,S2,S3 intelligenceStyle
+    class S4 retentionStyle
+    class S5 ctrStyle
+    class S6,S7 comparisonStyle
+    class S8,S9,S10,S11 modelStyle
+    class S12,S13,S12_OUT,S13_OUT pdcaStyle
+    class SK4,SK5,SK6,SK7,SK9,SK10 knowledgeStyle
+    class FDS,FRDP,FCDP,FRA,FCA,FCS,FAC finalStyle
+    class LS1,LS2 loopStyle
+    class CONVERGE,S13_TRIGGER decisionStyle
+    class HSJ checkerStyle

@@ -55,9 +55,9 @@
         "rate": 0.917
       },
       "miss_fulfillment": {
-        "count": 7,
-        "total": 12,
-        "rate": 0.583
+        "count": 8,
+        "total": 13,
+        "rate": 0.615
       },
       "discriminative_power": "medium",
       "status": "under_investigation",
@@ -115,9 +115,9 @@
         "rate": 0.75
       },
       "miss_fulfillment": {
-        "count": 2,
-        "total": 12,
-        "rate": 0.167
+        "count": 3,
+        "total": 13,
+        "rate": 0.231
       },
       "discriminative_power": "high",
       "status": "conditionally_adopted",
@@ -135,9 +135,9 @@
         "rate": 0.75
       },
       "miss_fulfillment": {
-        "count": 2,
-        "total": 12,
-        "rate": 0.167
+        "count": 3,
+        "total": 13,
+        "rate": 0.231
       },
       "discriminative_power": "high",
       "status": "rejected",
@@ -156,9 +156,9 @@
         "rate": 0.75
       },
       "miss_fulfillment": {
-        "count": 2,
-        "total": 12,
-        "rate": 0.167
+        "count": 3,
+        "total": 13,
+        "rate": 0.231
       },
       "discriminative_power": "high",
       "status": "conditionally_adopted",
@@ -176,9 +176,9 @@
         "rate": 0.75
       },
       "miss_fulfillment": {
-        "count": 2,
-        "total": 12,
-        "rate": 0.167
+        "count": 3,
+        "total": 13,
+        "rate": 0.231
       },
       "discriminative_power": "high",
       "status": "conditionally_adopted",

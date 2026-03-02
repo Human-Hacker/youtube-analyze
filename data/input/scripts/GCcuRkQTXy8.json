@@ -1,0 +1,78 @@
+{
+  "video_id": "GCcuRkQTXy8",
+  "artist_name": "シャキーラ",
+  "script_file": "/Users/user/タスク/youtube-long/projects/シャキーラ/script.md",
+  "analysis_date": "2026-02-27",
+  "word_count": 5500,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "裸足の誓い（痛みを力に変える）",
+    "has_antagonist": true,
+    "antagonist": "ピケ（不倫）/ デ・ラ・ルア（400億円訴訟）/ スペイン検察（脱税起訴・懲役8年求刑）/ ピケの義母（隠蔽加担）",
+    "emotional_bottoms_count": 3,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "音楽（自身のアーティスト性）"
+  },
+  "hook_analysis": {
+    "opening_question": "史上最も成功した女性アーティストの一人が、なぜ警察から懲役8年を求刑される大事件を起こしたのか",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 85
+  },
+  "mv_insertions": {
+    "count": 9,
+    "songs": [
+      "Zoo (Zootopia 2)",
+      "Pies Descalzos収録曲",
+      "Whenever, Wherever",
+      "Waka Waka (This Time for Africa)",
+      "Can't Remember to Forget You (ft. Rihanna)",
+      "La La La (Brazil 2014)",
+      "Chantaje (ft. Maluma)",
+      "Try Everything",
+      "BZRP Music Sessions #53"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "ピケとの離婚・不倫スキャンダル・復讐曲BZRP",
+    "top1_addressed": true,
+    "top2_topic": "脱税事件・懲役8年求刑",
+    "top2_addressed": true,
+    "ca_score": 3
+  },
+  "gi_scores": {
+    "G1_gossip": 5,
+    "G2_curiosity": 4,
+    "G3_emotional": 4,
+    "G4_movie": 2,
+    "G6_songs": 4,
+    "total": 19
+  },
+  "emotional_curve": {
+    "total_ups": 6,
+    "total_downs": 5,
+    "total_transitions": 11,
+    "pattern_by_act": {
+      "intro": "D",
+      "first_act": "DUDU",
+      "second_act": "UDUDU",
+      "third_act": "DU"
+    },
+    "balance_description": "認知的不協和で始まり、幼少期の貧困→音楽の救い→挫折→成功を繰り返す波状構造。第二幕で父ICU+ピケ不倫+懲役8年の三重苦が同時に襲う最深の谷を形成し、BZRP復讐曲→グラミー受賞で劇的復活する谷底脱出型"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 5,
+    "description": "全年代で世界1位を取り続けた史上最も成功した女性アーティストが警察から懲役8年を求刑されるという強烈な認知的不協和で視聴者を引き込む。ズートピア2主題歌のMV挿入で親しみやすさも確保"
+  },
+  "non_mv_media": {
+    "total_links": 1,
+    "links_by_type": {
+      "interview": 0,
+      "live": 0,
+      "documentary": 0,
+      "other": 1
+    }
+  }
+}

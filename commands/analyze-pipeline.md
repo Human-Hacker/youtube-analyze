@@ -1,235 +1,254 @@
 # 分析パイプライン司令官
 
 YouTube動画分析の全工程を管理・実行するオーケストレーター。
-ユーザーとの対話で必要な情報を収集し、全ステップを自動実行する。
+6フェーズ・13ステップのクリーンアーキテクチャで、動画成功要因を第一原理から解明する。
 
 ## 実行モード
 
 ユーザーの指示に応じて適切なモードを選択する。
 
-### モード A: 新動画のPDCA評価（動画公開後 Day7）
+### モード A: フル分析パイプライン
+全Phase（1〜5）を通して実行し、4軸モデルを構築する。
 
+### モード B: PDCA評価（動画公開後 Day7）
 新しく公開した動画の事後分析。予測と実績を照合する。
 
-### モード B: 分析モデルの再構築
+### モード C: 予測ロック
+候補アーティストの事前予測をロックする（バイアス防止のため、データ収集前に実行）。
 
-全データを使ってモデルを更新し、仮説検証ループを回す。
-
-### モード C: 次の動画候補の予測ロック
-
-`next_26_artists.md` の予測をロックする（バイアス防止のため、データ収集前に実行）。
+### モード D: 分析ループのみ
+Phase 1-4完了後、Phase 5のモデル構築ループのみを回す。
 
 ---
 
-## モード A: 新動画のPDCA評価
+## モード A: フル分析パイプライン
+
+### Phase 1: Intelligence（情報収集）
+
+```
+Step 1: python scripts/step1_fetch.py
+  → data/input/videos/*.json, data/input/video_index.json
+
+Step 2: python scripts/step2_sync_scores.py
+  → data/input/human_scores.json 更新
+
+Step 3: python scripts/step3_summarize.py
+  → data/output/data_summary.md
+  → data/output/retention_data_pack.md
+  → data/output/ctr_data_pack.md
+```
+
+**Phase 1 final出力**:
+- `data/output/data_summary.md`（スクリプト向け全セクション）
+- `data/output/retention_data_pack.md`（Step 4専用ドメインパック）
+- `data/output/ctr_data_pack.md`（Step 5専用ドメインパック）
+
+### Phase 2: Retention Analysis（維持率分析）
+
+```
+Step 4: Agent（agents/retention/step4_retention.md）
+  skill: skills/retention_expertise.md
+  入力: retention_data_pack.md + videos/*.json + scripts/*.json
+  出力: data/output/retention_analysis.md（付録: 全動画維持率テーブル）
+```
+
+**Phase 2 final出力**: `data/output/retention_analysis.md`
+
+### Phase 3: CTR Analysis（CTR分析）
+
+```
+Step 5: Agent（agents/ctr/step5_ctr.md）
+  skill: skills/ctr_hook_expertise.md
+  入力: ctr_data_pack.md + videos/*.json + human_scores.json
+  出力: data/output/ctr_analysis.md（付録: 全動画CTRテーブル）
+```
+
+**Phase 3 final出力**: `data/output/ctr_analysis.md`
+
+**注意**: Phase 2とPhase 3は独立しているため並列実行可能。
+
+### Phase 4: Paired Comparison（ペア比較）
+
+```
+Step 6: Agent（agents/comparison/step6_pair_select.md）
+  skill: skills/case_control_methodology.md
+  入力: retention_analysis.md + ctr_analysis.md
+  出力: data/output/pair_selection.md（全データ埋め込み済み）
+
+Step 7: Agent（agents/comparison/step7_case_study.md）
+  skill: skills/four_axis_analysis.md
+  入力: pair_selection.md
+  出力: data/output/case_studies.md（Phase総括Appendix含む）
+```
+
+**Phase 4 final出力**: `data/output/case_studies.md`
+
+### Phase 5: Multi-Axis Model（多軸モデル構築）
+
+```
+Step 8: python scripts/step8_build_model.py
+  → data/output/model.json（4軸モデル）
+
+  ┌─── 分析ループ（最大5サイクル）─────────────────────────┐
+  │ Step 9:  Agent（agents/model/step9_hypothesize.md）    │
+  │   skill: skills/hypothesis_generation.md               │
+  │   入力: case_studies.md + insights.md                  │
+  │         + golden_theory.json                           │
+  │   出力: data/output/new_hypotheses.md                   │
+  │                                                         │
+  │ Step 10: Agent（agents/model/step10_verify.md）         │
+  │   skill: skills/verification_methodology.md            │
+  │   入力: new_hypotheses.md + case_studies.md             │
+  │         + human_scores.json + insights.md               │
+  │         + golden_theory.json                            │
+  │   出力: data/output/verification_report.md              │
+  │                                                         │
+  │ Step 11: python scripts/step11_integrate.py --integrate │
+  │   入力: new_hypotheses.md + verification_report.md      │
+  │   出力: insights.md, golden_theory.json 更新            │
+  │   → 収束判定                                            │
+  └─── 未収束なら Step 9 へ ────────────────────────────────┘
+
+  収束後: data/output/analysis_conclusion.md 生成
+```
+
+**Phase 5 final出力**: `data/output/analysis_conclusion.md`
+
+### ループ終了条件
+- **正常終了**: 全仮説が「支持」or「修正」で、未解決矛盾がゼロ
+- **成果ありで終了**: 一部採択・一部棄却だが、新たな手がかりがない
+- **上限終了**: 5サイクル到達。残存矛盾を記録して終了
+
+---
+
+## モード B: PDCA評価
 
 ### エージェントの対話フロー
 
 ```
 エージェント → ユーザーに質問:
   1. 「評価する動画のIDを教えてください」
-  2. 「YouTube Studio から以下のCSVをダウンロードして、パスを教えてください:
-      - アナリティクス概要（過去7日）
-      - トラフィックソース
-      ※ 手元にない場合は "なし" と回答してください（API取得を試みます）」
+  2. 「YouTube Studio CSVがあればパスを教えてください（なければAPIで取得）」
 ```
 
 ### 自動実行フロー
 
 ```
 Phase 1: データ準備
-  1.1 ユーザーから video_id を取得
-  1.2 台本分析JSONの自動生成:
-      a. video_index.json からタイトルを取得 → アーティスト名を推定
-      b. youtube-long/projects/{ARTIST}/ に script.md があるか確認
-      c. script.md を読み、templates/script_analysis_template.json に沿って分析
-      d. data/input/scripts/{VIDEO_ID}.json に保存
-  1.3 スコア同期:
-      python scripts/step_sync_scores.py --video-id VIDEO_ID
-      → human_scores.json に GI/CA スコアが自動反映される
-      ※ quantitativeソース（手動採点済み）は上書きしない
+  1.1 video_id 取得
+  1.2 台本分析JSONの自動生成（youtube-long連携）
+  1.3 python scripts/step2_sync_scores.py --video-id VIDEO_ID
 
-Phase 2: パイプライン実行
-  2.1 python scripts/step1_fetch.py             # YouTube API データ取得
-  2.2 python scripts/step2_build_model.py        # モデル再構築（新データ込み）
-  2.3 python scripts/step7_pdca.py VIDEO_ID      # PDCA評価 + 予測照合
+Phase 6: PDCA評価
+  Step 12: python scripts/step1_fetch.py
+  Step 13: python scripts/step13_pdca.py VIDEO_ID
+    → data/output/pdca_{VIDEO_ID}_{DATE}.md
 
-Phase 3: 結果報告
-  3.1 data/output/pdca_{VIDEO_ID}_{DATE}.md の内容をユーザーに報告
-  3.2 予測照合結果がある場合は特に強調して報告
-  3.3 「モデルの更新が必要ですか？（分析ループに進みますか？）」と確認
-```
-
-### Phase 3 で「はい」の場合 → 分析ループ
-
-```
-  ┌─── 分析ループ（最大5回）─────────────────────────┐
-  │ Step 3: python scripts/step3_analyze.py          # 分析準備
-  │ Step 4: Agent C (agents/analyze-step4-hypothesis.md)  # 仮説生成
-  │ Step 5: Agent E (agents/analyze-step5-verification.md) # 仮説検証
-  │ Step 6: python scripts/step3_analyze.py --integrate    # 結果統合
-  └─── 未収束なら Step 3 へ ─────────────────────────┘
-```
-
----
-
-## モード B: 分析モデルの再構築
-
-```
-Phase 1: データ更新
-  1.1 python scripts/step1_fetch.py             # 最新データ取得
-  1.2 python scripts/step2_build_model.py        # モデル再構築
-
-Phase 2: 分析ループ（最大5回）
-  2.1 python scripts/step3_analyze.py
-  2.2 Agent C → 仮説生成
-  2.3 Agent E → 仮説検証
-  2.4 python scripts/step3_analyze.py --integrate
-  → 収束判定 → 未収束ならループ
-
-Phase 3: 結果報告
-  3.1 data/output/analysis_conclusion.md をユーザーに報告
+結果報告: pdca レポートをユーザーに報告
+  → 「モデル更新が必要ですか？」確認
+  → Yes → モード D（分析ループ）へ
 ```
 
 ---
 
 ## モード C: 予測ロック
 
-### 前提条件: 定量スコアリングの完了
-
-予測をロックする前に、全アーティストのG1/G6/G_ST/G_YTスコアが `prompts/scoring_criteria.md` v1.0 の定量基準に基づいて算出されていなければならない。**概算・推定によるスコアは禁止**。
-
-#### 必須手順（1件追加時も一括インポート時も同様）
-
-1. **G1（ゴシップ露出度）**: `"{アーティスト名}" ワイドショー OR 特集 OR スキャンダル` でWeb検索し、独立記事数をカウント
-2. **G6（楽曲知名度）**: `"{アーティスト名}" CM OR カラオケ OR ドラマ主題歌` でWeb検索し、日本でのCM/TV/カラオケ実績曲数をカウント
-3. **G_ST（ストリーミング需要）**: `"{アーティスト名}" Spotify Japan` or `"{アーティスト名}" ストリーミング 日本` でWeb検索し、日本チャートでの実績を確認
-4. **G_YT（YouTube解説需要）**: `"{アーティスト名}" 解説 OR まとめ OR 人生` でYouTube検索し、既存解説動画の本数・再生数を確認
-5. 各スコアの**根拠（evidence）**を `next_*_artists.md` の選定理由に記録
-
-#### スコアリング基準の詳細
-
-`prompts/scoring_criteria.md` を参照。主要な閾値:
-- G1: 独立記事10件以上→5, 5-9件→4, 3-4件→3, 1-2件→2, 0件→1
-- G6: CM/TV/カラオケ実績3曲以上→5, 2曲→4, 1曲→3, カラオケのみ→2, なし→1
-- G_ST: Spotify Japan月間リスナー/チャート実績で判定（1-5）
-- G_YT: 日本語の解説動画の本数・合計再生数で判定（1-5）
+### 前提条件
+全アーティストのスコアが `skills/ctr_hook_expertise.md` 内のGI/CA定量基準に基づいて算出済みであること。
 
 ### 実行
 
 ```
-python scripts/step8_predict.py              # next_*_artists.md から全件インポート
-python scripts/step8_predict.py --dry-run     # 実行せず確認
-python scripts/step8_predict.py --artist "名前" --G1 N --G6 N --G_ST N --G_YT N  # 1件追加
+python scripts/step12_predict.py              # 全件インポート
+python scripts/step12_predict.py --dry-run     # 実行せず確認
+python scripts/step12_predict.py --artist "名前" --G1 N --G6 N  # 1件追加
 ```
 
-**重要**: 予測ロックはデータ収集（モードA）の前に実行すること（バイアス防止）。
+**重要**: 予測ロックはデータ収集（モードB）の前に実行すること（バイアス防止）。
 
 ---
 
-## 台本分析JSONの自動生成
+## モード D: 分析ループのみ
 
-モードA Phase 1.2 で、エージェントが youtube-long の台本を分析して JSON を生成する。
+Phase 1-4が完了している前提で、Phase 5のループのみを回す。
 
-### アーティスト名の照合ルール
-
-video_index.json のタイトルから推定 → youtube-long/projects/ のフォルダ名と照合:
-- 完全一致を試行
-- 部分一致（タイトルにフォルダ名が含まれる）を試行
-- 見つからない場合はユーザーに確認
-
-### 生成する JSON の構造
-
-`templates/script_analysis_template.json` に準拠。主要フィールド:
-- `gi_scores`: G1-G6 のスコア（台本の内容から採点）
-- `curiosity_alignment`: ca_score（好奇心とタイトルの照合）
-- `structure`: 統一テーマ、敵役、感情の底など
-- `hook_analysis`: オープニングフック分析
-- `emotional_curve`: 感情曲線パターン
-- `opening_30sec`: 最初30秒の分析
-
-### 採点基準
-
-`prompts/scoring_criteria.md` の定量基準に従う。エージェントは:
-1. 台本を通読し、各スコアを定量基準で採点
-2. 根拠を `*_evidence` フィールドに記録
-3. Web検索は不要（台本の内容のみで採点）
+```
+Step 8:  python scripts/step8_build_model.py
+Step 9:  Agent（agents/model/step9_hypothesize.md）
+Step 10: Agent（agents/model/step10_verify.md）
+Step 11: python scripts/step11_integrate.py --integrate
+→ 収束判定 → 未収束ならStep 9へ
+```
 
 ---
 
 ## 各ステップの詳細
 
-| Step | 種別 | 実行コマンド | 入力 | 出力 |
-|------|------|-------------|------|------|
-| 1 | script | `python scripts/step1_fetch.py` | YouTube API | `data/input/videos/*.json`, `data/input/video_index.json` |
-| 2 | script | `python scripts/step2_build_model.py` | `data/input/videos/*.json`, `data/input/human_scores.json` | `data/output/model.json`, `data/output/analysis_report.md` |
-| 3 | script | `python scripts/step3_analyze.py` | `data/output/model.json`, 全入力データ | `data/output/data_summary.md` |
-| 4 | agent | `agents/analyze-step4-hypothesis.md` | `data/output/data_summary.md`, `data/output/insights.md`, `data/output/golden_theory.json` | `data/output/new_hypotheses.md` |
-| 5 | agent | `agents/analyze-step5-verification.md` | `data/output/new_hypotheses.md`, 全入力データ | `data/output/verification_report.md` |
-| 6 | script | `python scripts/step3_analyze.py --integrate` | `data/output/new_hypotheses.md`, `data/output/verification_report.md` | `data/output/insights.md`, `data/output/golden_theory.json`, `data/output/analysis_conclusion.md` |
-| 7 | script | `python scripts/step7_pdca.py VIDEO_ID` | 新動画データ, `data/output/model.json`, `data/predictions.jsonl` | `data/output/pdca_*.md` |
-| 8 | script | `python scripts/step8_predict.py` | `data/output/next_26_artists.md` | `data/predictions.jsonl`, `data/output/predictions/pred_*.md` |
-| sync | script | `python scripts/step_sync_scores.py` | `data/input/scripts/*.json` | `data/input/human_scores.json` 更新 |
-
-## ループ条件
-
-- **正常終了**: 全仮説が「支持」or「修正」で、未解決矛盾がゼロ
-- **成果ありで終了**: 一部採択・一部棄却だが、新たな手がかりがない
-- **上限終了**: 5サイクル到達。残存矛盾を `data/output/insights.md` に記録して終了
+| Step | Phase | 種別 | 実行 | 入力 | 出力 |
+|------|-------|------|------|------|------|
+| 1 | 1 | script | `step1_fetch.py` | YouTube API | `videos/*.json`, `video_index.json` |
+| 2 | 1 | script | `step2_sync_scores.py` | `scripts/*.json` | `human_scores.json` 更新 |
+| 3 | 1 | script | `step3_summarize.py` | Phase 1全データ | `data_summary.md`, `retention_data_pack.md`, `ctr_data_pack.md` |
+| 4 | 2 | agent | `step4_retention.md` | `retention_data_pack.md` + 生データ | `retention_analysis.md` |
+| 5 | 3 | agent | `step5_ctr.md` | `ctr_data_pack.md` + 生データ | `ctr_analysis.md` |
+| 6 | 4 | agent | `step6_pair_select.md` | `retention_analysis.md` + `ctr_analysis.md` | `pair_selection.md` |
+| 7 | 4 | agent | `step7_case_study.md` | `pair_selection.md` | `case_studies.md` |
+| 8 | 5 | script | `step8_build_model.py` | Phase 1-4全出力 | `model.json` |
+| 9 | 5 | agent | `step9_hypothesize.md` | `case_studies.md` + ループ状態 | `new_hypotheses.md` |
+| 10 | 5 | agent | `step10_verify.md` | `new_hypotheses.md` + `case_studies.md` + `human_scores.json` + ループ状態 | `verification_report.md` |
+| 11 | 5 | script | `step11_integrate.py --integrate` | 仮説+検証結果 | `insights.md`, `golden_theory.json` |
+| 12 | 6 | script | `step12_predict.py` | 候補リスト | `predictions.jsonl`, `pred_*.md` |
+| 13 | 6 | script | `step13_pdca.py` | 新動画データ + model.json | `pdca_*.md` |
 
 ## エージェント一覧
 
-| エージェント | ファイル | 役割 |
-|------------|---------|------|
-| Agent C | `agents/analyze-step4-hypothesis.md` | メタ分析。HIT/MISS共通点抽出 → 水平思考 → 因果仮説生成 |
-| Agent E | `agents/analyze-step5-verification.md` | レッドチーム。仮説を否定方向で検証し、確証バイアスを防止 |
+| エージェント | ファイル | Phase | 専用skill | 役割 |
+|------------|---------|-------|-----------|------|
+| Retention Analyst | `step4_retention.md` | 2 | `retention_expertise.md` | 維持率曲線×台本構造マッピング |
+| CTR Analyst | `step5_ctr.md` | 3 | `ctr_hook_expertise.md` | CTR 4要因分析（GI/CA基準内蔵） |
+| Pair Selector | `step6_pair_select.md` | 4 | `case_control_methodology.md` | HIT/MISSマッチドペア選定 |
+| Case Researcher | `step7_case_study.md` | 4 | `four_axis_analysis.md` | ペアごとの4軸差分分析 |
+| Hypothesis Generator | `step9_hypothesize.md` | 5 | `hypothesis_generation.md` | 4軸統合仮説生成 |
+| Red Team Verifier | `step10_verify.md` | 5 | `verification_methodology.md` | 仮説の否定方向検証 |
 
-## 参照プロンプト
+## 参照スキル（エージェントごとに専用化）
 
-| ファイル | 内容 | 参照元 |
-|---------|------|--------|
-| `prompts/coordinator.md` | 分析サイクル仕様書 | 本パイプライン |
-| `prompts/youtube_fundamentals.md` | YouTube前提知識（アルゴリズム・視聴者心理） | Agent C, Agent E |
-| `prompts/scoring_criteria.md` | GI/CAスコアリング定量基準 | Agent C, Agent E, 台本分析JSON生成 |
+| ファイル | 対象Agent | 主な内容 |
+|---------|-----------|---------|
+| `skills/retention_expertise.md` | Step 4 | 維持率曲線理論、感情移入×物語構造、MV挿入効果 |
+| `skills/ctr_hook_expertise.md` | Step 5 | CTR理論、好奇心ギャップ、GI/CAスコアリング基準全文 |
+| `skills/case_control_methodology.md` | Step 6 | ケースコントロール研究法、マッチング基準設計 |
+| `skills/four_axis_analysis.md` | Step 7 | 4軸フレームワーク完全定義、差分分析の因果推論 |
+| `skills/hypothesis_generation.md` | Step 9 | 仮説生成方法論、反証可能性要件、N=24統計推論 |
+| `skills/verification_methodology.md` | Step 10 | レッドチーム方法論、確証バイアス対策、検証閾値 |
 
-## ディレクトリ構造
+## データフロー
 
 ```
-youtube-analyze/
-├── commands/
-│   └── analyze-pipeline.md          # 本ファイル（パイプライン司令官）
-├── agents/
-│   ├── analyze-step4-hypothesis.md  # Step 4: 仮説生成
-│   └── analyze-step5-verification.md # Step 5: 仮説検証
-├── prompts/
-│   ├── coordinator.md               # 分析サイクル仕様書
-│   ├── youtube_fundamentals.md      # YouTube前提知識
-│   └── scoring_criteria.md          # GI/CAスコアリング基準
-├── scripts/
-│   ├── auth.py                      # 認証ユーティリティ
-│   ├── step1_fetch.py               # Step 1: データ取得
-│   ├── step2_build_model.py         # Step 2: モデル構築
-│   ├── step2_filters.py             #   └─ 内部: 3段階フィルター
-│   ├── step2_patterns.py            #   └─ 内部: パターン分析
-│   ├── step2_history.py             #   └─ 内部: 履歴管理
-│   ├── step2_report.py              #   └─ 内部: レポート生成
-│   ├── step3_analyze.py             # Step 3/6: 分析準備 & 結果統合
-│   ├── step7_pdca.py                # Step 7: PDCA評価 + 予測照合
-│   ├── step8_predict.py             # Step 8: 事前予測の一括記録
-│   ├── step_sync_scores.py          # 台本分析 → human_scores.json 同期
-│   ├── data_summarizer.py           # ユーティリティ: データ集計
-│   ├── config.py                    # 設定
-│   └── common/
-│       ├── data_loader.py
-│       └── metrics.py
-├── data/
-│   ├── input/                       # 入力データ（API取得・手動評価）
-│   │   └── scripts/                 # 台本分析JSON（自動生成 or 手動）
-│   ├── output/                      # 出力データ（モデル・分析結果）
-│   │   └── predictions/             # 予測カード
-│   └── history/                     # 履歴（バージョン管理）
-├── templates/                       # テンプレート
-└── projects/                        # アーティスト別手動データ
+Phase 1 (Intelligence)
+  入力: YouTube API, CSV, scripts/*.json
+  出力: data_summary.md（スクリプト向け）
+        retention_data_pack.md（Step 4向け）
+        ctr_data_pack.md（Step 5向け）
+         ↓
+Phase 2 (Retention)          Phase 3 (CTR)
+  入力: retention_data_pack    入力: ctr_data_pack
+  出力: retention_analysis.md  出力: ctr_analysis.md
+  （付録: 全動画テーブル）      （付録: 全動画テーブル）
+         ↓                      ↓
+         └──────────┬───────────┘
+                    ↓
+Phase 4 (Comparison)
+  入力: retention_analysis + ctr_analysis
+  出力: pair_selection.md（全データ埋め込み）
+        → case_studies.md（Phase総括Appendix付き）
+         ↓
+Phase 5 (Model) ← ループ（最大5サイクル）
+  入力: case_studies.md + ループ状態
+  出力: analysis_conclusion.md（★ Phase 5 final）
+         ↓
+Phase 6 (PDCA)
+  予測ロック / PDCA評価
 ```
 
 ## エラー時のリカバリ
@@ -237,9 +256,7 @@ youtube-analyze/
 | 状況 | 対応 |
 |------|------|
 | Step 1 でAPI認証エラー | `python scripts/auth.py` で再認証 |
-| Step 2 でデータ不足 | `data/input/videos/` にJSONが存在するか確認 |
-| Step 4/5 でAgent出力が不正 | `data/output/` の出力ファイルを確認し、JSONブロックのフォーマットを修正 |
-| Step 6 でパースエラー | Agent出力のJSONブロックが正しい形式か確認 |
-| ループが収束しない | 5サイクル上限で自動終了。`data/output/insights.md` に未解決問題を記録 |
-| 台本が youtube-long に見つからない | ユーザーにアーティスト名を確認 → 手動で script.md パスを指定 |
-| 予測が見つからない (step7) | アーティスト名の表記揺れの可能性。部分一致で検索される |
+| Step 4/5 で分析データ不足 | Phase 1の出力を確認、data_packが正常か確認 |
+| Step 6 でペアが見つからない | マッチング条件を緩和（GI差を5まで拡大） |
+| Step 9/10 でAgent出力不正 | 出力ファイルのJSONブロックフォーマットを修正 |
+| ループが収束しない | 5サイクル上限で自動終了。insights.mdに未解決問題を記録 |

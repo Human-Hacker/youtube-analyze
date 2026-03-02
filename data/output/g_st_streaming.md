@@ -1,80 +1,188 @@
-# G_ST（日本ストリーミング需要）測定結果
+# 日本でストリーミング需要のある洋楽アーティスト 網羅的リスト
 
-## データソース
-- Spotify Japan Weekly Chart (kworb.net) 2026-02-12時点
-- Spotify Japan Daily Chart (kworb.net) 2026-02-14時点
-- Spotify Japan Weekly Totals (kworb.net) 累計データ（2017年8月〜2026年2月）
-- Spotify Japan Daily Totals (kworb.net) 累計データ（2016年10月〜2026年2月）
-- kworb.net 各アーティストのSpotify Chart History（JP列のピーク順位）
-- Spotify Wrapped 2025 Japan ランキング（Tokyo Weekender / Spotify Newsroom JP）
-- 補足: Web検索による各アーティストの日本ストリーミング情報
+> 調査日: 2026-02-26
+> ソース: Spotify Japan Wrapped 2025, Billboard Japan Hot Overseas, USEN MUSIC AWARD 2025, Apple Music Japan, MUSIC AWARDS JAPAN 2025, Amazon Music Japan, kworb.net (Spotify Japan Charts), dwango.jp, Tokyo Weekender, RAG Music
 
-## 調査方法
-1. kworb.net の日本Spotifyウィークリー/デイリーチャート（現行TOP200）への出現を確認
-2. kworb.net の日本累計ストリーム数（Weekly Totals / Daily Totals）を確認
-3. 各アーティストのkworb.net Chart History からJP列のピーク順位を確認
-4. Spotify Wrapped 2025 Japan での洋楽アーティストのランクイン状況を確認
-5. 上記データを総合してG_STスコアを算出
+---
 
-## 重要な背景
-- 日本のSpotifyチャートは邦楽・K-POPが圧倒的に優勢
-- Spotify Wrapped 2025 Japanのトップ100楽曲に洋楽はほぼゼロ（唯一の例外: ROSE & Bruno Mars「APT.」24位）
-- 洋楽アーティストで年間トップ50入りしたのはLady Gaga & Bruno Mars（41位）とTaylor Swift（43位）のみ
-- 従って、日本チャートにおける洋楽の基準は「グローバル基準と比べて非常に厳しい」
+## 総合リスト (60組)
 
-## 結果
+| # | アーティスト | 日本でのストリーミング実績・チャート順位 | ソース | 備考 |
+|---|---|---|---|---|
+| 1 | **Bruno Mars (ブルーノ・マーズ)** | Spotify Japan Top Artist 41位(Lady Gagaと共同), Billboard Japan Hot Overseas 3位「I Just Might」, USEN洋楽2位「Die With A Smile」, Billboard Japan Hot 100年間3位「APT.」(with Rose), Spotify JP Chart History: APT. #1, That's What I Like #43, 24K Magic #45 | Spotify Wrapped 2025, Billboard Japan, USEN 2025, kworb.net | 日本で最も人気のある洋楽アーティスト。「APT.」(Rose&Bruno Mars)はBillboard Japan Hot 100で洋楽として史上初の2週連続1位。「I Just Might」「Die With A Smile」も大ヒット。来日公演は即完売 |
+| 2 | **Ed Sheeran (エド・シーラン)** | Billboard Japan Hot Overseas 6位「Shape of You」(チャートイン464週!), USEN洋楽5位「Azizam」/17位「Drive」, Spotify JP Daily Totals: Shape of You 123.5M+3曲計157.9M, Spotify JP Chart History: Shape of You #1, Perfect #12 | Billboard Japan, USEN 2025, kworb.net | 日本Spotifyストリーミングの洋楽累計王者。「Shape of You」は2026年2月現在もJPウィークリー/デイリーチャートに残存する唯一の洋楽。USEN洋楽でも2曲ランクイン |
+| 3 | **Billie Eilish (ビリー・アイリッシュ)** | USEN洋楽年間1位「Birds Of A Feather」/22位「Wildflower」, MAJ最優秀海外オルタナティブ楽曲賞, Spotify JP: bad guy 28.9M, BIRDS OF A FEATHER 11.2M, Chart History: bad guy #9 | USEN 2025, MAJ 2025, kworb.net | 2か月連続USEN月間1位を記録し年間1位獲得。日本の店舗BGMで最も流れた洋楽 |
+| 4 | **Lady Gaga (レディー・ガガ)** | Spotify Japan Top Artist 41位(Bruno Marsと共同), USEN洋楽2位/4位, Spotify JP: Die With A Smile 15.5M, Rain On Me 10.9M, Chart History: Shallow #19, The Cure #11 | Spotify Wrapped 2025, USEN 2025, kworb.net | 「Die With A Smile」(with Bruno Mars)はSpotify世界年間1位(17億回再生)。「Abracadabra」もUSEN洋楽4位 |
+| 5 | **Taylor Swift (テイラー・スウィフト)** | Spotify Japan Top Artist 43位, Spotify JP: Cruel Summer 32.8M, Chart History: Lover #23, Cruel Summer #26, Anti-Hero #67 | Spotify Wrapped 2025, kworb.net | 2025年IFPI世界最高売上アルバム。日本でも安定した人気維持 |
+| 6 | **Ariana Grande (アリアナ・グランデ)** | USEN洋楽14位「Defying Gravity」/20位「Popular」/27位「Twilight Zone」, MAJ最優秀海外R&B楽曲賞, Spotify JP: Santa Tell Me 18.4M, Chart History: thank u, next #3, 7 rings #4 | USEN 2025, MAJ 2025, kworb.net | 3曲がUSEN TOP30入り。映画『Wicked』効果で「Defying Gravity」「Popular」がヒット |
+| 7 | **Sabrina Carpenter (サブリナ・カーペンター)** | USEN洋楽9位「Espresso」, MAJ海外ポップスノミネート | USEN 2025, MAJ 2025 | 「Espresso」が世界的大ヒット、日本でも広く浸透 |
+| 8 | **SZA (シザ)** | USEN洋楽6位「BMF」, Billboard Japan Hot Overseas上位 | USEN 2025, Billboard Japan | 「BMF」がUSEN洋楽6位。Apple Music Japan最新洋楽プレイリスト上位 |
+| 9 | **Benson Boone (ベンソン・ブーン)** | USEN洋楽3位「Beautiful Things」/21位/26位 | USEN 2025 | 3曲がUSEN TOP30入り。2025年の洋楽新星 |
+| 10 | **Damiano David (ダミアーノ・デイヴィッド)** | USEN洋楽7位「Next Summer」/10位「Zombie Lady」/13位「Talk To Me」 | USEN 2025 | Maneskinフロントマンのソロ。3曲がTOP15入りの快挙 |
+| 11 | **Shakira (シャキーラ)** | Billboard Japan Hot Overseas 2位「Zoo」(チャートイン14週) | Billboard Japan 2026/02/25 | 映画『ズートピア2』主題歌「Zoo」が日本で大ヒット |
+| 12 | **Coldplay (コールドプレイ)** | MAJ最優秀海外ロック楽曲賞「feelslikeimfallinginlove」 | MAJ 2025 | MUSIC AWARDS JAPAN 2025海外ロック部門受賞 |
+| 13 | **Kendrick Lamar (ケンドリック・ラマー)** | MAJ最優秀海外ヒップホップ/ラップ楽曲賞「Not Like Us」 | MAJ 2025 | 2025年グラミー賞レコード賞&楽曲賞受賞。MAJでも受賞 |
+| 14 | **Harry Styles (ハリー・スタイルズ)** | Billboard Japan Hot Overseas 9位「Aperture」(チャートイン5週) | Billboard Japan 2026/02/25 | 新曲「Aperture」でチャートイン。日本での人気継続 |
+| 15 | **Charlie Puth (チャーリー・プース)** | Billboard Japan Hot Overseas 10位「Cry (feat. Kenny G)」/14位「Beat Yourself Up」 | Billboard Japan 2026/02/25, dwango.jp | 同時2曲チャートイン。日本で根強い人気 |
+| 16 | **The Weeknd (ザ・ウィークエンド)** | USEN洋楽29位「Timeless with Playboi Carti」, Billboard Japan Hot Overseas登場 | USEN 2025, Billboard Japan | Spotify世界初の50億回再生(Blinding Lights) |
+| 17 | **Gracie Abrams (グレイシー・エイブラムス)** | USEN洋楽8位「That's So True」 | USEN 2025 | TikTokでも日本で話題の新世代シンガー |
+| 18 | **OneRepublic (ワンリパブリック)** | USEN洋楽15位「Beautiful Colors (from 怪獣8号)」 | USEN 2025 | アニメ『怪獣8号』タイアップ。アニメ経由で日本に浸透 |
+| 19 | **Alicia Keys (アリシア・キーズ)** | USEN洋楽16位「No One」 | USEN 2025 | レジェンド曲「No One」が根強い人気でランクイン |
+| 20 | **Rachel Platten (レイチェル・プラッテン)** | USEN洋楽19位「Fight Song」 | USEN 2025 | 応援ソングとして日本の店舗BGMで定番化 |
+| 21 | **Maroon 5 (マルーン5)** | USEN洋楽28位「Sugar」 | USEN 2025 | 「Sugar」は洋楽BGM定番。来日公演も毎回盛況 |
+| 22 | **Elton John (エルトン・ジョン)** | USEN洋楽24位「Never Too Late」(with Brandi Carlile), Spotify JP Chart History: Cold Heart #114 | USEN 2025, kworb.net | ディズニー映画関連でチャートイン |
+| 23 | **Queen (クイーン)** | Spotify JP Chart History: Bohemian Rhapsody #3, Another One Bites The Dust #14, Don't Stop Me Now #28, 計8曲JPチャートイン | kworb.net, Billboard Japan | 2018年映画『ボヘミアン・ラプソディ』(日本興収131億円)でストリーミング大幅増。映画効果のロングテール |
+| 24 | **Mariah Carey (マライア・キャリー)** | Billboard Japan Hot Overseas 毎年12-1月に1位「恋人たちのクリスマス」, Spotify全世界20億回再生超 | Billboard Japan, Spotify | 毎年12-1月に日本チャート急上昇する定番レジェンド |
+| 25 | **Guns N' Roses (ガンズ・アンド・ローゼズ)** | Billboard Japan Hot Overseas 12位「Sweet Child O' Mine」(チャートイン4週) | Billboard Japan 2026/02/25 | 「Sweet Child O' Mine」は日本でも定番洋楽ロック |
+| 26 | **Sombr (ソンバー)** | Billboard Japan Hot Overseas 5位「Homewrecker」 | Billboard Japan 2026/02/25 | TikTok発の新世代アーティスト。日本で急浮上 |
+| 27 | **Laura Young (ローラ・ヤング)** | USEN洋楽12位「Messy」 | USEN 2025 | 新世代UKアーティスト |
+| 28 | **Norah Jones (ノラ・ジョーンズ)** | Billboard Japan Hot Overseas 16位「Something Stupid」(with Josh Homme) | Billboard Japan 2026/02/25 | 日本で長年のファンベース |
+| 29 | **Tom Misch (トム・ミッシュ)** | Billboard Japan Hot Overseas 11位「Sisters With Me」 | Billboard Japan 2026/02/25 | UKギタリスト/プロデューサー。日本の音楽ファンに支持 |
+| 30 | **Meghan Trainor (メーガン・トレイナー)** | Billboard Japan Hot Overseas 15位「Get In Girl」 | Billboard Japan 2026/02/25 | 新曲でチャートイン |
+| 31 | **Thundercat (サンダーキャット)** | Billboard Japan Hot Overseas 17位「I Did This To Myself (feat. Lil Yachty)」 | Billboard Japan 2026/02/25 | 日本のシティポップファンとの親和性高い |
+| 32 | **Bad Bunny (バッド・バニー)** | Spotify世界最多再生アーティスト(2025年), Billboard Japan Hot Overseas 20位「DTMF」 | Spotify Wrapped 2025, Billboard Japan | Spotify Wrapped 2025世界1位。日本でもラテン音楽の牽引役 |
+| 33 | **Cynthia Erivo (シンシア・エリヴォ)** | USEN洋楽14位「Defying Gravity feat. Ariana Grande」 | USEN 2025 | 映画『Wicked』効果 |
+| 34 | **Dua Lipa (デュア・リパ)** | dwango.jpピックアップ, MAJ海外ポップスノミネート | dwango.jp, MAJ 2025 | Apple Music/Spotify上位常連。日本でも安定人気 |
+| 35 | **Justin Bieber (ジャスティン・ビーバー)** | Spotify JP: Peaches 10.1M, Chart History: I Don't Care #2, Stay #7, Amazon Music Japan個人TOPアーティスト報告 | kworb.net, Amazon Music | 日本での長期的ファンベース |
+| 36 | **Selena Gomez (セレーナ・ゴメス)** | Spotify JP: Wolves 7.4M, Chart History: Wolves #2, Back To You #4, Taki Taki #6 | kworb.net | コラボ曲で日本チャート上位実績 |
+| 37 | **Beyonce (ビヨンセ)** | dwango.jpピックアップ, 2025年グラミー最優秀アルバム賞「COWBOY CARTER」 | dwango.jp, Grammy | グラミー最優秀アルバム賞。日本での認知度は非常に高い |
+| 38 | **Olivia Rodrigo (オリヴィア・ロドリゴ)** | Spotify/Apple Music Japan上位 | Spotify, Apple Music | 「vampire」「good 4 u」等が日本でもヒット。Z世代に人気 |
+| 39 | **Avicii (アヴィーチー)** | Spotify JP Chart History: Wake Me Up #1, Waiting For Love #2, Without You #4, SOS #9, 計9曲JPチャートイン | kworb.net | 故人(2018年逝去)。日本EDMファンの絶大な支持。Wake Me Up JP #1実績 |
+| 40 | **Megan Thee Stallion (ミーガン・ジー・スタリオン)** | MAJ ベスト・オブ・リスナーズチョイス海外楽曲1位「Neva Play (feat. RM of BTS)」 | MAJ 2025 | Spotifyリスナー投票で海外楽曲1位 |
+| 41 | **Tyla (タイラ)** | Apple Music Japan 最新洋楽ヒット2025プレイリスト上位「CHANEL」 | Apple Music Japan | 南アフリカ出身。2025年サマーソニック来日 |
+| 42 | **Tate McRae (テイト・マクレー)** | Apple Music Japan 最新洋楽ヒット2025プレイリスト上位「NOBODY'S GIRL」 | Apple Music Japan | 新世代ポップスター |
+| 43 | **The Kid LAROI (ザ・キッド・ラロイ)** | USEN週間洋楽2位「A Cold Play」(2026年2月時点) | USEN 2026/02 | オーストラリア出身若手ラッパー |
+| 44 | **keshi (ケシ)** | Apple Music MAJ2025海外オルタナティブ楽曲賞ノミネート「Say」 | Apple Music, MAJ 2025 | ベトナム系アメリカ人シンガー。日本のインディーファンに人気 |
+| 45 | **Ginger Root (ジンジャー・ルート)** | Apple Music MAJ2025海外オルタナティブ楽曲賞ノミネート | Apple Music, MAJ 2025 | 日系アメリカ人。シティポップ的サウンドで逆輸入的人気 |
+| 46 | **Avril Lavigne (アヴリル・ラヴィーン)** | dwango.jpピックアップ | dwango.jp | 日本での根強い人気。来日公演も盛況 |
+| 47 | **P!NK (ピンク)** | dwango.jpピックアップ | dwango.jp | 日本での安定的人気 |
+| 48 | **Backstreet Boys (バックストリート・ボーイズ)** | dwango.jpピックアップ | dwango.jp | レジェンド。日本で根強いファンベース |
+| 49 | **Michael Jackson (マイケル・ジャクソン)** | dwango.jpピックアップ, Spotify JP Chart History: Don't Matter To Me #43(Drake feat.) | kworb.net, dwango.jp | 故人。レジェンドだがSpotifyユーザー層(若年中心)との乖離あり |
+| 50 | **Bon Jovi (ボン・ジョヴィ)** | dwango.jpピックアップ, Hulu洋楽ライブ配信 | dwango.jp | 日本でのライブ人気は絶大。「It's My Life」は定番 |
+| 51 | **Madonna (マドンナ)** | dwango.jpピックアップ | dwango.jp | レジェンド |
+| 52 | **Wham! (ワム!)** | Spotifyクリスマス定番(全世界2位「Last Christmas」), 日本のクリスマスBGM定番 | Spotify, USEN | 毎年12月に急上昇 |
+| 53 | **One Direction (ワン・ダイレクション)** | RAG Music人気洋楽ランキング上位 | RAG Music | 活動休止中だがストリーミングで聴かれ続ける |
+| 54 | **Oasis (オアシス)** | Spotify JP Chart History: Champagne Supernova #83, Wonderwall #145, 2025年再結成・来日公演 | kworb.net, 各種メディア | 再結成発表で日本でのストリーミング再生が急増 |
+| 55 | **Adele (アデル)** | Spotify JP Chart History: Hello #2, Easy On Me #69, Oh My God #58 | kworb.net | Hello JP #2の高順位実績。リリース時に集中的再生 |
+| 56 | **Post Malone (ポスト・マローン)** | Spotify世界TOP5常連 | Spotify | 「Sunflower」等が日本でもロングヒット |
+| 57 | **Lana Del Rey (ラナ・デル・レイ)** | dwango.jp新着, Billboard Japan Hot Overseas登場歴 | dwango.jp | 日本のオルタナティブリスナーに支持 |
+| 58 | **Madison Beer (マディソン・ビアー)** | dwango.jp新着「bad enough」 | dwango.jp | Z世代に人気 |
+| 59 | **A$AP Rocky (エイサップ・ロッキー)** | dwango.jp新着「PUNK ROCKY」 | dwango.jp | ヒップホップシーン人気アーティスト |
+| 60 | **Wiz Khalifa & Charlie Puth** | RAG Music人気洋楽ランキング上位「See You Again」 | RAG Music | 映画『ワイルドスピード』効果で日本でもロングヒット |
 
-| # | アーティスト | G_ST | 日本Spotify代表曲の累計ストリーム（JP Daily Totals） | JP最高チャート順位 | 現行週間/日間チャート滞在 | 根拠 |
-|---|------------|------|--------------------------------------------------|-------------------|------------------------|------|
-| 1 | レディーガガ | 3 | Die With A Smile: 15.5M, Rain On Me: 10.9M | Shallow #19, The Cure #11, Rain On Me #15, Die With A Smile #68 | 週間・日間チャート圏外 | JP Daily Totalsに2曲ランクイン（累計15.5M+10.9M）。Chart Historyで複数曲がJPチャート入り実績あり。Wrapped 2025で41位（Bruno Marsとの共演枠）。現行チャートには不在だが累計は中程度。 |
-| 2 | ビリーアイリッシュ | 3 | bad guy: 28.9M, BIRDS OF A FEATHER: 11.2M | bad guy #9, No Time To Die #58 | 週間・日間チャート圏外 | JP Daily Totalsに2曲（累計40.1M）。bad guyはJP #9を記録し日本でも知名度高い。ただし現行チャートには不在で、間欠的な人気。 |
-| 3 | セレーナゴメス | 2 | Wolves: 7.4M | Wolves #2, Back To You #4, Taki Taki #6 | 週間・日間チャート圏外 | JP Daily Totalsに1曲のみ（7.4M）。Chart Historyでは複数曲がJPチャート入りしているが、いずれもコラボ曲中心。現行チャートには不在。累計も比較的低い。 |
-| 4 | アリアナグランデ | 3 | Santa Tell Me: 18.4M | thank u, next #3, 7 rings #4, Rain On Me #15 | 週間・日間チャート圏外 | JP Daily Totalsに1曲（18.4M、クリスマス曲）。Chart Historyでは複数曲がJPトップ10入り。日本での認知度は高いが、現行チャートには残存せず。 |
-| 5 | ジャスティンビーバー | 3 | Peaches: 10.1M | I Don't Care #2, Stay #7, What Do You Mean? #35 | 週間・日間チャート圏外 | JP Daily Totalsに1曲（10.1M）。Chart HistoryではI Don't Care #2、Stay #7と複数曲JP上位実績。現行チャートには不在だが累計は中程度。 |
-| 6 | エドシーラン | 5 | Shape of You: 123.5M, I Don't Care: 12.1M, Shivers: 11.3M, Bad Habits: 11.0M | Shape of You #1, Perfect #12 | 週間#124, 日間#112 (Shape of You) | JP Daily Totalsに4曲（累計157.9M）で洋楽アーティスト最多。Shape of You はJP #1を達成し、累計123.5Mは洋楽最高水準。2026年2月現在もウィークリー/デイリーチャートに唯一残存する洋楽曲。日本における洋楽ストリーミングの王者。 |
-| 7 | ブルーノマーズ | 4 | （JP Daily Totalsには単独曲なし。週間チャートにAPT. #159で出現） | APT. #1, That's What I Like #43, 24K Magic #45, Die With A Smile #68 | 週間#159 (APT.のみ、ROSE feat.) | JP Daily Totalsにソロ曲はランクインしていないが、Chart Historyでは複数曲がJPチャート入り。APT.はJP #1を記録。Wrapped 2025 Japanで41位（Gaga共演枠）。日本来日公演が大盛況で知名度は非常に高い。ただしソロ曲の日本Spotify累計は限定的。 |
-| 8 | テイラースウィフト | 3 | Cruel Summer: 32.8M | Lover #23, Cruel Summer #26, Anti-Hero #67 | 週間・日間チャート圏外 | JP Daily Totalsに1曲（32.8M）。Wrapped 2025 Japanで43位。Chart Historyでは複数曲がJPチャート入り。日本でも人気は高いが、チャート常連ではなくロングテール型。 |
-| 9 | マイケルジャクソン | 2 | （JP Daily Totalsにランクインなし） | Don't Matter To Me #43（Drake feat.）, Little Christmas Tree #80 | 週間・日間チャート圏外 | JP Daily Totalsに楽曲なし。Chart HistoryでもJPチャート入りは僅か3曲のみで、うち最高位はDrakeとのコラボ曲#43。レジェンドだがSpotifyユーザー層（若年中心）との乖離が大きく、日本Spotifyでの需要は低い。 |
-| 10 | ブリトニースピアーズ | 1 | （JP Daily Totalsにランクインなし） | Ooh La La #44（2013年、映画タイアップ） | 週間・日間チャート圏外 | JP Daily Totalsに楽曲なし。Chart HistoryでJPチャート入りは1曲のみ（#44、映画曲）。代表曲（Baby One More Time, Toxic等）はJPチャート圏外。日本Spotifyでの需要はほぼゼロに近い。 |
-| 11 | アヴィーチー | 3 | （JP Daily Totalsにランクインなし） | Wake Me Up #1, Waiting For Love #2, Without You #4, SOS #9 | 週間・日間チャート圏外 | JP Daily Totalsには未ランクインだが、Chart HistoryではWake Me Up JP #1を筆頭に9曲がJPチャート入り。2018年の逝去時に大きな反響があり、日本EDMファン層からの支持は厚い。現行チャートには不在だがロングテール的に聴かれている。 |
-| 12 | マドンナ | 1 | （JP Daily Totalsにランクインなし） | JPチャート入り実績なし | 週間・日間チャート圏外 | JP Daily Totals・Chart History共にJPデータなし。Madonna全楽曲がJP Spotifyチャートに一度も入っていない。レジェンドだが日本のSpotifyストリーミング需要はほぼゼロ。 |
-| 13 | フレディーマーキュリー/Queen | 3 | （JP Daily Totalsにランクインなし） | Bohemian Rhapsody #3, Another One Bites The Dust #14, Somebody To Love #14, Don't Stop Me Now #28 | 週間・日間チャート圏外 | JP Daily Totalsには未ランクインだが、Chart HistoryではBohemian Rhapsody JP #3を筆頭に8曲がJPチャート入り。2018年映画「ボヘミアン・ラプソディ」公開時に日本で大ブーム。現行チャートには不在だが、映画効果でのロングテール需要あり。 |
-| 14 | オアシス | 2 | （JP Daily Totalsにランクインなし） | Champagne Supernova #83, Stop Crying Your Heart Out #91, Don't Look Back In Anger #131, Wonderwall #145 | 週間・日間チャート圏外 | JP Daily Totalsに楽曲なし。Chart Historyでは4曲がJPチャート入りしているが、いずれも100位前後と低め。2025年の再結成ツアー発表で一時的に注目されたが、日本Spotifyでの恒常的な需要は低い。 |
-| 15 | エルトンジョン | 2 | （JP Daily Totalsにランクインなし） | Cold Heart (PNAU Remix) #114, Rocket Man #150 | 週間・日間チャート圏外 | JP Daily Totalsに楽曲なし。Chart Historyでは2曲のみJPチャート入りで順位も低い。Cold Heart（Dua Lipaコラボ）でやや話題になったが日本での需要は限定的。 |
-| 16 | ジョンボンジョヴィ/Bon Jovi | 1 | （JP Daily Totalsにランクインなし） | JPチャート入り実績なし | 週間・日間チャート圏外 | JP Daily Totals・Chart History共にJPデータなし。Bon Joviの全楽曲がJP Spotifyチャートに一度も入っていない。日本でのライブ人気は高いがSpotifyストリーミング層とは乖離。 |
-| 17 | カレンカーペンター/カーペンターズ | 1 | （JP Daily Totalsにランクインなし） | JPチャート入り実績なし | 週間・日間チャート圏外 | JP Daily Totals・Chart History共にJPデータなし。日本での知名度は非常に高い（英語教材等）が、Spotifyリスナー層（若年層中心）との乖離が大きく、ストリーミング需要はほぼゼロ。 |
-| 18 | デヴィッドボウイ | 1 | （JP Daily Totalsにランクインなし） | Under Pressure #29（Queen共演） | 週間・日間チャート圏外 | Chart HistoryでJPチャート入りは1曲のみ（Under Pressure #29、Queen共演曲）。ソロ曲でのJPチャート入りは皆無。日本Spotifyでの需要はほぼゼロ。 |
-| 19 | ボブマーリー | 1 | （JP Daily Totalsにランクインなし） | JPチャート入り実績なし | 週間・日間チャート圏外 | JP Daily Totals・Chart History共にJPデータなし。2024年伝記映画公開でもJPチャートへの影響は確認できず。日本Spotifyでの需要はほぼゼロ。 |
-| 20 | エルヴィスプレスリー | 1 | （JP Daily Totalsにランクインなし） | Can't Help Falling In Love #81（2023年バレンタイン期間） | 週間・日間チャート圏外 | Chart HistoryでJPチャート入りは1曲のみ（#81、季節的な一時浮上）。日本Spotifyでの恒常的な需要はほぼゼロ。 |
-| 21 | ポールマッカートニー | 1 | （JP Daily Totalsにランクインなし） | FourFiveSeconds #198（Rihanna/Kanye Westコラボ） | 週間・日間チャート圏外 | Chart HistoryでJPチャート入りは1曲のみ（#198、コラボ曲）。ソロ/Beatles楽曲でのJPチャート入りは皆無。日本Spotifyでの需要はほぼゼロ。 |
-| 22 | ジョンレノン | 1 | （JP Daily Totalsにランクインなし） | Happy Xmas (War Is Over) #25（2019年クリスマス期間）, 同Remastered #86（2025年） | 週間・日間チャート圏外 | Chart HistoryでJPチャート入りはクリスマス曲のみ（季節限定）。Imagineすらランクインせず。日本Spotifyでの恒常的な需要はほぼゼロ。 |
-| 23 | アデル | 2 | （JP Daily Totalsにランクインなし） | Hello #2, Easy On Me #69, Oh My God #58 | 週間・日間チャート圏外 | JP Daily Totalsに楽曲なし。Chart HistoryではHello JP #2と高順位実績があるが、新譜リリース時の一時的なもの。現行チャートには不在で、日本での恒常的なストリーミング需要は低い。 |
+---
 
-## G_STスコア分布サマリー
+## ソース別 詳細データ
 
-| G_ST | アーティスト数 | 該当アーティスト |
-|------|-------------|----------------|
-| 5 | 1 | エドシーラン |
-| 4 | 1 | ブルーノマーズ |
-| 3 | 7 | レディーガガ, ビリーアイリッシュ, アリアナグランデ, ジャスティンビーバー, テイラースウィフト, アヴィーチー, フレディーマーキュリー/Queen |
-| 2 | 5 | セレーナゴメス, マイケルジャクソン, オアシス, エルトンジョン, アデル |
-| 1 | 9 | ブリトニースピアーズ, マドンナ, ジョンボンジョヴィ, カレンカーペンター, デヴィッドボウイ, ボブマーリー, エルヴィスプレスリー, ポールマッカートニー, ジョンレノン |
+### 1. USEN MUSIC AWARD 2025 洋楽ランキング TOP30
+集計期間: 2024年11月22日〜2025年11月20日
 
-※G_ST=3に7組あり合計24になっているのは正しい（23組のうちG_ST=3が7組）
+| 順位 | 曲名 | アーティスト |
+|---|---|---|
+| 1 | Birds Of A Feather | **Billie Eilish** |
+| 2 | Die With A Smile | **Lady Gaga & Bruno Mars** |
+| 3 | Beautiful Things | **Benson Boone** |
+| 4 | Abracadabra | **Lady Gaga** |
+| 5 | Azizam | **Ed Sheeran** |
+| 6 | BMF | **SZA** |
+| 7 | Next Summer | **Damiano David** |
+| 8 | That's So True | **Gracie Abrams** |
+| 9 | Espresso | **Sabrina Carpenter** |
+| 10 | Zombie Lady | **Damiano David** |
+| 11 | like JENNIE | JENNIE (※K-POP、除外対象) |
+| 12 | Messy | **Laura Young** |
+| 13 | Talk To Me feat. Tyla & Nile Rodgers | **Damiano David** |
+| 14 | Defying Gravity | **Cynthia Erivo feat. Ariana Grande** |
+| 15 | Beautiful Colors (from 怪獣8号) | **OneRepublic** |
+| 16 | No One | **Alicia Keys** |
+| 17 | Drive | **Ed Sheeran** |
+| 18 | Beyond (End Credit Version) | Auli'i Cravalho feat. Te Vaka |
+| 19 | Fight Song | **Rachel Platten** |
+| 20 | Popular | **Ariana Grande** |
+| 21 | Sorry I'm Here For Someone Else | **Benson Boone** |
+| 22 | Wildflower | **Billie Eilish** |
+| 23 | Brother | Braylin Rankins, Theo Somolu等 |
+| 24 | Never Too Late | **Elton John & Brandi Carlile** |
+| 25 | 夢に見る〜Waiting On A Wish〜 | Rachel Zegler |
+| 26 | Mystical Magical | **Benson Boone** |
+| 27 | Twilight Zone | **Ariana Grande** |
+| 28 | Sugar | **Maroon 5** |
+| 29 | Timeless with Playboi Carti | **The Weeknd** |
+| 30 | Golden | HUNTR/X (EJAE, Audrey Nuna & REI AMI) |
 
-## 分析ノート
+### 2. Billboard Japan Hot Overseas 最新週間チャート (2026/02/25付)
 
-### 日本Spotifyにおける洋楽の位置づけ
-- 日本のSpotifyチャートは邦楽（Mrs. GREEN APPLE, YOASOBI, Ado等）とK-POPが支配的
-- 洋楽がTOP200に常時入る例は極めて稀で、Ed Sheeran「Shape of You」がほぼ唯一の例外
-- Spotify Wrapped 2025 Japanで洋楽アーティストがトップ50に入ったのはBruno Mars/Lady Gaga（41位）とTaylor Swift（43位）のみ
+| 順位 | 曲名 | アーティスト | チャートイン週数 |
+|---|---|---|---|
+| 1 | Golden | HUNTR/X | 31 |
+| 2 | Zoo | **Shakira** | 14 |
+| 3 | I Just Might | **Bruno Mars** | 7 |
+| 5 | Homewrecker | **Sombr** | 2 |
+| 6 | Shape of You | **Ed Sheeran** | **464** |
+| 7 | APT. | Rose & **Bruno Mars** | 71 |
+| 9 | Aperture | **Harry Styles** | 5 |
+| 10 | Cry (feat. Kenny G) | **Charlie Puth** | 2 |
+| 11 | Sisters With Me | **Tom Misch** | 1 |
+| 12 | Sweet Child O' Mine | **Guns N' Roses** | 4 |
+| 14 | Beat Yourself Up | **Charlie Puth** | 6 |
+| 15 | Get In Girl | **Meghan Trainor** | 1 |
+| 16 | Something Stupid | **Norah Jones** & Josh Homme | 2 |
+| 17 | I Did This To Myself | **Thundercat** | 1 |
+| 20 | DTMF | **Bad Bunny** | 3 |
 
-### レガシーアーティストの厳しい現実
-- 20世紀のレジェンド（MJ, プレスリー, ビートルズ組, マドンナ, ボウイ, ボブマーリー等）は日本Spotifyでほぼ存在感なし
-- Spotifyの日本ユーザー層が若年中心のため、これらアーティストのファン層とのミスマッチが顕著
-- 唯一の例外はQueen（映画効果）とAvicii（EDMジャンルのSpotify親和性）
+### 3. MUSIC AWARDS JAPAN 2025 海外楽曲部門 受賞結果
 
-### 映画・イベント効果
-- Queen: 2018年映画「ボヘミアン・ラプソディ」で一時的にJPチャート上位独占（Bohemian Rhapsody JP #3）
-- Oasis: 2025年再結成発表で一時的にチャート浮上（Champagne Supernova #83等）
-- これらは一過性であり、恒常的なストリーミング需要とは異なる
+| 部門 | 曲名 | アーティスト |
+|---|---|---|
+| 最優秀海外ポップス楽曲賞 | APT. | Rose & **Bruno Mars** |
+| 最優秀海外ロック楽曲賞 | feelslikeimfallinginlove | **Coldplay** |
+| 最優秀海外ヒップホップ/ラップ楽曲賞 | Not Like Us | **Kendrick Lamar** |
+| 最優秀海外R&B/コンテンポラリー楽曲賞 | we can't be friends | **Ariana Grande** |
+| 最優秀海外オルタナティブ楽曲賞 | BIRDS OF A FEATHER | **Billie Eilish** |
+| リスナーズチョイス海外楽曲 | Neva Play (feat. RM of BTS) | **Megan Thee Stallion** |
+
+### 4. Spotify Japan 2025 Wrapped (洋楽関連抜粋)
+
+- **日本Top Artist 41位**: Lady Gaga & Bruno Mars (「Die With A Smile」)
+- **日本Top Artist 43位**: Taylor Swift
+- **日本Top 100トラック内に欧米洋楽はゼロ** (K-POPのみが非邦楽。唯一の例外: Bruno Mars参加「APT.」24位)
+- **Spotify世界**: 最多再生アーティスト1位 Bad Bunny、楽曲1位 Lady Gaga & Bruno Mars「Die With A Smile」(17億回再生)
+
+### 5. Spotify Japan Chart History (kworb.net) - 洋楽主要曲のJPピーク順位
+
+| アーティスト | 代表曲 | JPピーク順位 | JP Daily Totals累計 |
+|---|---|---|---|
+| Ed Sheeran | Shape of You | **#1** | 123.5M |
+| Ed Sheeran | I Don't Care | - | 12.1M |
+| Ed Sheeran | Shivers | - | 11.3M |
+| Ed Sheeran | Bad Habits | - | 11.0M |
+| Bruno Mars | APT. (with Rose) | **#1** | - |
+| Avicii | Wake Me Up | **#1** | - |
+| Avicii | Waiting For Love | **#2** | - |
+| Adele | Hello | **#2** | - |
+| Selena Gomez | Wolves | **#2** | 7.4M |
+| Taylor Swift | Cruel Summer | #26 | 32.8M |
+| Ariana Grande | thank u, next | **#3** | - |
+| Ariana Grande | Santa Tell Me | - | 18.4M |
+| Queen | Bohemian Rhapsody | **#3** | - |
+| Billie Eilish | bad guy | **#9** | 28.9M |
+| Billie Eilish | BIRDS OF A FEATHER | - | 11.2M |
+| Lady Gaga | The Cure | #11 | - |
+| Lady Gaga | Die With A Smile | #68 | 15.5M |
+| Justin Bieber | I Don't Care | **#2** | - |
+| Justin Bieber | Peaches | - | 10.1M |
+
+---
+
+## 分析メモ
+
+### 日本のストリーミング市場における洋楽の位置づけ
+1. **日本市場は邦楽が圧倒的に優位**: Spotify Japan Top 100トラックに欧米洋楽は実質ゼロ。アーティストTOP50でも洋楽は2組のみ
+2. **Bruno Marsの日本での特異的人気**: 「APT.」がBillboard Japan Hot 100で洋楽史上初の2週連続1位。Hot 100年間3位は洋楽として異例
+3. **店舗BGM(USEN)では洋楽が豊富**: リスニング環境では洋楽が多く流れ、USEN洋楽チャートTOP30は全て欧米アーティスト
+4. **Ed Sheeran「Shape of You」の超ロングヒット**: Billboard Japan Hot Overseasで464週(約9年)チャートイン。日本Spotifyの洋楽累計再生数最多
+5. **アニメタイアップが洋楽浸透の鍵**: OneRepublic「Beautiful Colors」(怪獣8号)のようにアニメ経由で日本市場に浸透するケース
+6. **クリスマスシーズンのレジェンド需要**: Mariah Carey, Wham!は毎年12-1月に日本チャートで急上昇
+7. **映画タイアップ効果**: 『Wicked』でAriana Grande/Cynthia Erivo、『ズートピア2』でShakira、『ボヘミアン・ラプソディ』でQueen
+8. **レガシーアーティストの厳しい現実**: MJ, マドンナ, ビートルズ組, ボウイ等は日本Spotifyでほぼ存在感なし(ユーザー層の若年化)
+9. **唯一のレガシー例外**: Queen(映画効果)とAvicii(EDMのSpotify親和性)は日本でもチャートイン実績あり

@@ -1,0 +1,76 @@
+{
+  "video_id": "-mMMSf1EpfM",
+  "artist_name": "ケイティペリー",
+  "script_file": "/Users/user/タスク/youtube-long/projects/ケイティペリー/script.md",
+  "analysis_date": "2026-03-02",
+  "word_count": 6900,
+  "structure": {
+    "has_unified_theme": true,
+    "theme_word": "条件付きの愛 vs 無条件の愛",
+    "has_antagonist": true,
+    "antagonist": "厳格な宗教的両親（父キース・母メアリー）",
+    "emotional_bottoms_count": 3,
+    "bottoms_escalate": true,
+    "has_savior": true,
+    "savior": "娘デイジー（無条件の愛の象徴）"
+  },
+  "hook_analysis": {
+    "opening_question": "マイケルジャクソンと並ぶ偉業を成し遂げ、スーパーボウル1億1850万人を熱狂させた歌姫が、なぜバスルームの床で自殺を図ろうとしたのか？",
+    "hook_answered_in_script": true,
+    "hook_answer_position_percent": 47
+  },
+  "mv_insertions": {
+    "count": 7,
+    "songs": [
+      "I Kissed a Girl",
+      "California Gurls",
+      "E.T.",
+      "Last Friday Night",
+      "Swish Swish",
+      "Bon Appétit",
+      "Dark Horse"
+    ],
+    "placement_at_heavy_moments": true
+  },
+  "curiosity_alignment": {
+    "top1_topic": "自殺未遂と離婚の真相",
+    "top1_addressed": true,
+    "top2_topic": "厳格な宗教的家庭と両親からの拒絶（悪魔の子）",
+    "top2_addressed": true,
+    "ca_score": 2.5
+  },
+  "gi_scores": {
+    "G1_gossip": 4,
+    "G2_curiosity": 4,
+    "G3_emotional": 5,
+    "G4_movie": 3,
+    "G6_songs": 4,
+    "total": 20
+  },
+  "emotional_curve": {
+    "total_ups": 9,
+    "total_downs": 8,
+    "total_transitions": 17,
+    "pattern_by_act": {
+      "intro": "UD",
+      "first_act": "DDUDU",
+      "second_act": "UDUDDU",
+      "third_act": "UDUU"
+    },
+    "balance_description": "均衡型。成功と絶望が交互に配置され、第二幕の自殺未遂で最大の底を打った後、第三幕で無条件の愛による回復へと導く構造。上昇と下降がほぼ均等で、コントラストが強い"
+  },
+  "opening_30sec": {
+    "opening_type": "衝撃事実型",
+    "hook_strength": 4,
+    "description": "MJと並ぶ偉業を成し遂げた歌姫がスーパーボウル1億1850万人を沸かせたという伝説的成功と、バスルームでの自殺未遂という認知的不協和を冒頭で提示"
+  },
+  "non_mv_media": {
+    "total_links": 2,
+    "links_by_type": {
+      "interview": 1,
+      "live": 1,
+      "documentary": 0,
+      "other": 0
+    }
+  }
+}
